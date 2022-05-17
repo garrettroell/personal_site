@@ -1,0 +1,45 @@
+
+/* footer styles */
+
+.footer {
+  height: 50px;
+  width: 100vw;
+  background-color: white;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0px 40px;
+}
+
+.footer-link {
+  font-family: 'Montserrat';
+  margin-top: 0px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.footer-link:visited {
+  color: black;
+}
+
+.github-button {
+  height: 40px;
+  width: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.30);
+  background: transparent;
+  border-radius: 6px;
+  padding-top: 7px;
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.github-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}

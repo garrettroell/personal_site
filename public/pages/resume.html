@@ -5,26 +5,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="meta/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="meta/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="meta/favicon-16x16.png">
-  <link rel="manifest" href="meta/site.webmanifest" crossorigin="anonymous">
-  <link rel="mask-icon" href="meta/safari-pinned-tab.svg" color="#5bbad5">
+  <!-- favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/meta/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/meta/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/meta/favicon-16x16.png">
+  <link rel="manifest" href="/meta/site.webmanifest" crossorigin="anonymous">
+  <link rel="mask-icon" href="/meta/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="Garrett Roell is a PhD Student studying Chemical Engineering at 
       Washington University in St. Louis who loves writing code.">
 
+  <!-- scripts -->
+  <script src="/js/footer.js"></script>
+
+  <!-- styles -->
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/resume.css">
+
   <!-- Title -->
   <title>Garrett Roell</title>
-
-  <script src="/js/footer.js"></script>
-  <link rel="stylesheet" href="/css/resume.css">
 </head>
 
 <body>
 
+  <!-- nav bar -->
   <nav>
     <div class="nav-outer">
       <ul class="nav-items">
@@ -35,8 +42,11 @@
         <li><a href="/resume" class="nav-item">Resume</a></li>
       </ul>
     </div>
-    <div class="spacer"></div>
   </nav>
+
+  <!-- spacer -->
+  <div class="top-spacer"></div>
+
   <div class="outer-container">
     <div class="inner-container">
       <h1 class="title">Garrett Roell</h1>
@@ -96,10 +106,10 @@
 
       <h2 class="subtitle">LEADERSHIP EXPERIENCE</h2>
       <ul class="bulletpoints">
-        <li class="bulletpoint">President of the Association of Graduate Engineering Students (~$15,000 annual budget)
+        <li class="bulletpoint">President of the Association of Graduate Engineering Students
         </li>
         <li class="bulletpoint">Chief Technology Officer and co-Founder of All Things Analysis, LLC</li>
-        <li class="bulletpoint">Lab Mentor for 2 masters students and 1 undergraduate</li>
+        <li class="bulletpoint">Lab Mentor for 2 masters students and 1 undergraduate student</li>
         <li class="bulletpoint">Eagle Scout in Boy Scouts of America</li>
       </ul>
 
@@ -130,12 +140,25 @@
           <a href="https://sw.garrettroell.com" target="_blank">sw.garrettroell.com</a>
         </div>
       </div>
-
-
     </div>
-    <footer>
-      Copyright &copy; Garrett Roell 2021
-    </footer>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <div class="footer-container">
+      <a class="footer-link" id="footer-name"></a>
+      <a href="https://github.com/garrettroell/personal_site" target="_blank">
+        <button class="github-button">
+          <!-- github svg -->
+          <svg stroke="rgba(0, 0, 0, 0.70)" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+            stroke-linejoin="round" height="1.25em" width="1.25em" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+        </button>
+      </a>
+    </div>
   </div>
 
 </body>

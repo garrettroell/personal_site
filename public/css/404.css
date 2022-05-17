@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap"); */
 
 .text-container {
   width: 400px;
@@ -75,11 +75,8 @@
   cursor: pointer;
 }
 
-footer {
+.footer {
   position: fixed;
   bottom: 0;
-  left: calc(50vw - 130px);
-  padding: 20px;
-  background-color: white;
-  z-index: 5;
+  left: 0;
 }
