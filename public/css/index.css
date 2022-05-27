@@ -327,7 +327,7 @@
   margin: auto;
 }
 
-.leadership-icon {
+.community-icon {
   background: url("/icons/leadership.svg");
   height: 84px;
   width: 84px;
@@ -373,7 +373,7 @@
 /* projects styles */
 
 .projects {
-  background-color: white;
+  background-color: #f7f7f7;
   padding-top: 75px;
   padding-bottom: 75px;
 }
@@ -558,7 +558,7 @@
 /* publications styles */
 
 .publications {
-  background-color: #f7f7f7;
+  background-color: white;
   padding-top: 75px;
   padding-bottom: 75px;
 }

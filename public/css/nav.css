@@ -8,7 +8,13 @@
   position: fixed;
   top: 0;
   background-color: white;
-  overflow: scroll;
+  z-index: 2;
+}
+
+@media (max-width: 500px) {
+  .nav-outer {
+    overflow: scroll;
+  }
 }
 
 .nav-items {
