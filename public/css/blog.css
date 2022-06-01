@@ -7,7 +7,7 @@
 }
 
 .blog-list {
-  max-width: 800px;
+  max-width: 600px;
   margin: auto;
   padding: 0px 20px;
 }
@@ -17,14 +17,15 @@
   margin-bottom: 30px;
 }
 
-.blog-title-h2 {
+/* .blog-title-h2 {
   margin-top: 0px;
-}
+} */
 
 .blog-title {
   font-family: 'Montserrat';
-  font-size: 24px;
+  font-size: 20px;
   margin-top: 0px;
+  margin-bottom: 8px;
   text-decoration: none;
   color: #151515;
 }
@@ -42,8 +43,107 @@
   font-family: Roboto, sans-serif;
   font-size: 16px;
   color: #555555;
-  margin: 10px 0px;
+  margin: 5px 0px;
   text-align: justify;
+}
+
+.blog-text-holder {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 60px;
+  padding: 0px 20px;
+  padding-bottom: 100px;
+}
+
+.blog-text {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  color: #555555;
+  margin: 10px 0px;
+  /* text-align: justify; */
+}
+
+.blog-text-title {
+  font-family: 'Montserrat';
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #151515;
+}
+
+li {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  color: #555555;
+  margin: 4px;
+  /* text-align: justify; */
+}
+
+.code-holder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(77, 91, 124);
+  border-radius: 11px;
+  padding: 10px 20px;
+  margin: 20px;
+}
+
+.code-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+code {
+  /* background-color: rgb(77, 91, 124); */
+  color: white;
+  line-height: 20px;
+}
+
+.code-button {
+  height: 20px;
+  border: 1px solid white;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  background-color: transparent
+}
+
+.code-button:hover {
+  background-color: rgb(100, 100, 100);
+}
+
+.code-snippet {
+  width: 100%;
+  
+  /* border: 1px solid black; */
+}
+
+.code-snippet-head{
+  margin: 20px;
+  margin-bottom: 0px;
+  height: 35px;
+  /* color: rgb(36, 51, 90); */
+  background-color: rgb(214, 220, 234);
+  border-radius: 16px 16px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.code-snippet-body{
+  margin: 20px;
+  margin-top: 0px;
+  padding: 20px;
+  background-color: rgb(77, 91, 124);
+  color: white;
+  border-radius: 0px 0px 16px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 /* can probably delete later */
@@ -51,4 +151,5 @@
   position: fixed;
   bottom: 0;
   left: 0;
+  background-color: #f7f7f7;
 }

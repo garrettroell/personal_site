@@ -16,12 +16,11 @@ app.get("/resume", (_, res) => {
 });
 
 app.get("/blog", (_, res) => {
-  res.sendFile("public/blog/0_blog.html", { root: "." });
+  res.sendFile("public/blog/blog_home.html", { root: "." });
 });
 
-app.get("/blog/why-digital-ocean", (_, res) => {
-  console.log("inside create droplet route");
-  res.sendFile("public/blog/1_why_digital_ocean.html", { root: "." });
+app.get("/blog/how-to-set-up-a-digitalocean-droplet", (_, res) => {
+  res.sendFile("public/blog/1_setup_droplet.html", { root: "." });
 });
 
 app.get("/blog/create-droplet", (_, res) => {
