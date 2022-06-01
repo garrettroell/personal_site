@@ -115,6 +115,11 @@ code {
   line-height: 20px;
 }
 
+mark{
+  background-color: rgb(99, 125, 185);
+  color: white
+}
+
 .code-button-holder {
   width: 60px;
   text-align: end;
@@ -144,7 +149,7 @@ code {
   margin: 20px;
   margin-bottom: 0px;
   height: 35px;
-  /* color: rgb(36, 51, 90); */
+  color: rgb(77, 91, 124); 
   background-color: rgb(214, 220, 234);
   border-radius: 16px 16px 0px 0px;
   display: flex;

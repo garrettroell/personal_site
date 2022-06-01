@@ -46,7 +46,11 @@
     let codeButtons = document.getElementsByClassName('code-button')
     Array.from(codeButtons).forEach(button => {
       button.addEventListener("click", () => {
+        // change text to copied for 5 seconds
         button.innerHTML = 'copied!'
+        setTimeout(() => {
+          button.innerHTML = 'copy'
+        }, "5000")
       });
     })
   })
@@ -54,7 +58,7 @@
 
 </script>
 
-<body>
+<body x-data="{ show: 'html' }">
 
   <!-- nav bar -->
   <nav>
@@ -127,15 +131,15 @@
         Step 3. Set up server
       </p>
       <p class="blog-text">
-        Remotely access your server using a command line tool (On mac I recommend <a href="https://iterm2.com/"
-          target="_blank">iTerm2</a>)
+        Find your server's public IP address on the DigitalOcean dashboard. Remotely access your server using a command
+        line tool (On mac I recommend <a href="https://iterm2.com/" target="_blank">iTerm2</a>)
       </p>
       <div>
         <img class="blog-image" src="../images/public_ip.png" alt="screenshot showing your public ip address">
 
       </div>
       <div class="code-holder">
-        <code>$ ssh root@your_server_ip</code>
+        <code>$ ssh root@<mark>your_server_ip</mark></code>
         <div class="code-button-holder">
           <button class="code-button" onclick="writeClipboard('ssh root@your_server_ip')">
             copy
@@ -144,10 +148,10 @@
       </div>
       <p class="blog-text">
         The root user can make destructive changes. To avoid accidents, it is best practice to use a non root account.
-        Create a non-root user with a strong password, and skip all other questions.
+        Create a non-root user (use your name instead of mine) with a strong password, and skip all other questions.
       </p>
       <div class="code-holder">
-        <code>$ adduser garrett</code>
+        <code>$ adduser <mark>garrett</mark></code>
         <div class="code-button-holder">
           <button class="code-button" onclick="writeClipboard('adduser garrett')">
             copy
@@ -158,7 +162,7 @@
         Grant administrative privileges. This command appends (-a) the user, garrett, to the group (-G) sudo.
       </p>
       <div class="code-holder">
-        <code>$ usermod -aG sudo garrett</code>
+        <code>$ usermod -aG sudo <mark>garrett</mark></code>
         <div class="code-button-holder">
           <button class="code-button" onclick="writeClipboard('usermod -aG sudo garrett')">
             copy
@@ -166,10 +170,10 @@
         </div>
       </div>
       <p class="blog-text">
-        Log out with the command 'exit', and test if you can sign into server with new user.
+        Log out with the command 'exit', and confirm that you can access server with new user.
       </p>
       <div class="code-holder">
-        <code>$ ssh garrett@your_server_ip</code>
+        <code>$ ssh <mark>garrett</mark>@<mark>your_server_ip</mark></code>
         <div class="code-button-holder">
           <button class="code-button" onclick="writeClipboard('ssh garrett@your_server_ip')">
             copy
@@ -183,7 +187,8 @@
         Step 4. Install Nginx
       </p>
       <p class="blog-text">
-        Nginx is a high performance web server and a reverse proxy server.
+        <a href="https://www.nginx.com/" target="_blank">Nginx</a> is a high performance web server and a reverse proxy
+        server.
       </p>
       <p class="blog-text">
         Update server
@@ -192,7 +197,7 @@
         <code>$ sudo apt-get update</code>
         <div class="code-button-holder">
           <button class="code-button" onclick="writeClipboard('sudo apt-get update')">
-            copied!
+            copy
           </button>
         </div>
       </div>
@@ -208,10 +213,10 @@
         </div>
       </div>
       <p class="blog-text">
-        Check if server is running default nginx page
+        Confirm that the server is running default Nginx page
       </p>
       <div class="code-holder">
-        <code>http://server_domain_or_IP</code>
+        <code>http://<mark>server_domain_or_IP</mark></code>
         <div class="code-button-holder">
           <button class="code-button" onclick="writeClipboard('http://server_domain_or_IP')">
             copy
@@ -232,8 +237,37 @@
       </div>
     </div>
 
+    <div class="step-5">
+      <p class="blog-text-title">
+        Step 5. Connect domain name to your server
+      </p>
+      <p class="blog-text">
+        Add an A record to connect your domain to your server. Put '@' as the host if you want to use
+        the top level domain, or put a string as the host to use a subdomain. The image below is the Namecheap
+        interface, but
+        other domain providers should have similar DNS configuration interfaces.
+      </p>
+      <img class="blog-image" src="../images/a_record.png" alt="namecheap interface for A record">
+      <p class="blog-text">
+        Confirm that the url is connected to your server.
+      </p>
+      <div class="code-holder">
+        <code>$ dig <mark>html.roell.dev</mark></code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('dig html.roell.dev')">
+            copy
+          </button>
+        </div>
+      </div>
+      <img class="blog-image" src="../images/dig_results.png" alt="result of dig command">
+      <p class="blog-text">
+        If the domain is connected, you should see your server's ip address. It may take a few minutes for the DNS
+        changes to propagate.
+      </p>
+    </div>
 
-    <div class="step-5" x-data="{ show: 'html' }">
+
+    <div class="step-6">
       <p class="blog-text" style="margin-top: 40px; margin-bottom:20px">
         Choose the type of site you'd like to host:
       </p>
@@ -246,7 +280,7 @@
 
       <div class="html-configuration" x-show="show === 'html'">
         <p class="blog-text-title">
-          Step 5. Configure Nginx to host an HTML page
+          Step 6. Configure Nginx to host an HTML page
         </p>
         <p class="blog-text">
           Create apps folder
@@ -300,16 +334,16 @@
             <div class="code-stack">
               <code>&lt;html&gt; &nbsp;</code>
               <code>&lt;head&gt; &nbsp;</code>
-              <code>&nbsp; &lt;title&gt;Welcome to Garrett’s html site&lt;/title&gt; &nbsp;</code>
+              <code>&nbsp; &lt;title&gt;Welcome to <mark>Garrett</mark>&apos;s html site&lt;/title&gt; &nbsp;</code>
               <code>&lt;/head&gt; &nbsp;</code>
               <code>&lt;body&gt;</code>
-              <code>&nbsp; &lt;h1&gt;Welcome to Garrett’s html site!&lt;/h1&gt;</code>
+              <code>&nbsp; &lt;h1&gt;Welcome to <mark>Garrett</mark>&apos;s html site!&lt;/h1&gt;</code>
               <code>&lt;/body&gt;</code>
               <code>&lt;/html&gt;</code>
             </div>
             <div class="code-button-holder">
               <button class="code-button"
-                onclick="writeClipboard(`<html>\n<head>\n\t<title>Welcome to Garrett’s html site</title>\n</head>\n<body>\n\t<h1>Welcome to Garrett’s html site!</h1>\n</body>\n</html>`)">
+                onclick="writeClipboard(`<html>\n<head>\n\t<title>Welcome to Garrett&apos;s html site</title>\n</head>\n<body>\n\t<h1>Welcome to Garrett&apos;s html site!</h1>\n</body>\n</html>`)">
                 copy
               </button>
             </div>
@@ -320,9 +354,9 @@
           Add a configuration file for the html site (replace user and )
         </p>
         <div class="code-holder">
-          <code>$ sudo nano /etc/nginx/sites-available/html_site</code>
+          <code>$ sudo nano /etc/nginx/sites-available/<mark>html.roell.dev</mark></code>
           <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('sudo nano /etc/nginx/sites-available/html_site')">
+            <button class="code-button" onclick="writeClipboard('sudo nano /etc/nginx/sites-available/html.roell.dev')">
               copy
             </button>
           </div>
@@ -331,18 +365,16 @@
         <!-- code snippet -->
         <div class="code-snippet">
           <div class="code-snippet-head">
-            /etc/nginx/sites-available/html_site
+            /etc/nginx/sites-available/html.roell.dev
           </div>
           <div class="code-snippet-body">
             <div class="code-stack">
               <code>server {</code>
               <code>&nbsp; listen 80;</code>
-              <code>&nbsp; listen [::]:80;</code>
+              <code>&nbsp; server_name <mark>html.roell.dev</mark>;</code>
               <code>&nbsp;</code>
-              <code>&nbsp; root /home/garrett/apps/html_site/index.html;</code>
-              <code>&nbsp; index index.html index.htm index.nginx-debian.html;</code>
-              <code>&nbsp;</code>
-              <code>&nbsp; server_name html.roell.dev;</code>
+              <code>&nbsp; root /home/<mark>garrett</mark>/apps/html_site/;</code>
+              <code>&nbsp; index index.html;</code>
               <code>&nbsp;</code>
               <code>&nbsp; location / {</code>
               <code>&nbsp; &nbsp; try_files $uri $uri/ =404;</code>
@@ -351,7 +383,7 @@
             </div>
             <div class="code-button-holder">
               <button class="code-button"
-                onclick="writeClipboard(`server {\n\tlisten 80;\n\tlisten [::]:80;\n\n\troot /home/garrett/apps/html_site/index.html;\n\tindex index.html index.htm index.nginx-debian.html;\n\n\tserver_name html.roell.dev;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404;\n\t}\n}`)">
+                onclick="writeClipboard(`server {\n\tlisten 80;\n\tserver_name html.roell.dev;\n\n\troot /home/garrett/apps/html_site/;\n\tindex index.html;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404;\n\t}\n}`)">
                 copy
               </button>
             </div>
@@ -362,7 +394,7 @@
           Enable the config file by making a symbolic link.
         </p>
         <div class="code-holder">
-          <code>$ sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/</code>
+          <code>$ sudo ln -s /etc/nginx/sites-available/<mark>html.roell.dev</mark> /etc/nginx/sites-enabled/</code>
           <div class="code-button-holder">
             <button class="code-button"
               onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/')">
@@ -389,17 +421,6 @@
           <code>$ sudo systemctl restart nginx</code>
           <div class="code-button-holder">
             <button class="code-button" onclick="writeClipboard('sudo systemctl restart nginx')">
-              copy
-            </button>
-          </div>
-        </div>
-        <p class="blog-text">
-          Check if site is working
-        </p>
-        <div class="code-holder">
-          <code>http://example.com</code>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('http://example.com')">
               copy
             </button>
           </div>
@@ -408,7 +429,7 @@
 
       <div class="react-configuration" x-show="show === 'react'">
         <p class="blog-text-title">
-          Step 5. Configure Nginx to host a React App
+          Step 6. Configure Nginx to host a React App
         </p>
         <p class="blog-text">
           Create apps folder
@@ -552,17 +573,6 @@
           <code>$ sudo systemctl restart nginx</code>
           <div class="code-button-holder">
             <button class="code-button" onclick="writeClipboard('sudo systemctl restart nginx')">
-              copy
-            </button>
-          </div>
-        </div>
-        <p class="blog-text">
-          Check if site is working
-        </p>
-        <div class="code-holder">
-          <code>http://example.com</code>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('http://example.com')">
               copy
             </button>
           </div>
@@ -571,7 +581,7 @@
 
       <div class="node-configuration" x-show="show === 'node'">
         <p class="blog-text-title">
-          Step 5. Configure Nginx to host a Node Server
+          Step 6. Configure Nginx to host a Node Server
         </p>
         <p class="blog-text">
           Create apps folder
@@ -715,17 +725,6 @@
           <code>$ sudo systemctl restart nginx</code>
           <div class="code-button-holder">
             <button class="code-button" onclick="writeClipboard('sudo systemctl restart nginx')">
-              copy
-            </button>
-          </div>
-        </div>
-        <p class="blog-text">
-          Check if site is working
-        </p>
-        <div class="code-holder">
-          <code>http://example.com</code>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('http://example.com')">
               copy
             </button>
           </div>
@@ -734,7 +733,7 @@
 
       <div class="python-configuration" x-show="show === 'python'">
         <p class="blog-text-title">
-          Step 5. Configure Nginx to host a Python Server
+          Step 6. Configure Nginx to host a Python Server
         </p>
         <p class="blog-text">
           Create apps folder
@@ -878,17 +877,6 @@
           <code>$ sudo systemctl restart nginx</code>
           <div class="code-button-holder">
             <button class="code-button" onclick="writeClipboard('sudo systemctl restart nginx')">
-              copy
-            </button>
-          </div>
-        </div>
-        <p class="blog-text">
-          Check if site is working
-        </p>
-        <div class="code-holder">
-          <code>http://example.com</code>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('http://example.com')">
               copy
             </button>
           </div>
@@ -906,30 +894,95 @@
         LetsEncrypt
       </p>
       <p class="blog-text">
-        Download certbot
+        Download certbot. This step only needs to happen once in the server's lifetime.
       </p>
       <div class="code-holder">
         <div class="code-stack">
           <code>$ sudo add-apt-repository ppa:certbot/certbot</code>
           <code>$ sudo apt-get update</code>
-          <code>$ sudo apt-get install python-certbot-nginx</code>
+          <code>$ sudo apt-get install python3-certbot-nginx</code>
         </div>
         <div class="code-button-holder">
           <button class="code-button"
-            onclick="writeClipboard('sudo add-apt-repository ppa:certbot/certbot\nsudo apt-get update\nsudo apt-get install python-certbot-nginx')">
+            onclick="writeClipboard('sudo add-apt-repository ppa:certbot/certbot\nsudo apt-get update\nsudo apt-get install python3-certbot-nginx')">
             copy
           </button>
         </div>
       </div>
       <p class="blog-text">
-        Add SSL for your
-        domain
+        Add SSL for your domain
       </p>
-      <div class="code-holder">
-        <code>sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com</code>
+      <!-- html -->
+      <div class="code-holder" x-show="show === 'html'">
+        <code>sudo certbot --nginx -d <mark>html.roell.dev</mark></code>
         <div class="code-button-holder">
-          <button class="code-button"
-            onclick="writeClipboard('sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com')">
+          <button class="code-button" onclick="writeClipboard('sudo certbot --nginx -d html.roell.dev')">
+            copy
+          </button>
+        </div>
+      </div>
+      <!-- react -->
+      <div class="code-holder" x-show="show === 'react'">
+        <code>sudo certbot --nginx -d <mark>react.roell.dev</mark></code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('sudo certbot --nginx -d react.roell.dev')">
+            copy
+          </button>
+        </div>
+      </div>
+      <!-- node -->
+      <div class="code-holder" x-show="show === 'node'">
+        <code>sudo certbot --nginx -d <mark>node.roell.dev</mark></code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('sudo certbot --nginx -d node.roell.dev')">
+            copy
+          </button>
+        </div>
+      </div>
+      <!-- python -->
+      <div class="code-holder" x-show="show === 'python'">
+        <code>sudo certbot --nginx -d <mark>python.roell.dev</mark></code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('sudo certbot --nginx -d python.roell.dev')">
+            copy
+          </button>
+        </div>
+      </div>
+      <p class="blog-text">
+        Confirm that the site is working
+      </p>
+      <!-- html -->
+      <div class="code-holder" x-show="show === 'html'">
+        <code>https://<mark>html.roell.dev</mark></code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('https://html.roell.dev')">
+            copy
+          </button>
+        </div>
+      </div>
+      <!-- react -->
+      <div class="code-holder" x-show="show === 'react'">
+        <code>https://<mark>react.roell.dev</mark></code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('https://react.roell.dev')">
+            copy
+          </button>
+        </div>
+      </div>
+      <!-- node -->
+      <div class="code-holder" x-show="show === 'node'">
+        <code>https://<mark>node.roell.dev</mark></code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('https://node.roell.dev')">
+            copy
+          </button>
+        </div>
+      </div>
+      <!-- node -->
+      <div class="code-holder" x-show="show === 'python'">
+        <code>https://<mark>python.roell.dev</mark></code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('https://python.roell.dev')">
             copy
           </button>
         </div>
