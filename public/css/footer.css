@@ -18,15 +18,11 @@
   padding: 0px 40px;
 }
 
-.footer-link {
+.footer-name {
   font-family: 'Montserrat';
-  margin-top: 0px;
+  margin: 0px;
   font-size: 16px;
   text-decoration: none;
-}
-
-.footer-link:visited {
-  color: black;
 }
 
 .github-button {

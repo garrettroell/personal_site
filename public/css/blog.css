@@ -1,3 +1,12 @@
+a {
+  text-decoration: none;
+  color: rgb(40, 139, 110);
+}
+
+a:hover {
+  color: rgb(0, 85, 85);
+
+}
 .blog-header {
   font-family: 'Montserrat';
   font-size: 35px;
@@ -80,6 +89,11 @@ li {
   /* text-align: justify; */
 }
 
+.blog-image {
+  max-width: calc(100% - 40px);
+  margin: 20px;
+}
+
 .code-holder {
   display: flex;
   justify-content: space-between;
@@ -101,8 +115,14 @@ code {
   line-height: 20px;
 }
 
+.code-button-holder {
+  width: 60px;
+  text-align: end;
+}
+
 .code-button {
   height: 20px;
+  /* width: 60px; */
   border: 1px solid white;
   border-radius: 6px;
   color: white;
@@ -144,6 +164,53 @@ code {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+}
+
+/* configuration buttons */
+
+.configuration-buttons {
+  margin: 20px;
+  /* margin-top: 20px; */
+  min-width: calc(100% - 40px);
+  display: flex;
+  flex-direction: row;
+}
+
+.configuration-buttons button {
+  flex: 1;
+  background-color: #005555;
+  color: white;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  margin: 0px;
+  padding: 7px 20px;
+  cursor: pointer;
+  border: 0px;
+}
+
+.configuration-buttons button:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.configuration-buttons button:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.configuration-buttons button:hover {
+  background-color: #288b6e !important;
+}
+
+.selected-button {
+  background-color: #288b6e !important;
+}
+
+@media (max-width: 400px) {
+  .configuration-buttons button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
 }
 
 /* can probably delete later */

@@ -18,6 +18,7 @@
 
   <!-- scripts -->
   <script src="/js/footer.js"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
   <!-- styles -->
   <link rel="stylesheet" href="/css/global.css">
@@ -40,6 +41,17 @@
       console.log('failed to write to clip board', error)
     });
   }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    let codeButtons = document.getElementsByClassName('code-button')
+    Array.from(codeButtons).forEach(button => {
+      button.addEventListener("click", () => {
+        button.innerHTML = 'copied!'
+      });
+    })
+  })
+
+
 </script>
 
 <body>
@@ -65,15 +77,18 @@
     <p class="blog-text-title">
       How to host 10+ sites for $5 per month
     </p>
+    <p class="blog-text" style="color:mediumpurple">
+      This is not an advertisement. It is an endorsement of a product that I like.
+    </p>
     <p class="blog-text">
-      This guide explains how to setup Nginx on a DigitalOcean droplet that can host 10+ websites for $5 a month. The
+      This guide explains how I set up Nginx on a DigitalOcean droplet to host 10+ websites for $5 a month. The
       guide will go over the steps required to host the following types of websites:
     </p>
     <ul>
       <li>an html page</li>
-      <li>a react website</li>
-      <li>a node server (express.js)</li>
-      <li>a python server (fastAPI)</li>
+      <li>a single page app (<a href="https://reactjs.org/" target="_blank">React</a>)</li>
+      <li>a node server (<a href="https://expressjs.com/" target="_blank">Express</a>)</li>
+      <li>a python server (<a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a>)</li>
     </ul>
 
     <div class="step-1">
@@ -100,6 +115,9 @@
         <li>Pick a datacenter (I chose New York 1)</li>
       </ul>
       <p class="blog-text">
+        Say no to the options that try to upsell you.
+      </p>
+      <p class="blog-text">
         Create a root password to allow you to access your server, and skip ssh setup.
       </p>
     </div>
@@ -109,13 +127,20 @@
         Step 3. Set up server
       </p>
       <p class="blog-text">
-        Remotely access your server using a command line tool (On mac I recommend iTerm2)
+        Remotely access your server using a command line tool (On mac I recommend <a href="https://iterm2.com/"
+          target="_blank">iTerm2</a>)
       </p>
+      <div>
+        <img class="blog-image" src="../images/public_ip.png" alt="screenshot showing your public ip address">
+
+      </div>
       <div class="code-holder">
         <code>$ ssh root@your_server_ip</code>
-        <button class="code-button" onclick="writeClipboard('ssh root@your_server_ip')">
-          copy
-        </button>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('ssh root@your_server_ip')">
+            copy
+          </button>
+        </div>
       </div>
       <p class="blog-text">
         The root user can make destructive changes. To avoid accidents, it is best practice to use a non root account.
@@ -123,36 +148,33 @@
       </p>
       <div class="code-holder">
         <code>$ adduser garrett</code>
-        <button class="code-button" onclick="writeClipboard('adduser garrett')">
-          copy
-        </button>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('adduser garrett')">
+            copy
+          </button>
+        </div>
       </div>
       <p class="blog-text">
         Grant administrative privileges. This command appends (-a) the user, garrett, to the group (-G) sudo.
       </p>
       <div class="code-holder">
         <code>$ usermod -aG sudo garrett</code>
-        <button class="code-button" onclick="writeClipboard('usermod -aG sudo garrett')">
-          copy
-        </button>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('usermod -aG sudo garrett')">
+            copy
+          </button>
+        </div>
       </div>
-      <!-- <p class="blog-text">
-      Inspect Firewall
-    </p>
-    <div class="code-holder">
-      <code>$ ufw app list</code>
-      <button class="code-button" onclick="writeClipboard('ufw app list')">
-        copy
-      </button>
-    </div> -->
       <p class="blog-text">
-        Log out, and test if you can sign into server with new user.
+        Log out with the command 'exit', and test if you can sign into server with new user.
       </p>
       <div class="code-holder">
         <code>$ ssh garrett@your_server_ip</code>
-        <button class="code-button" onclick="writeClipboard('ssh garrett@your_server_ip')">
-          copy
-        </button>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('ssh garrett@your_server_ip')">
+            copy
+          </button>
+        </div>
       </div>
     </div>
 
@@ -168,204 +190,720 @@
       </p>
       <div class="code-holder">
         <code>$ sudo apt-get update</code>
-        <button class="code-button" onclick="writeClipboard('sudo apt-get update')">
-          copy
-        </button>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('sudo apt-get update')">
+            copied!
+          </button>
+        </div>
       </div>
       <p class="blog-text">
         Install nginx
       </p>
       <div class="code-holder">
         <code>$ sudo apt-get install nginx</code>
-        <button class="code-button" onclick="writeClipboard('sudo apt-get install nginx')">
-          copy
-        </button>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('sudo apt-get install nginx')">
+            copy
+          </button>
+        </div>
       </div>
-      <p class="blog-text">
-        Check current firewall status
-      </p>
-      <div class="code-holder">
-        <code>$ sudo ufw app list</code>
-        <button class="code-button" onclick="writeClipboard('sudo ufw app list')">
-          copy
-        </button>
-      </div>
-
-      <p class="blog-text">
-        Allow http traffic on port 80. We’ll handle https later in this tutorial.
-      </p>
-      <div class="code-holder">
-        <code>$ sudo ufw allow 'Nginx HTTP'</code>
-        <button class="code-button" onclick="writeClipboard(`sudo ufw allow 'Nginx HTTP'`)">
-          copy
-        </button>
-      </div>
-      <p class="blog-text">
-        Check firewall status
-      </p>
-      <div class="code-holder">
-        <code>$ sudo ufw status</code>
-        <button class="code-button" onclick="writeClipboard('sudo ufw status')">
-          copy
-        </button>
-      </div>
-    </div>
-
-    <div class="step-5">
-      <p class="blog-text-title">
-        Step 5. Configure Nginx to host site
-      </p>
       <p class="blog-text">
         Check if server is running default nginx page
       </p>
       <div class="code-holder">
         <code>http://server_domain_or_IP</code>
-        <button class="code-button" onclick="writeClipboard('http://server_domain_or_IP')">
-          copy
-        </button>
-      </div>
-      <p class="blog-text">
-        Create apps folder
-      </p>
-      <div class="code-holder">
-        <div class="code-stack">
-          <code>$ cd ~</code>
-          <code>$ mkdir apps</code>
-        </div>
-        <button class="code-button" onclick="writeClipboard('cd ~ \nmkdir apps')">
-          copy
-        </button>
-      </div>
-      <p class="blog-text">
-        Create an example project
-      </p>
-      <div class="code-holder">
-        <div class="code-stack">
-          <code>$ cd apps</code>
-          <code>$ mkdir html_site</code>
-        </div>
-        <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
-          copy
-        </button>
-      </div>
-      <p class="blog-text">
-        Create a basic html file
-      </p>
-      <div class="code-holder">
-        <div class="code-stack">
-          <code>$ cd html_site</code>
-          <code>$ nano index.html</code>
-        </div>
-        <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
-          copy
-        </button>
-      </div>
-
-      <!-- code snippet -->
-      <div class="code-snippet">
-        <div class="code-snippet-head">
-          home/garrett/apps/static_site/index.html
-        </div>
-        <div class="code-snippet-body">
-          <div class="code-stack">
-            <code>&lt;html&gt; &nbsp;</code>
-            <code>&lt;head&gt; &nbsp;</code>
-            <code>&nbsp; &lt;title&gt;Welcome to Garrett’s html site&lt;/title&gt; &nbsp;</code>
-            <code>&lt;/head&gt; &nbsp;</code>
-            <code>&lt;body&gt;</code>
-            <code>&nbsp; &lt;h1&gt;Welcome to Garrett’s html site!&lt;/h1&gt;</code>
-            <code>&lt;/body&gt;</code>
-            <code>&lt;/html&gt;</code>
-          </div>
-          <button class="code-button"
-            onclick="writeClipboard(`<html>\n<head>\n\t<title>Welcome to Garrett’s html site</title>\n</head>\n<body>\n\t<h1>Welcome to Garrett’s html site!</h1>\n</body>\n</html>`)">
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('http://server_domain_or_IP')">
             copy
           </button>
         </div>
       </div>
-
+      <img class="blog-image" src="../images/nginx_default_page.png" alt="Nginx default page" />
       <p class="blog-text">
-        Add a configuration file for the static site (replace user and )
+        If site is not loading, check that http traffic can pass through your server's firewall, and reload the page
       </p>
       <div class="code-holder">
-        <code>$ sudo nano /etc/nginx/sites-available/html_site</code>
-        <button class="code-button" onclick="writeClipboard('sudo nano /etc/nginx/sites-available/html_site')">
-          copy
-        </button>
-      </div>
-
-      <!-- code snippet -->
-      <div class="code-snippet">
-        <div class="code-snippet-head">
-          /etc/nginx/sites-available/html_site
-        </div>
-        <div class="code-snippet-body">
-          <div class="code-stack">
-            <code>server {</code>
-            <code>&nbsp; listen 80;</code>
-            <code>&nbsp; listen [::]:80;</code>
-            <code>&nbsp;</code>
-            <code>&nbsp; root /home/user/apps/html_site/index.html;</code>
-            <code>&nbsp; index index.html index.htm index.nginx-debian.html;</code>
-            <code>&nbsp;</code>
-            <code>&nbsp; server_name example.com www.example.com;</code>
-            <code>&nbsp;</code>
-            <code>&nbsp; location / {</code>
-            <code>&nbsp;&nbsp; try_files $uri $uri/ =404; {</code>
-            <code>&nbsp; location / {</code>
-            <code>&nbsp; }</code>
-            <code>}</code>
-          </div>
-          <button class="code-button"
-            onclick="writeClipboard(`server {\n\tlisten 80;\n\tlisten [::]:80;\n\n\troot /home/user/apps/html_site/index.html;\n\tindex index.html index.htm index.nginx-debian.html;\n\n\tserver_name example.com www.example.com;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404; {\n\tlocation / {\n}\n}`)">
+        <code>$ sudo ufw allow http</code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('sudo ufw allow http\nsudo service nginx restart')">
             copy
           </button>
         </div>
-      </div>
-
-      <p class="blog-text">
-        Enable the config file by making a symbolic link.
-      </p>
-      <div class="code-holder">
-        <code>$ sudo ln -s /etc/nginx/sites-available/static_site /etc/nginx/sites-enabled/</code>
-        <button class="code-button"
-          onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/static_site /etc/nginx/sites-enabled/')">
-          copy
-        </button>
-      </div>
-
-      <p class="blog-text">
-        Check Nginx files for syntax errors
-      </p>
-      <div class="code-holder">
-        <code>$ sudo nginx -t</code>
-        <button class="code-button" onclick="writeClipboard('sudo nginx -t')">
-          copy
-        </button>
-      </div>
-      <p class="blog-text">
-        Restart Nginx
-      </p>
-      <div class="code-holder">
-        <code>$ sudo systemctl restart nginx</code>
-        <button class="code-button" onclick="writeClipboard('sudo systemctl restart nginx')">
-          copy
-        </button>
-      </div>
-      <p class="blog-text">
-        Check if site is working
-      </p>
-      <div class="code-holder">
-        <code>http://example.com</code>
-        <button class="code-button" onclick="writeClipboard('http://example.com')">
-          copy
-        </button>
       </div>
     </div>
 
+
+    <div class="step-5" x-data="{ show: 'html' }">
+      <p class="blog-text" style="margin-top: 40px; margin-bottom:20px">
+        Choose the type of site you'd like to host:
+      </p>
+      <div class="configuration-buttons">
+        <button @click="show = 'html'" :class="show === 'html' ? 'selected-button' : '' ">HTML</button>
+        <button @click="show = 'react'" :class="show === 'react' ? 'selected-button' : '' ">React</button>
+        <button @click="show = 'node'" :class="show === 'node' ? 'selected-button' : '' ">Node</button>
+        <button @click="show = 'python'" :class="show === 'python' ? 'selected-button' : '' ">Python</button>
+      </div>
+
+      <div class="html-configuration" x-show="show === 'html'">
+        <p class="blog-text-title">
+          Step 5. Configure Nginx to host an HTML page
+        </p>
+        <p class="blog-text">
+          Create apps folder
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd ~</code>
+            <code>$ mkdir apps</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd ~ \nmkdir apps')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Create an example project
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd apps</code>
+            <code>$ mkdir html_site</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Create a basic html file
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd html_site</code>
+            <code>$ nano index.html</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd html_site \nnano index.html')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <!-- code snippet -->
+        <div class="code-snippet">
+          <div class="code-snippet-head">
+            home/garrett/apps/html_site/index.html
+          </div>
+          <div class="code-snippet-body">
+            <div class="code-stack">
+              <code>&lt;html&gt; &nbsp;</code>
+              <code>&lt;head&gt; &nbsp;</code>
+              <code>&nbsp; &lt;title&gt;Welcome to Garrett’s html site&lt;/title&gt; &nbsp;</code>
+              <code>&lt;/head&gt; &nbsp;</code>
+              <code>&lt;body&gt;</code>
+              <code>&nbsp; &lt;h1&gt;Welcome to Garrett’s html site!&lt;/h1&gt;</code>
+              <code>&lt;/body&gt;</code>
+              <code>&lt;/html&gt;</code>
+            </div>
+            <div class="code-button-holder">
+              <button class="code-button"
+                onclick="writeClipboard(`<html>\n<head>\n\t<title>Welcome to Garrett’s html site</title>\n</head>\n<body>\n\t<h1>Welcome to Garrett’s html site!</h1>\n</body>\n</html>`)">
+                copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Add a configuration file for the html site (replace user and )
+        </p>
+        <div class="code-holder">
+          <code>$ sudo nano /etc/nginx/sites-available/html_site</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo nano /etc/nginx/sites-available/html_site')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <!-- code snippet -->
+        <div class="code-snippet">
+          <div class="code-snippet-head">
+            /etc/nginx/sites-available/html_site
+          </div>
+          <div class="code-snippet-body">
+            <div class="code-stack">
+              <code>server {</code>
+              <code>&nbsp; listen 80;</code>
+              <code>&nbsp; listen [::]:80;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; root /home/garrett/apps/html_site/index.html;</code>
+              <code>&nbsp; index index.html index.htm index.nginx-debian.html;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; server_name html.roell.dev;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; location / {</code>
+              <code>&nbsp; &nbsp; try_files $uri $uri/ =404;</code>
+              <code>&nbsp; }</code>
+              <code>}</code>
+            </div>
+            <div class="code-button-holder">
+              <button class="code-button"
+                onclick="writeClipboard(`server {\n\tlisten 80;\n\tlisten [::]:80;\n\n\troot /home/garrett/apps/html_site/index.html;\n\tindex index.html index.htm index.nginx-debian.html;\n\n\tserver_name html.roell.dev;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404;\n\t}\n}`)">
+                copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Enable the config file by making a symbolic link.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/</code>
+          <div class="code-button-holder">
+            <button class="code-button"
+              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Check Nginx files for syntax errors
+        </p>
+        <div class="code-holder">
+          <code>$ sudo nginx -t</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo nginx -t')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Restart Nginx
+        </p>
+        <div class="code-holder">
+          <code>$ sudo systemctl restart nginx</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo systemctl restart nginx')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Check if site is working
+        </p>
+        <div class="code-holder">
+          <code>http://example.com</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('http://example.com')">
+              copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="react-configuration" x-show="show === 'react'">
+        <p class="blog-text-title">
+          Step 5. Configure Nginx to host a React App
+        </p>
+        <p class="blog-text">
+          Create apps folder
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd ~</code>
+            <code>$ mkdir apps</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd ~ \nmkdir apps')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Create an example project
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd apps</code>
+            <code>$ mkdir html_site</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Create a basic html file
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd html_site</code>
+            <code>$ nano index.html</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <!-- code snippet -->
+        <div class="code-snippet">
+          <div class="code-snippet-head">
+            home/garrett/apps/html_site/index.html
+          </div>
+          <div class="code-snippet-body">
+            <div class="code-stack">
+              <code>&lt;html&gt; &nbsp;</code>
+              <code>&lt;head&gt; &nbsp;</code>
+              <code>&nbsp; &lt;title&gt;Welcome to Garrett’s html site&lt;/title&gt; &nbsp;</code>
+              <code>&lt;/head&gt; &nbsp;</code>
+              <code>&lt;body&gt;</code>
+              <code>&nbsp; &lt;h1&gt;Welcome to Garrett’s html site!&lt;/h1&gt;</code>
+              <code>&lt;/body&gt;</code>
+              <code>&lt;/html&gt;</code>
+            </div>
+            <div class="code-button-holder">
+              <button class="code-button"
+                onclick="writeClipboard(`<html>\n<head>\n\t<title>Welcome to Garrett’s html site</title>\n</head>\n<body>\n\t<h1>Welcome to Garrett’s html site!</h1>\n</body>\n</html>`)">
+                copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Add a configuration file for the html site (replace user and )
+        </p>
+        <div class="code-holder">
+          <code>$ sudo nano /etc/nginx/sites-available/html_site</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo nano /etc/nginx/sites-available/html_site')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <!-- code snippet -->
+        <div class="code-snippet">
+          <div class="code-snippet-head">
+            /etc/nginx/sites-available/html_site
+          </div>
+          <div class="code-snippet-body">
+            <div class="code-stack">
+              <code>server {</code>
+              <code>&nbsp; listen 80;</code>
+              <code>&nbsp; listen [::]:80;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; root /home/garrett/apps/html_site/index.html;</code>
+              <code>&nbsp; index index.html index.htm index.nginx-debian.html;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; server_name html.roell.dev;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; location / {</code>
+              <code>&nbsp;&nbsp; try_files $uri $uri/ =404; {</code>
+              <code>&nbsp; location / {</code>
+              <code>&nbsp; }</code>
+              <code>}</code>
+            </div>
+            <div class="code-button-holder">
+              <button class="code-button"
+                onclick="writeClipboard(`server {\n\tlisten 80;\n\tlisten [::]:80;\n\n\troot /home/garrett/apps/html_site/index.html;\n\tindex index.html index.htm index.nginx-debian.html;\n\n\tserver_name html.roell.dev;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404; {\n\tlocation / {\n}\n}`)">
+                copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Enable the config file by making a symbolic link.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/</code>
+          <div class="code-button-holder">
+            <button class="code-button"
+              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Check Nginx files for syntax errors
+        </p>
+        <div class="code-holder">
+          <code>$ sudo nginx -t</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo nginx -t')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Restart Nginx
+        </p>
+        <div class="code-holder">
+          <code>$ sudo systemctl restart nginx</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo systemctl restart nginx')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Check if site is working
+        </p>
+        <div class="code-holder">
+          <code>http://example.com</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('http://example.com')">
+              copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="node-configuration" x-show="show === 'node'">
+        <p class="blog-text-title">
+          Step 5. Configure Nginx to host a Node Server
+        </p>
+        <p class="blog-text">
+          Create apps folder
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd ~</code>
+            <code>$ mkdir apps</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd ~ \nmkdir apps')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Create an example project
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd apps</code>
+            <code>$ mkdir html_site</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Create a basic html file
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd html_site</code>
+            <code>$ nano index.html</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <!-- code snippet -->
+        <div class="code-snippet">
+          <div class="code-snippet-head">
+            home/garrett/apps/html_site/index.html
+          </div>
+          <div class="code-snippet-body">
+            <div class="code-stack">
+              <code>&lt;html&gt; &nbsp;</code>
+              <code>&lt;head&gt; &nbsp;</code>
+              <code>&nbsp; &lt;title&gt;Welcome to Garrett’s html site&lt;/title&gt; &nbsp;</code>
+              <code>&lt;/head&gt; &nbsp;</code>
+              <code>&lt;body&gt;</code>
+              <code>&nbsp; &lt;h1&gt;Welcome to Garrett’s html site!&lt;/h1&gt;</code>
+              <code>&lt;/body&gt;</code>
+              <code>&lt;/html&gt;</code>
+            </div>
+            <div class="code-button-holder">
+              <button class="code-button"
+                onclick="writeClipboard(`<html>\n<head>\n\t<title>Welcome to Garrett’s html site</title>\n</head>\n<body>\n\t<h1>Welcome to Garrett’s html site!</h1>\n</body>\n</html>`)">
+                copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Add a configuration file for the html site (replace user and )
+        </p>
+        <div class="code-holder">
+          <code>$ sudo nano /etc/nginx/sites-available/html_site</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo nano /etc/nginx/sites-available/html_site')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <!-- code snippet -->
+        <div class="code-snippet">
+          <div class="code-snippet-head">
+            /etc/nginx/sites-available/html_site
+          </div>
+          <div class="code-snippet-body">
+            <div class="code-stack">
+              <code>server {</code>
+              <code>&nbsp; listen 80;</code>
+              <code>&nbsp; listen [::]:80;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; root /home/garrett/apps/html_site/index.html;</code>
+              <code>&nbsp; index index.html index.htm index.nginx-debian.html;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; server_name html.roell.dev;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; location / {</code>
+              <code>&nbsp;&nbsp; try_files $uri $uri/ =404; {</code>
+              <code>&nbsp; location / {</code>
+              <code>&nbsp; }</code>
+              <code>}</code>
+            </div>
+            <div class="code-button-holder">
+              <button class="code-button"
+                onclick="writeClipboard(`server {\n\tlisten 80;\n\tlisten [::]:80;\n\n\troot /home/garrett/apps/html_site/index.html;\n\tindex index.html index.htm index.nginx-debian.html;\n\n\tserver_name html.roell.dev;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404; {\n\tlocation / {\n}\n}`)">
+                copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Enable the config file by making a symbolic link.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/</code>
+          <div class="code-button-holder">
+            <button class="code-button"
+              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Check Nginx files for syntax errors
+        </p>
+        <div class="code-holder">
+          <code>$ sudo nginx -t</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo nginx -t')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Restart Nginx
+        </p>
+        <div class="code-holder">
+          <code>$ sudo systemctl restart nginx</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo systemctl restart nginx')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Check if site is working
+        </p>
+        <div class="code-holder">
+          <code>http://example.com</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('http://example.com')">
+              copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="python-configuration" x-show="show === 'python'">
+        <p class="blog-text-title">
+          Step 5. Configure Nginx to host a Python Server
+        </p>
+        <p class="blog-text">
+          Create apps folder
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd ~</code>
+            <code>$ mkdir apps</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd ~ \nmkdir apps')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Create an example project
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd apps</code>
+            <code>$ mkdir html_site</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Create a basic html file
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd html_site</code>
+            <code>$ nano index.html</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <!-- code snippet -->
+        <div class="code-snippet">
+          <div class="code-snippet-head">
+            home/garrett/apps/html_site/index.html
+          </div>
+          <div class="code-snippet-body">
+            <div class="code-stack">
+              <code>&lt;html&gt; &nbsp;</code>
+              <code>&lt;head&gt; &nbsp;</code>
+              <code>&nbsp; &lt;title&gt;Welcome to Garrett’s html site&lt;/title&gt; &nbsp;</code>
+              <code>&lt;/head&gt; &nbsp;</code>
+              <code>&lt;body&gt;</code>
+              <code>&nbsp; &lt;h1&gt;Welcome to Garrett’s html site!&lt;/h1&gt;</code>
+              <code>&lt;/body&gt;</code>
+              <code>&lt;/html&gt;</code>
+            </div>
+            <div class="code-button-holder">
+              <button class="code-button"
+                onclick="writeClipboard(`<html>\n<head>\n\t<title>Welcome to Garrett’s html site</title>\n</head>\n<body>\n\t<h1>Welcome to Garrett’s html site!</h1>\n</body>\n</html>`)">
+                copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Add a configuration file for the html site (replace user and )
+        </p>
+        <div class="code-holder">
+          <code>$ sudo nano /etc/nginx/sites-available/html_site</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo nano /etc/nginx/sites-available/html_site')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <!-- code snippet -->
+        <div class="code-snippet">
+          <div class="code-snippet-head">
+            /etc/nginx/sites-available/html_site
+          </div>
+          <div class="code-snippet-body">
+            <div class="code-stack">
+              <code>server {</code>
+              <code>&nbsp; listen 80;</code>
+              <code>&nbsp; listen [::]:80;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; root /home/garrett/apps/html_site/index.html;</code>
+              <code>&nbsp; index index.html index.htm index.nginx-debian.html;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; server_name html.roell.dev;</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; location / {</code>
+              <code>&nbsp;&nbsp; try_files $uri $uri/ =404; {</code>
+              <code>&nbsp; location / {</code>
+              <code>&nbsp; }</code>
+              <code>}</code>
+            </div>
+            <div class="code-button-holder">
+              <button class="code-button"
+                onclick="writeClipboard(`server {\n\tlisten 80;\n\tlisten [::]:80;\n\n\troot /home/garrett/apps/html_site/index.html;\n\tindex index.html index.htm index.nginx-debian.html;\n\n\tserver_name html.roell.dev;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404; {\n\tlocation / {\n}\n}`)">
+                copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Enable the config file by making a symbolic link.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/</code>
+          <div class="code-button-holder">
+            <button class="code-button"
+              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Check Nginx files for syntax errors
+        </p>
+        <div class="code-holder">
+          <code>$ sudo nginx -t</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo nginx -t')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Restart Nginx
+        </p>
+        <div class="code-holder">
+          <code>$ sudo systemctl restart nginx</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo systemctl restart nginx')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
+          Check if site is working
+        </p>
+        <div class="code-holder">
+          <code>http://example.com</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('http://example.com')">
+              copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
     <div class="step-6">
       <p class="blog-text-title">
-        Step 6. Add SSL with LetsEncrypt
+        Step 6. Add SSL with
+        LetsEncrypt
       </p>
       <p class="blog-text">
         Download certbot
@@ -376,48 +914,54 @@
           <code>$ sudo apt-get update</code>
           <code>$ sudo apt-get install python-certbot-nginx</code>
         </div>
-        <button class="code-button"
-          onclick="writeClipboard('sudo add-apt-repository ppa:certbot/certbot\nsudo apt-get update\nsudo apt-get install python-certbot-nginx')">
-          copy
-        </button>
+        <div class="code-button-holder">
+          <button class="code-button"
+            onclick="writeClipboard('sudo add-apt-repository ppa:certbot/certbot\nsudo apt-get update\nsudo apt-get install python-certbot-nginx')">
+            copy
+          </button>
+        </div>
       </div>
       <p class="blog-text">
-        Add SSL for your domain
+        Add SSL for your
+        domain
       </p>
       <div class="code-holder">
         <code>sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com</code>
-        <button class="code-button"
-          onclick="writeClipboard('sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com')">
-          copy
-        </button>
+        <div class="code-button-holder">
+          <button class="code-button"
+            onclick="writeClipboard('sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com')">
+            copy
+          </button>
+        </div>
       </div>
     </div>
 
-    <!-- Step 6: SSL -->
     <div class="citations">
       <p class="blog-text-title">
         Citations
       </p>
       <p class="blog-text">
-        1. <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04">
-          Initial Server Setup with Ubuntu 20.04</a>
+        1. <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04"
+          target="_blank">
+          Initial Server Setup
+          with Ubuntu
+          20.04</a>
       </p>
       <p class="blog-text">
         2. <a
-          href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-16-04">
-          How To Set Up Nginx Server Blocks (Virtual Hosts) on Ubuntu 16.04</a>
+          href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-16-04"
+          target="_blank">
+          How To Set Up Nginx
+          Server Blocks
+          (Virtual Hosts) on
+          Ubuntu 16.04</a>
       </p>
       <p class="blog-text">
-        3. <a href="https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896">
-          Node.js Deployment</a>
+        3. <a href="https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896" target="_blank">
+          Node.js
+          Deployment</a>
       </p>
-
-
-
     </div>
-
-
-  </div>
 
 
   </div>
@@ -425,7 +969,8 @@
   <!-- footer -->
   <div class="footer">
     <div class="footer-container">
-      <a class="footer-link" id="footer-name"></a>
+      <p class="footer-name" id="footer-name">
+      </p>
       <a href="https://github.com/garrettroell/personal_site" target="_blank">
         <button class="github-button">
           <!-- github svg -->
