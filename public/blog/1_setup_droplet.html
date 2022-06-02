@@ -95,6 +95,11 @@
       <li>a python server (<a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a>)</li>
     </ul>
 
+    <p class="blog-text">
+      You will need at least one custom domain name to complete this tutorial. Subdomains can be used to host each
+      project at its own url.
+    </p>
+
     <div class="step-1">
       <p class="blog-text-title">
         Step 1. Create a <a href="https://www.digitalocean.com/" target="_blank">DigitalOcean</a> account
@@ -245,8 +250,8 @@
         This repo contains example projects for html, react, node, and python projects.
       </p>
       <p class="blog-text">
-        Make sure that you are in your home directory to that the apps folder has the location
-        /home/<mark>garrett</mark>/apps/.
+        Make sure that you are in your home directory so the apps folder has the location
+        /home/<mark class="light">garrett</mark>/apps/.
       </p>
       <div class="code-holder">
         <div class="code-stack">
@@ -255,7 +260,7 @@
         </div>
         <div class="code-button-holder">
           <button class="code-button"
-            onclick="writeClipboard('cd ~ \ngit clone https://github.com/garrettroell/droplet_set_up.git')">
+            onclick="writeClipboard('cd ~ \ngit clone https://github.com/garrettroell/droplet_set_up.git apps')">
             copy
           </button>
         </div>
@@ -362,13 +367,25 @@
           </div>
         </div>
         <p class="blog-text">
+          Edit index.html to say your name. Exit the editor by pressing "command + x" and then "y" and then "enter."
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ nano index.html</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('nano index.html')">
+              copy
+            </button>
+          </div>
+        </div>
+        <p class="blog-text">
           Contents of the default index.html page
         </p>
-
         <!-- code snippet -->
         <div class="code-snippet">
           <div class="code-snippet-head">
-            home/garrett/apps/html_site/index.html
+            home/garrett/apps/html/index.html
           </div>
           <div class="code-snippet-body">
             <div class="code-stack">
@@ -392,23 +409,10 @@
             </div>
           </div>
         </div>
-
         <p class="blog-text">
-          Edit index.html to say your name. Exit the editor by pressing "command + x" and then "y" and then "enter."
-        </p>
-        <div class="code-holder">
-          <div class="code-stack">
-            <code>$ nano index.html</code>
-          </div>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('nano index.html')">
-              copy
-            </button>
-          </div>
-        </div>
-
-        <p class="blog-text">
-          Add an Nginx configuration file for the html site. Exit the editor by pressing "command + x" and then "y" and
+          Add an Nginx configuration file for the html site named <mark class="light">html.roell.dev</mark>. Exit the
+          editor by
+          pressing "command + x" and then "y" and
           then "enter."
         </p>
         <div class="code-holder">
@@ -455,7 +459,7 @@
           <code>$ sudo ln -s /etc/nginx/sites-available/<mark>html.roell.dev</mark> /etc/nginx/sites-enabled/</code>
           <div class="code-button-holder">
             <button class="code-button"
-              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/')">
+              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/html.roell.dev /etc/nginx/sites-enabled/')">
               copy
             </button>
           </div>
@@ -594,10 +598,10 @@
           Enable the config file by making a symbolic link.
         </p>
         <div class="code-holder">
-          <code>$ sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/</code>
+          <code>$ sudo ln -s /etc/nginx/sites-available/react.roell.dev /etc/nginx/sites-enabled/</code>
           <div class="code-button-holder">
             <button class="code-button"
-              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/')">
+              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/react.roell.dev /etc/nginx/sites-enabled/')">
               copy
             </button>
           </div>
@@ -746,10 +750,10 @@
           Enable the config file by making a symbolic link.
         </p>
         <div class="code-holder">
-          <code>$ sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/</code>
+          <code>$ sudo ln -s /etc/nginx/sites-available/node.roell.dev /etc/nginx/sites-enabled/</code>
           <div class="code-button-holder">
             <button class="code-button"
-              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/')">
+              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/node.roell.dev /etc/nginx/sites-enabled/')">
               copy
             </button>
           </div>
@@ -898,10 +902,10 @@
           Enable the config file by making a symbolic link.
         </p>
         <div class="code-holder">
-          <code>$ sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/</code>
+          <code>$ sudo ln -s /etc/nginx/sites-available/python.roell.dev /etc/nginx/sites-enabled/</code>
           <div class="code-button-holder">
             <button class="code-button"
-              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/html_site /etc/nginx/sites-enabled/')">
+              onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/python.roell.dev /etc/nginx/sites-enabled/')">
               copy
             </button>
           </div>
@@ -942,13 +946,10 @@
       </p>
       <div class="code-holder">
         <div class="code-stack">
-          <code>$ sudo add-apt-repository ppa:certbot/certbot</code>
-          <code>$ sudo apt-get update</code>
-          <code>$ sudo apt-get install python3-certbot-nginx</code>
+          <code>$ sudo apt install certbot python3-certbot-nginx</code>
         </div>
         <div class="code-button-holder">
-          <button class="code-button"
-            onclick="writeClipboard('sudo add-apt-repository ppa:certbot/certbot\nsudo apt-get update\nsudo apt-get install python3-certbot-nginx')">
+          <button class="code-button" onclick="writeClipboard('sudo apt install certbot python3-certbot-nginx')">
             copy
           </button>
         </div>
@@ -1058,6 +1059,8 @@
           Node.js
           Deployment</a>
       </p>
+
+      <!-- https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04 -->
     </div>
 
   </div>

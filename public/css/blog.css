@@ -69,6 +69,8 @@ a:hover {
   font-size: 16px;
   color: #555555;
   margin: 10px 0px;
+  line-height: 22px;
+  letter-spacing: 0.1px;
   /* text-align: justify; */
 }
 
@@ -115,9 +117,14 @@ code {
   line-height: 20px;
 }
 
-mark{
+mark {
   background-color: rgb(99, 125, 185);
   color: white
+}
+
+.light {
+  color: rgb(77, 91, 124); 
+  background-color: rgb(214, 220, 234);
 }
 
 .code-button-holder {
