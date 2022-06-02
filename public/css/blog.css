@@ -151,7 +151,7 @@ mark{
   height: 35px;
   color: rgb(77, 91, 124); 
   background-color: rgb(214, 220, 234);
-  border-radius: 16px 16px 0px 0px;
+  border-radius: 11px 11px 0px 0px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,7 +164,7 @@ mark{
   padding: 20px;
   background-color: rgb(77, 91, 124);
   color: white;
-  border-radius: 0px 0px 16px 16px;
+  border-radius: 0px 0px 11px 11px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -175,18 +175,19 @@ mark{
 
 .configuration-buttons {
   margin: 20px;
-  /* margin-top: 20px; */
-  min-width: calc(100% - 40px);
+  margin-top: 40px;
+  height: 40px;
+  /* max-width: calc(100% - 60px); */
   display: flex;
   flex-direction: row;
 }
 
 .configuration-buttons button {
   flex: 1;
-  background-color: #005555;
+  background-color: rgb(77, 91, 124);
   color: white;
   font-family: Roboto, sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   margin: 0px;
   padding: 7px 20px;
   cursor: pointer;
@@ -194,21 +195,21 @@ mark{
 }
 
 .configuration-buttons button:first-child {
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-top-left-radius: 11px;
+  border-bottom-left-radius: 11px;
 }
 
 .configuration-buttons button:last-child {
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-top-right-radius: 11px;
+  border-bottom-right-radius: 11px;
 }
 
 .configuration-buttons button:hover {
-  background-color: #288b6e !important;
+  background-color: #8CC1C1 !important;
 }
 
 .selected-button {
-  background-color: #288b6e !important;
+  background-color: #56acac !important;
 }
 
 @media (max-width: 400px) {

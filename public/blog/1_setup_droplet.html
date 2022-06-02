@@ -239,10 +239,53 @@
 
     <div class="step-5">
       <p class="blog-text-title">
-        Step 5. Connect domain name to your server
+        Step 5. Download git repo with shell projects
       </p>
       <p class="blog-text">
-        Add an A record to connect your domain to your server. Put '@' as the host if you want to use
+        This repo contains example projects for html, react, node, and python projects.
+      </p>
+      <p class="blog-text">
+        Make sure that you are in your home directory to that the apps folder has the location
+        /home/<mark>garrett</mark>/apps/.
+      </p>
+      <div class="code-holder">
+        <div class="code-stack">
+          <code>$ cd ~</code>
+          <code>$ git clone https://github.com/garrettroell/droplet_set_up.git apps</code>
+        </div>
+        <div class="code-button-holder">
+          <button class="code-button"
+            onclick="writeClipboard('cd ~ \ngit clone https://github.com/garrettroell/droplet_set_up.git')">
+            copy
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="step-6">
+      <p class="blog-text-title">
+        Step 6. Choose the type of site you'd like to host
+      </p>
+      <div class="configuration-buttons">
+        <button @click="show = 'html'" :class="show === 'html' ? 'selected-button' : '' ">HTML</button>
+        <button @click="show = 'react'" :class="show === 'react' ? 'selected-button' : '' ">React</button>
+        <button @click="show = 'node'" :class="show === 'node' ? 'selected-button' : '' ">Node</button>
+        <button @click="show = 'python'" :class="show === 'python' ? 'selected-button' : '' ">Python</button>
+      </div>
+    </div>
+
+    <div class="step-7">
+      <p class="blog-text-title">
+        Step 7. Connect a domain name to your server
+      </p>
+      <p class="blog-text">
+        You will need a domain name to continue here. You can get one at <a href="https://namecheap.com">Namecheap</a>
+        for about $10/year. In these examples I use roell.dev as my top level domain, and use it to host various
+        subdomains. I'll use subdomains attached to roell.dev in this tutorial
+      </p>
+      <p class="blog-text">
+        Add an A record to connect your domain name to your server. Put '@' as the host if you want to use
         the top level domain, or put a string as the host to use a subdomain. The image below is the Namecheap
         interface, but
         other domain providers should have similar DNS configuration interfaces.
@@ -251,7 +294,8 @@
       <p class="blog-text">
         Confirm that the url is connected to your server.
       </p>
-      <div class="code-holder">
+      <!-- html -->
+      <div class="code-holder" x-show="show === 'html'">
         <code>$ dig <mark>html.roell.dev</mark></code>
         <div class="code-button-holder">
           <button class="code-button" onclick="writeClipboard('dig html.roell.dev')">
@@ -259,71 +303,67 @@
           </button>
         </div>
       </div>
-      <img class="blog-image" src="../images/dig_results.png" alt="result of dig command">
+      <!-- react -->
+      <div class="code-holder" x-show="show === 'react'">
+        <code>$ dig <mark>react.roell.dev</mark></code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('dig react.roell.dev')">
+            copy
+          </button>
+        </div>
+      </div>
+      <!-- node -->
+      <div class="code-holder" x-show="show === 'node'">
+        <code>$ dig <mark>node.roell.dev</mark></code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('dig node.roell.dev')">
+            copy
+          </button>
+        </div>
+      </div>
+      <!-- python -->
+      <div class="code-holder" x-show="show === 'python'">
+        <code>$ dig <mark>python.roell.dev</mark></code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('dig python.roell.dev')">
+            copy
+          </button>
+        </div>
+      </div>
+      <img x-show="show === 'html'" class="blog-image" src="../images/dig_results_html.png" alt="result of dig command">
+      <img x-show="show === 'react'" class="blog-image" src="../images/dig_results_react.png"
+        alt="result of dig command">
+      <img x-show="show === 'node'" class="blog-image" src="../images/dig_results_node.png" alt="result of dig command">
+      <img x-show="show === 'python'" class="blog-image" src="../images/dig_results_python.png"
+        alt="result of dig command">
       <p class="blog-text">
         If the domain is connected, you should see your server's ip address. It may take a few minutes for the DNS
         changes to propagate.
       </p>
     </div>
 
-
-    <div class="step-6">
-      <p class="blog-text" style="margin-top: 40px; margin-bottom:20px">
-        Choose the type of site you'd like to host:
-      </p>
-      <div class="configuration-buttons">
-        <button @click="show = 'html'" :class="show === 'html' ? 'selected-button' : '' ">HTML</button>
-        <button @click="show = 'react'" :class="show === 'react' ? 'selected-button' : '' ">React</button>
-        <button @click="show = 'node'" :class="show === 'node' ? 'selected-button' : '' ">Node</button>
-        <button @click="show = 'python'" :class="show === 'python' ? 'selected-button' : '' ">Python</button>
-      </div>
-
+    <div class="step-8">
       <div class="html-configuration" x-show="show === 'html'">
         <p class="blog-text-title">
-          Step 6. Configure Nginx to host an HTML page
+          Step 8. Configure Nginx to host an HTML page
         </p>
         <p class="blog-text">
-          Create apps folder
+          Inspect ~/apps/html folder
         </p>
         <div class="code-holder">
           <div class="code-stack">
-            <code>$ cd ~</code>
-            <code>$ mkdir apps</code>
+            <code>$ cd ~/apps/html</code>
+            <code>$ ls</code>
           </div>
           <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd ~ \nmkdir apps')">
+            <button class="code-button" onclick="writeClipboard('cd ~/apps/html \nls')">
               copy
             </button>
           </div>
         </div>
         <p class="blog-text">
-          Create an example project
+          Contents of the default index.html page
         </p>
-        <div class="code-holder">
-          <div class="code-stack">
-            <code>$ cd apps</code>
-            <code>$ mkdir html_site</code>
-          </div>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
-              copy
-            </button>
-          </div>
-        </div>
-        <p class="blog-text">
-          Create a basic html file
-        </p>
-        <div class="code-holder">
-          <div class="code-stack">
-            <code>$ cd html_site</code>
-            <code>$ nano index.html</code>
-          </div>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd html_site \nnano index.html')">
-              copy
-            </button>
-          </div>
-        </div>
 
         <!-- code snippet -->
         <div class="code-snippet">
@@ -333,17 +373,20 @@
           <div class="code-snippet-body">
             <div class="code-stack">
               <code>&lt;html&gt; &nbsp;</code>
+              <code>&nbsp;</code>
               <code>&lt;head&gt; &nbsp;</code>
               <code>&nbsp; &lt;title&gt;Welcome to <mark>Garrett</mark>&apos;s html site&lt;/title&gt; &nbsp;</code>
               <code>&lt;/head&gt; &nbsp;</code>
+              <code>&nbsp;</code>
               <code>&lt;body&gt;</code>
               <code>&nbsp; &lt;h1&gt;Welcome to <mark>Garrett</mark>&apos;s html site!&lt;/h1&gt;</code>
               <code>&lt;/body&gt;</code>
+              <code>&nbsp;</code>
               <code>&lt;/html&gt;</code>
             </div>
             <div class="code-button-holder">
               <button class="code-button"
-                onclick="writeClipboard(`<html>\n<head>\n\t<title>Welcome to Garrett&apos;s html site</title>\n</head>\n<body>\n\t<h1>Welcome to Garrett&apos;s html site!</h1>\n</body>\n</html>`)">
+                onclick="writeClipboard(`<html>\n\n<head>\n\t<title>Welcome to Garrett&apos;s html site</title>\n</head>\n\n<body>\n\t<h1>Welcome to Garrett&apos;s html site!</h1>\n</body>\n\n</html>`)">
                 copy
               </button>
             </div>
@@ -351,7 +394,22 @@
         </div>
 
         <p class="blog-text">
-          Add a configuration file for the html site (replace user and )
+          Edit index.html to say your name. Exit the editor by pressing "command + x" and then "y" and then "enter."
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ nano index.html</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('nano index.html')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Add an Nginx configuration file for the html site. Exit the editor by pressing "command + x" and then "y" and
+          then "enter."
         </p>
         <div class="code-holder">
           <code>$ sudo nano /etc/nginx/sites-available/<mark>html.roell.dev</mark></code>
@@ -373,7 +431,7 @@
               <code>&nbsp; listen 80;</code>
               <code>&nbsp; server_name <mark>html.roell.dev</mark>;</code>
               <code>&nbsp;</code>
-              <code>&nbsp; root /home/<mark>garrett</mark>/apps/html_site/;</code>
+              <code>&nbsp; root /home/<mark>garrett</mark>/apps/html/;</code>
               <code>&nbsp; index index.html;</code>
               <code>&nbsp;</code>
               <code>&nbsp; location / {</code>
@@ -383,7 +441,7 @@
             </div>
             <div class="code-button-holder">
               <button class="code-button"
-                onclick="writeClipboard(`server {\n\tlisten 80;\n\tserver_name html.roell.dev;\n\n\troot /home/garrett/apps/html_site/;\n\tindex index.html;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404;\n\t}\n}`)">
+                onclick="writeClipboard(`server {\n\tlisten 80;\n\tserver_name html.roell.dev;\n\n\troot /home/garrett/apps/html/;\n\tindex index.html;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404;\n\t}\n}`)">
                 copy
               </button>
             </div>
@@ -404,7 +462,7 @@
         </div>
 
         <p class="blog-text">
-          Check Nginx files for syntax errors
+          Check the Nginx configuration for syntax errors
         </p>
         <div class="code-holder">
           <code>$ sudo nginx -t</code>
@@ -429,22 +487,12 @@
 
       <div class="react-configuration" x-show="show === 'react'">
         <p class="blog-text-title">
-          Step 6. Configure Nginx to host a React App
+          Step 8. Configure Nginx to host a React App
         </p>
         <p class="blog-text">
-          Create apps folder
+          Clone a repo with the react project
         </p>
-        <div class="code-holder">
-          <div class="code-stack">
-            <code>$ cd ~</code>
-            <code>$ mkdir apps</code>
-          </div>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd ~ \nmkdir apps')">
-              copy
-            </button>
-          </div>
-        </div>
+
         <p class="blog-text">
           Create an example project
         </p>
@@ -581,7 +629,7 @@
 
       <div class="node-configuration" x-show="show === 'node'">
         <p class="blog-text-title">
-          Step 6. Configure Nginx to host a Node Server
+          Step 8. Configure Nginx to host a Node Server
         </p>
         <p class="blog-text">
           Create apps folder
@@ -733,7 +781,7 @@
 
       <div class="python-configuration" x-show="show === 'python'">
         <p class="blog-text-title">
-          Step 6. Configure Nginx to host a Python Server
+          Step 8. Configure Nginx to host a Python Server
         </p>
         <p class="blog-text">
           Create apps folder
@@ -885,13 +933,9 @@
 
     </div>
 
-
-
-
-    <div class="step-6">
+    <div class="step-9">
       <p class="blog-text-title">
-        Step 6. Add SSL with
-        LetsEncrypt
+        Step 9. Add SSL with LetsEncrypt
       </p>
       <p class="blog-text">
         Download certbot. This step only needs to happen once in the server's lifetime.
@@ -1015,7 +1059,6 @@
           Deployment</a>
       </p>
     </div>
-
 
   </div>
 
