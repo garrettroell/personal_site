@@ -1,6 +1,6 @@
 let selectedProject = 0;
-const activeColor = "#288b6e";
-const inactiveColor = "#005555";
+const activeColor = "#2fa582";
+const inactiveColor = "#007070";
 
 const activeTextColor = "white";
 const inactiveTextColor = "white";

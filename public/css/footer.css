@@ -4,7 +4,7 @@
 .footer {
   height: 50px;
   width: 100vw;
-  background-color: white;
+  background-color: var(--light-primary-background-color);
 }
 
 .footer-container {
@@ -25,6 +25,11 @@
   text-decoration: none;
 }
 
+.footer-buttons {
+  display: flex;
+  gap: 20px;
+}
+
 .github-button {
   height: 40px;
   width: 40px;
@@ -38,4 +43,15 @@
 
 .github-button:hover {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* handle dark theme */
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background-color: var(--dark-primary-background-color);
+  }
+
+  .github-button {
+    border: 1px solid rgba(256, 256, 256, 0.30);
+  }
 }

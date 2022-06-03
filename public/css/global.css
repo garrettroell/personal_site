@@ -1,10 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
+:root {
+  --light-primary-background-color: #FFFFFF;
+  --light-secondary-background-color: #F7F7F7;
+  --light-primary-text-color: #34495E;
+  --light-secondary-text-color: #787878;
+  --light-link-color: #007070;
+  --light-link-visited-color:  #007070;
+  --light-link-hover-color: #2fa582;
+  --light-code-text-color:  #FFFFFF;
+  --light-code-background-color:  #4D5B7C;
+  --light-code-mark-color:  #637DB9;
+
+  --dark-primary-background-color: #222222;
+  --dark-secondary-background-color: #252525;
+  --dark-primary-text-color: #FFFFFF;
+  --dark-secondary-text-color: #AAAAAA;
+  --dark-link-color: #2fa582;
+  --dark-link-visited-color:  #2fa582;
+  --dark-link-hover-color: #007070;
+  --dark-code-text-color:  #FFFFFF;
+  --dark-code-background-color:  #4D5B7C;
+  --dark-code-mark-color:  #637DB9;
+}
+
 body {
   padding: 0px 0px;
   margin: 0px 0px;
-  font-family: "Monserrat", sans-serif;
+  background-color: var(--light-primary-background-color);
 }
 
 .container {
@@ -15,4 +39,57 @@ body {
 
 .top-spacer {
   min-height: 75px;
+}
+
+h1, h2, h3, h4  {
+  color: var(--light-primary-text-color);
+  font-family: "Montserrat", sans-serif;
+}
+
+p, li {
+  color: var(--light-primary-text-color);
+  line-height: 22px;
+  letter-spacing: 0.1px;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  color: var(--light-link-color);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--light-link-visited-color)
+}
+
+a:hover {
+  color: var(--light-link-hover-color)
+}
+
+
+/* handle dark theme */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dark-primary-background-color);
+  }
+
+  h1, h2, h3, h4  {
+    color: var(--dark-primary-text-color);
+  }
+  
+  p, li {
+    color: var(--dark-primary-text-color);
+  }
+  
+  a {
+    color: var(--dark-link-color);
+  }
+  
+  a:visited {
+    color: var(--dark-link-visited-color)
+  }
+  
+  a:hover {
+    color: var(--dark-link-hover-color)
+  }
 }

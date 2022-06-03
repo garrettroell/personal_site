@@ -1,14 +1,4 @@
-a {
-  text-decoration: none;
-  color: rgb(40, 139, 110);
-}
-
-a:hover {
-  color: rgb(0, 85, 85);
-
-}
 .blog-header {
-  font-family: 'Montserrat';
   font-size: 35px;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -17,6 +7,7 @@ a:hover {
 
 .blog-list {
   max-width: 600px;
+  min-height: calc(100vh - 175px);
   margin: auto;
   padding: 0px 20px;
 }
@@ -26,32 +17,24 @@ a:hover {
   margin-bottom: 30px;
 }
 
-/* .blog-title-h2 {
-  margin-top: 0px;
-} */
-
 .blog-title {
-  font-family: 'Montserrat';
   font-size: 20px;
   margin-top: 0px;
   margin-bottom: 8px;
-  text-decoration: none;
-  color: #151515;
+  color: var(--light-primary-text-color)
 }
 
 .blog-title:visited {
-  color: #151515;
+  color: var(--light-primary-text-color)
 }
 
 .blog-title:hover {
-  color: #005555;
-  text-decoration: underline;
+  color: var(--light-link-hover-color)
 }
 
 .blog-description {
-  font-family: Roboto, sans-serif;
   font-size: 16px;
-  color: #555555;
+  color: var(--light-secondary-text-color);
   margin: 5px 0px;
   text-align: justify;
 }
@@ -65,13 +48,9 @@ a:hover {
 }
 
 .blog-text {
-  font-family: Roboto, sans-serif;
   font-size: 16px;
-  color: #555555;
+  color: var(--light-primary-text-color);
   margin: 10px 0px;
-  line-height: 22px;
-  letter-spacing: 0.1px;
-  /* text-align: justify; */
 }
 
 .blog-text-title {
@@ -79,16 +58,12 @@ a:hover {
   font-size: 20px;
   margin-top: 40px;
   margin-bottom: 20px;
-  text-decoration: none;
-  color: #151515;
 }
 
-li {
-  font-family: Roboto, sans-serif;
+.bullet-points li {
   font-size: 16px;
-  color: #555555;
+  color: var(--light-primary-text-color);
   margin: 4px;
-  /* text-align: justify; */
 }
 
 .blog-image {
@@ -100,7 +75,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(77, 91, 124);
+  background-color: var(--light-code-background-color);
   border-radius: 11px;
   padding: 10px 20px;
   margin: 20px;
@@ -112,14 +87,13 @@ li {
 }
 
 code {
-  /* background-color: rgb(77, 91, 124); */
-  color: white;
+  color: var(--light-code-text-color);
   line-height: 20px;
 }
 
 mark {
-  background-color: rgb(99, 125, 185);
-  color: white
+  background-color: var(--light-code-mark-color);
+  color: var(--light-code-text-color);
 }
 
 .light {
@@ -134,7 +108,6 @@ mark {
 
 .code-button {
   height: 20px;
-  /* width: 60px; */
   border: 1px solid white;
   border-radius: 6px;
   color: white;
@@ -143,13 +116,11 @@ mark {
 }
 
 .code-button:hover {
-  background-color: rgb(100, 100, 100);
+  background-color: #646464;
 }
 
 .code-snippet {
   width: 100%;
-  
-  /* border: 1px solid black; */
 }
 
 .code-snippet-head{
@@ -184,7 +155,6 @@ mark {
   margin: 20px;
   margin-top: 40px;
   height: 40px;
-  /* max-width: calc(100% - 60px); */
   display: flex;
   flex-direction: row;
 }
@@ -226,10 +196,41 @@ mark {
   }
 }
 
-/* can probably delete later */
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: #f7f7f7;
+  background-color: var(--light-secondary-background-color)
+}
+
+/* handle dark theme */
+@media (prefers-color-scheme: dark) {
+  .blog-title {
+    color: var(--dark-primary-text-color)
+  }
+  .blog-title:visited {
+    color: var(--dark-primary-text-color)
+  }
+  .blog-title:hover {
+    color: var(--dark-link-hover-color)
+  }
+  .blog-description {
+    color: var(--dark-secondary-text-color);
+  }
+  .blog-text {
+    color: var(--dark-primary-text-color);
+  }
+  .bullet-points li {
+    color: var(--dark-primary-text-color);
+  }
+  .code-holder {
+    background-color: var(--dark-code-background-color);
+  }
+  code {
+    color: var(--dark-code-text-color);
+  }
+  mark {
+    background-color: var(--dark-code-mark-color);
+    color: var(--dark-code-text-color);
+  }
+  .footer {
+    background-color: var(--dark-secondary-background-color)
+  }
 }

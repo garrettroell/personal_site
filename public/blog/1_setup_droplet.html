@@ -34,10 +34,7 @@
 
   function writeClipboard(text) {
 
-    navigator.clipboard.writeText(text).then(function () {
-      /* clipboard successfully set */
-      // console.log(text)
-    }, function (error) {
+    navigator.clipboard.writeText(text).then(function () { }, function (error) {
       console.log('failed to write to clip board', error)
     });
   }
@@ -82,13 +79,13 @@
       How to host 10+ sites for $5 per month
     </p>
     <p class="blog-text" style="color:mediumpurple">
-      This is not an advertisement. It is an endorsement of a product that I like.
+      This is not a paid advertisement. It is an endorsement of a product I like.
     </p>
     <p class="blog-text">
-      This guide explains how I set up Nginx on a DigitalOcean droplet to host 10+ websites for $5 a month. The
-      guide will go over the steps required to host the following types of websites:
+      This guide explains how to set up Nginx on a DigitalOcean droplet to host 10+ websites for $5 a month. It
+      covers the following types of websites:
     </p>
-    <ul>
+    <ul class="bullet-points">
       <li>an html page</li>
       <li>a single page app (<a href="https://reactjs.org/" target="_blank">React</a>)</li>
       <li>a node server (<a href="https://expressjs.com/" target="_blank">Express</a>)</li>
@@ -111,20 +108,18 @@
         Step 2. Create a droplet
       </p>
       <p class="blog-text">
-        Create your droplet using the create button on the top navigation bar. A droplet is linux virtual machine with
-        its
+        Create a droplet using the create button on the top navigation bar. A droplet is linux virtual machine with its
         own IP address. Choose the $5 option which comes with 1GB Memory / 25GB Storage / 1TB Bandwidth. Select the
-        following
-        options:
+        following options:
       </p>
-      <ul>
+      <ul class="bullet-points">
         <li>Ubuntu 20.04 (LTS) x64</li>
         <li>Basic shared CPU plan</li>
         <li>Regular with SSD CPU ($5/month)</li>
         <li>Pick a datacenter (I chose New York 1)</li>
       </ul>
       <p class="blog-text">
-        Say no to the options that try to upsell you.
+        Leave all other settings as their default options.
       </p>
       <p class="blog-text">
         Create a root password to allow you to access your server, and skip ssh setup.
@@ -137,10 +132,10 @@
       </p>
       <p class="blog-text">
         Find your server's public IP address on the DigitalOcean dashboard. Remotely access your server using a command
-        line tool (On mac I recommend <a href="https://iterm2.com/" target="_blank">iTerm2</a>)
+        line tool (On mac, I recommend <a href="https://iterm2.com/" target="_blank">iTerm2</a>).
       </p>
       <div>
-        <img class="blog-image" src="../images/public_ip.png" alt="screenshot showing your public ip address">
+        <img class="blog-image" src="../images/public_ip.png" alt="screenshot showing your public IP address">
 
       </div>
       <div class="code-holder">
@@ -152,7 +147,7 @@
         </div>
       </div>
       <p class="blog-text">
-        The root user can make destructive changes. To avoid accidents, it is best practice to use a non root account.
+        The root user can make destructive changes. To avoid accidents, it is best practice to use a non-root account.
         Create a non-root user (use your name instead of mine) with a strong password, and skip all other questions.
       </p>
       <div class="code-holder">
@@ -164,7 +159,8 @@
         </div>
       </div>
       <p class="blog-text">
-        Grant administrative privileges. This command appends (-a) the user, garrett, to the group (-G) sudo.
+        Grant administrative privileges to the new user. This command appends (-a) the user, garrett, to the group (-G)
+        sudo.
       </p>
       <div class="code-holder">
         <code>$ usermod -aG sudo <mark>garrett</mark></code>
@@ -175,7 +171,18 @@
         </div>
       </div>
       <p class="blog-text">
-        Log out with the command 'exit', and confirm that you can access server with new user.
+        Log out of the root user session.
+      </p>
+      <div class="code-holder">
+        <code>$ exit</code>
+        <div class="code-button-holder">
+          <button class="code-button" onclick="writeClipboard('exit')">
+            copy
+          </button>
+        </div>
+      </div>
+      <p class="blog-text">
+        Log back into server using the new account.
       </p>
       <div class="code-holder">
         <code>$ ssh <mark>garrett</mark>@<mark>your_server_ip</mark></code>
@@ -196,7 +203,7 @@
         server.
       </p>
       <p class="blog-text">
-        Update server
+        Update server.
       </p>
       <div class="code-holder">
         <code>$ sudo apt-get update</code>
@@ -207,7 +214,7 @@
         </div>
       </div>
       <p class="blog-text">
-        Install nginx
+        Install nginx.
       </p>
       <div class="code-holder">
         <code>$ sudo apt-get install nginx</code>
@@ -218,7 +225,7 @@
         </div>
       </div>
       <p class="blog-text">
-        Confirm that the server is running default Nginx page
+        Confirm that the server is running default Nginx page.
       </p>
       <div class="code-holder">
         <code>http://<mark>server_domain_or_IP</mark></code>
@@ -229,22 +236,11 @@
         </div>
       </div>
       <img class="blog-image" src="../images/nginx_default_page.png" alt="Nginx default page" />
-      <p class="blog-text">
-        If site is not loading, check that http traffic can pass through your server's firewall, and reload the page
-      </p>
-      <div class="code-holder">
-        <code>$ sudo ufw allow http</code>
-        <div class="code-button-holder">
-          <button class="code-button" onclick="writeClipboard('sudo ufw allow http\nsudo service nginx restart')">
-            copy
-          </button>
-        </div>
-      </div>
     </div>
 
     <div class="step-5">
       <p class="blog-text-title">
-        Step 5. Download git repo with shell projects
+        Step 5. Clone git repository with shell projects
       </p>
       <p class="blog-text">
         This repo contains example projects for html, react, node, and python projects.
@@ -285,9 +281,12 @@
         Step 7. Connect a domain name to your server
       </p>
       <p class="blog-text">
-        You will need a domain name to continue here. You can get one at <a href="https://namecheap.com">Namecheap</a>
-        for about $10/year. In these examples I use roell.dev as my top level domain, and use it to host various
-        subdomains. I'll use subdomains attached to roell.dev in this tutorial
+        You need a domain name for this step. You can purchase one for about $10/year at <a
+          href="https://namecheap.com">Namecheap</a>.
+      </p>
+      <p class="blog-text">
+        In these examples, I use roell.dev. I'll demonstrate how a single domain can host multiple sites using
+        subdomains.
       </p>
       <p class="blog-text">
         Add an A record to connect your domain name to your server. Put '@' as the host if you want to use
@@ -342,8 +341,8 @@
       <img x-show="show === 'python'" class="blog-image" src="../images/dig_results_python.png"
         alt="result of dig command">
       <p class="blog-text">
-        If the domain is connected, you should see your server's ip address. It may take a few minutes for the DNS
-        changes to propagate.
+        If the domain is connected, you should see your server's IP address. It may take more than a few minutes for the
+        DNS changes to propagate.
       </p>
     </div>
 
@@ -353,7 +352,7 @@
           Step 8. Configure Nginx to host an HTML page
         </p>
         <p class="blog-text">
-          Inspect ~/apps/html folder
+          Inspect the ~/apps/html folder.
         </p>
         <div class="code-holder">
           <div class="code-stack">
@@ -367,7 +366,7 @@
           </div>
         </div>
         <p class="blog-text">
-          Edit index.html to say your name. Exit the editor by pressing "command + x" and then "y" and then "enter."
+          Open index.html.
         </p>
         <div class="code-holder">
           <div class="code-stack">
@@ -380,7 +379,8 @@
           </div>
         </div>
         <p class="blog-text">
-          Contents of the default index.html page
+          This is the default index.html file. Replace my name with yours, and exit the editor by pressing "command + x"
+          and then "y" and then "enter."
         </p>
         <!-- code snippet -->
         <div class="code-snippet">
@@ -409,11 +409,10 @@
             </div>
           </div>
         </div>
+
         <p class="blog-text">
-          Add an Nginx configuration file for the html site named <mark class="light">html.roell.dev</mark>. Exit the
-          editor by
-          pressing "command + x" and then "y" and
-          then "enter."
+          Create an nginx configuration file named <mark class="light">html.roell.dev</mark>. It is common practice to
+          have this file's name match the domain name it configures.
         </p>
         <div class="code-holder">
           <code>$ sudo nano /etc/nginx/sites-available/<mark>html.roell.dev</mark></code>
@@ -423,6 +422,11 @@
             </button>
           </div>
         </div>
+
+        <p class="blog-text">
+          Copy and paste this code into the file. Exit the
+          editor by pressing "command + x" and then "y" and then "enter."
+        </p>
 
         <!-- code snippet -->
         <div class="code-snippet">
@@ -453,7 +457,7 @@
         </div>
 
         <p class="blog-text">
-          Enable the config file by making a symbolic link.
+          Enable the configuration file by making a symbolic link.
         </p>
         <div class="code-holder">
           <code>$ sudo ln -s /etc/nginx/sites-available/<mark>html.roell.dev</mark> /etc/nginx/sites-enabled/</code>
@@ -466,7 +470,7 @@
         </div>
 
         <p class="blog-text">
-          Check the Nginx configuration for syntax errors
+          Check the Nginx configuration for syntax errors.
         </p>
         <div class="code-holder">
           <code>$ sudo nginx -t</code>
@@ -477,7 +481,7 @@
           </div>
         </div>
         <p class="blog-text">
-          Restart Nginx
+          Restart Nginx.
         </p>
         <div class="code-holder">
           <code>$ sudo systemctl restart nginx</code>
@@ -491,60 +495,123 @@
 
       <div class="react-configuration" x-show="show === 'react'">
         <p class="blog-text-title">
-          Step 8. Configure Nginx to host a React App
+          Step 8. Configure Nginx to host a React app
         </p>
         <p class="blog-text">
-          Clone a repo with the react project
+          Inspect the ~/apps/react folder.
         </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ cd ~/apps/react</code>
+            <code>$ ls</code>
+          </div>
+
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('cd ~/apps/react\nls')">
+              copy
+            </button>
+          </div>
+        </div>
 
         <p class="blog-text">
-          Create an example project
+          Install <a href="https://npmjs.com" target="_blank">npm</a>.
         </p>
         <div class="code-holder">
-          <div class="code-stack">
-            <code>$ cd apps</code>
-            <code>$ mkdir html_site</code>
-          </div>
+          <code>$ sudo apt install npm</code>
           <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
+            <button class="code-button" onclick="writeClipboard('sudo apt install npm')">
               copy
             </button>
           </div>
         </div>
+
         <p class="blog-text">
-          Create a basic html file
+          Install <a href="https://www.npmjs.com/package/n" target="_blank">n</a>, a node version manager.
         </p>
         <div class="code-holder">
-          <div class="code-stack">
-            <code>$ cd html_site</code>
-            <code>$ nano index.html</code>
-          </div>
+          <code>$ sudo npm install --location=global n</code>
           <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
+            <button class="code-button" onclick="writeClipboard('sudo npm install --location=global n')">
               copy
             </button>
           </div>
         </div>
+
+        <p class="blog-text">
+          Use the most recent long term support (lts) version of node.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo n lts</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo n lts')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Install dependencies. Make sure you are in ~/apps/react when you run this command.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo npm install</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo npm install')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Open src/App.jsx.
+        </p>
+        <div class="code-holder">
+          <code>$ nano src/App.jsx</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('nano src/App.jsx')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          This is the default App.jsx file. Replace my name with yours, and exit the editor by pressing "command + x"
+          and then "y" and then "enter."
+        </p>
 
         <!-- code snippet -->
         <div class="code-snippet">
           <div class="code-snippet-head">
-            home/garrett/apps/html_site/index.html
+            home/garrett/apps/react/src/App.jsx
           </div>
           <div class="code-snippet-body">
             <div class="code-stack">
-              <code>&lt;html&gt; &nbsp;</code>
-              <code>&lt;head&gt; &nbsp;</code>
-              <code>&nbsp; &lt;title&gt;Welcome to Garrett’s html site&lt;/title&gt; &nbsp;</code>
-              <code>&lt;/head&gt; &nbsp;</code>
-              <code>&lt;body&gt;</code>
-              <code>&nbsp; &lt;h1&gt;Welcome to Garrett’s html site!&lt;/h1&gt;</code>
-              <code>&lt;/body&gt;</code>
-              <code>&lt;/html&gt;</code>
+              <code>import { useState } from "react";</code>
+              <code>import logo from "./logo.svg";</code>
+              <code>import "./App.css";</code>
+              <code>&nbsp;</code>
+              <code>function App() {</code>
+              <code>&nbsp; const [count, setCount] = useState(0);</code>
+              <code>&nbsp;</code>
+              <code>&nbsp; return (</code>
+              <code>&nbsp; &nbsp; &lt;div className="App"&gt;</code>
+              <code>&nbsp; &nbsp; &nbsp; &lt;header className="App-header"&gt;</code>
+              <code>&nbsp; &nbsp; &nbsp; &nbsp; &lt;img src={logo} className="App-logo" alt="logo" /&gt;</code>
+              <code>&nbsp; &nbsp; &nbsp; &nbsp; &lt;p&gt;Hello from <mark>Garrett</mark>'s React app&lt;/p&gt;</code>
+              <code>&nbsp; &nbsp; &nbsp; &nbsp; &lt;p&gt;</code>
+              <code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;button type="button" onClick={()=&gt; setCount((count) =&gt; count + 1)}&gt;</code>
+              <code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; count is: {count}</code>
+              <code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/button&gt;</code>
+              <code>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/p&gt;</code>
+              <code>&nbsp; &nbsp; &nbsp; &lt;/header&gt;</code>
+              <code>&nbsp; &nbsp; &lt;/div&gt;</code>
+              <code>&nbsp; &nbsp; );</code>
+              <code>}</code>
+              <code>&nbsp;</code>
+              <code>export default App;</code>
             </div>
             <div class="code-button-holder">
               <button class="code-button"
-                onclick="writeClipboard(`<html>\n<head>\n\t<title>Welcome to Garrett’s html site</title>\n</head>\n<body>\n\t<h1>Welcome to Garrett’s html site!</h1>\n</body>\n</html>`)">
+                onclick="writeClipboard(`import { useState } from 'react';\nimport logo from './logo.svg';\nimport './App.css';\n\nfunction App() {\n\tconst [count, setCount] = useState(0);\n\n\treturn (\n\t\t<div className='App'>\n\t\t\t<header className='App-header'>\n\t\t\t\t<img src={logo} className='App-logo' alt='logo' />\n\t\t\t\t<p>Hello from Garrett's React app</p>\n\t\t\t\t<p>\n\t\t\t\t\t<button type='button' onClick={()=> setCount((count) => count + 1)}>\n\t\t\t\t\t\tcount is: {count}\n\t\t\t\t\t</button>\n\t\t\t\t</p>\n\t\t\t</header>\n\t\t</div>\n\t);\n}\n\nexport default App;`)">
                 copy
               </button>
             </div>
@@ -552,42 +619,57 @@
         </div>
 
         <p class="blog-text">
-          Add a configuration file for the html site (replace user and )
+          Rebuild site so 'dist' folder contains your change.
         </p>
         <div class="code-holder">
-          <code>$ sudo nano /etc/nginx/sites-available/html_site</code>
+          <code>$ sudo npm run build</code>
           <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('sudo nano /etc/nginx/sites-available/html_site')">
+            <button class="code-button" onclick="writeClipboard('sudo npm run build')">
               copy
             </button>
           </div>
         </div>
 
+        <p class="blog-text">
+          Create an nginx configuration file named <mark class="light">react.roell.dev</mark>. It is common practice to
+          have this file's name match the domain name it configures.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo nano /etc/nginx/sites-available/<mark>react.roell.dev</mark></code>
+          <div class="code-button-holder">
+            <button class="code-button"
+              onclick="writeClipboard('sudo nano /etc/nginx/sites-available/react.roell.dev')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Copy and paste this code into the file. Exit the editor by pressing "command + x" and then "y" and then
+          "enter."
+        </p>
+
         <!-- code snippet -->
         <div class="code-snippet">
           <div class="code-snippet-head">
-            /etc/nginx/sites-available/html_site
+            /etc/nginx/sites-available/react.roell.dev
           </div>
           <div class="code-snippet-body">
             <div class="code-stack">
               <code>server {</code>
-              <code>&nbsp; listen 80;</code>
-              <code>&nbsp; listen [::]:80;</code>
+              <code>&nbsp; server_name <mark>react.roell.dev</mark>;</code>
               <code>&nbsp;</code>
-              <code>&nbsp; root /home/garrett/apps/html_site/index.html;</code>
-              <code>&nbsp; index index.html index.htm index.nginx-debian.html;</code>
-              <code>&nbsp;</code>
-              <code>&nbsp; server_name html.roell.dev;</code>
+              <code>&nbsp; root /home/<mark>garrett</mark>/apps/react/dist/;</code>
+              <code>&nbsp; index index.html;</code>
               <code>&nbsp;</code>
               <code>&nbsp; location / {</code>
-              <code>&nbsp;&nbsp; try_files $uri $uri/ =404; {</code>
-              <code>&nbsp; location / {</code>
+              <code>&nbsp; &nbsp; try_files $uri /index.html;</code>
               <code>&nbsp; }</code>
               <code>}</code>
             </div>
             <div class="code-button-holder">
               <button class="code-button"
-                onclick="writeClipboard(`server {\n\tlisten 80;\n\tlisten [::]:80;\n\n\troot /home/garrett/apps/html_site/index.html;\n\tindex index.html index.htm index.nginx-debian.html;\n\n\tserver_name html.roell.dev;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404; {\n\tlocation / {\n}\n}`)">
+                onclick="writeClipboard(`server{\n\tserver_name react.roell.dev;\n\n\troot /home/garrett/apps/react/dist/;\n\tindex index.html;\n\n\tlocation / {\n\t\ttry_files $uri /index.html;\n\t}\n}`)">
                 copy
               </button>
             </div>
@@ -595,10 +677,10 @@
         </div>
 
         <p class="blog-text">
-          Enable the config file by making a symbolic link.
+          Enable the configuration file by making a symbolic link.
         </p>
         <div class="code-holder">
-          <code>$ sudo ln -s /etc/nginx/sites-available/react.roell.dev /etc/nginx/sites-enabled/</code>
+          <code>$ sudo ln -s /etc/nginx/sites-available/<mark>react.roell.dev</mark> /etc/nginx/sites-enabled/</code>
           <div class="code-button-holder">
             <button class="code-button"
               onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/react.roell.dev /etc/nginx/sites-enabled/')">
@@ -608,7 +690,7 @@
         </div>
 
         <p class="blog-text">
-          Check Nginx files for syntax errors
+          Check Nginx files for syntax errors.
         </p>
         <div class="code-holder">
           <code>$ sudo nginx -t</code>
@@ -618,8 +700,9 @@
             </button>
           </div>
         </div>
+
         <p class="blog-text">
-          Restart Nginx
+          Restart Nginx.
         </p>
         <div class="code-holder">
           <code>$ sudo systemctl restart nginx</code>
@@ -633,70 +716,112 @@
 
       <div class="node-configuration" x-show="show === 'node'">
         <p class="blog-text-title">
-          Step 8. Configure Nginx to host a Node Server
+          Step 8. Configure Nginx to host a node server
         </p>
         <p class="blog-text">
-          Create apps folder
+          Inspect the ~/apps/node folder
         </p>
         <div class="code-holder">
           <div class="code-stack">
-            <code>$ cd ~</code>
-            <code>$ mkdir apps</code>
+            <code>$ cd ~/apps/node</code>
+            <code>$ ls</code>
           </div>
+
           <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd ~ \nmkdir apps')">
-              copy
-            </button>
-          </div>
-        </div>
-        <p class="blog-text">
-          Create an example project
-        </p>
-        <div class="code-holder">
-          <div class="code-stack">
-            <code>$ cd apps</code>
-            <code>$ mkdir html_site</code>
-          </div>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
-              copy
-            </button>
-          </div>
-        </div>
-        <p class="blog-text">
-          Create a basic html file
-        </p>
-        <div class="code-holder">
-          <div class="code-stack">
-            <code>$ cd html_site</code>
-            <code>$ nano index.html</code>
-          </div>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
+            <button class="code-button" onclick="writeClipboard('cd ~/apps/node\nls')">
               copy
             </button>
           </div>
         </div>
 
+        <p class="blog-text">
+          Install <a href="https://npmjs.com" target="_blank">npm</a>.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo apt install npm</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo apt install npm')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Install <a href="https://www.npmjs.com/package/n" target="_blank">n</a>, a node version manager.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo npm install --location=global n</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo npm install --location=global n')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Use the most recent long term support (lts) version of node.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo n lts</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo n lts')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Install dependencies. Make sure you are in ~/apps/node when you run this command.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo npm install</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo npm install')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Open index.js.
+        </p>
+        <div class="code-holder">
+          <code>$ nano index.js</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('nano index.js')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          This is the default index.js file. Replace my name with yours, and exit the editor by pressing "command + x"
+          and then "y" and then "enter."
+        </p>
+
         <!-- code snippet -->
         <div class="code-snippet">
           <div class="code-snippet-head">
-            home/garrett/apps/html_site/index.html
+            home/garrett/apps/node/index.js
           </div>
           <div class="code-snippet-body">
             <div class="code-stack">
-              <code>&lt;html&gt; &nbsp;</code>
-              <code>&lt;head&gt; &nbsp;</code>
-              <code>&nbsp; &lt;title&gt;Welcome to Garrett’s html site&lt;/title&gt; &nbsp;</code>
-              <code>&lt;/head&gt; &nbsp;</code>
-              <code>&lt;body&gt;</code>
-              <code>&nbsp; &lt;h1&gt;Welcome to Garrett’s html site!&lt;/h1&gt;</code>
-              <code>&lt;/body&gt;</code>
-              <code>&lt;/html&gt;</code>
+              <code>const express = require("express");</code>
+              <code>&nbsp;</code>
+              <code>const app = express();</code>
+              <code>&nbsp;</code>
+              <code>app.get("/", (req, res) => {</code>
+              <code>&nbsp; res.send("Welcome to <mark>Garrett</mark>s node app");</code>
+              <code>});</code>
+              <code>&nbsp;</code>
+              <code>app.listen(1234, () =></code>
+              <code>&nbsp; console.log("Site is being hosted at http://localhost:1234.")</code>
+              <code>);</code>
+
             </div>
             <div class="code-button-holder">
               <button class="code-button"
-                onclick="writeClipboard(`<html>\n<head>\n\t<title>Welcome to Garrett’s html site</title>\n</head>\n<body>\n\t<h1>Welcome to Garrett’s html site!</h1>\n</body>\n</html>`)">
+                onclick="writeClipboard(`const express = require('express');\n\nconst app = express();\n\napp.get('/', (req, res) => {\n\tres.send('Welcome to Garretts node app);\n});\n\napp.listen(1234, () =>\n\tconsole.log('Site is being hosted at http://localhost:1234.')\n);`)">
                 copy
               </button>
             </div>
@@ -704,42 +829,84 @@
         </div>
 
         <p class="blog-text">
-          Add a configuration file for the html site (replace user and )
+          Install <a href="https://pm2.keymetrics.io/" target="_blank">pm2</a>, a process manager that runs
+          node apps as background processes.
         </p>
         <div class="code-holder">
-          <code>$ sudo nano /etc/nginx/sites-available/html_site</code>
+          <code>$ sudo npm install pm2 --location=global</code>
           <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('sudo nano /etc/nginx/sites-available/html_site')">
+            <button class="code-button" onclick="writeClipboard('sudo npm install pm2 --location=global')">
               copy
             </button>
           </div>
         </div>
 
+        <p class="blog-text">
+          Start the node server, and give it a custom name.
+        </p>
+        <div class="code-holder">
+          <code>$ pm2 start index.js --name <mark>gr-node</mark></code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('pm2 start index.js --name gr-node')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Confirm your node server is online.
+        </p>
+        <div class="code-holder">
+          <code>$ pm2 ls</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('pm2 ls')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Create an nginx configuration file named <mark class="light">node.roell.dev</mark>. It is common practice to
+          have this file's name match the domain name it configures.
+        </p>
+
+        <div class="code-holder">
+          <code>$ sudo nano /etc/nginx/sites-available/<mark>node.roell.dev</mark></code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo nano /etc/nginx/sites-available/node.roell.dev')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Copy and paste this code into the file. Exit the editor by pressing "command + x" and then "y" and then
+          "enter."
+        </p>
+
         <!-- code snippet -->
         <div class="code-snippet">
           <div class="code-snippet-head">
-            /etc/nginx/sites-available/html_site
+            /etc/nginx/sites-available/node.roell.dev
           </div>
           <div class="code-snippet-body">
             <div class="code-stack">
               <code>server {</code>
-              <code>&nbsp; listen 80;</code>
-              <code>&nbsp; listen [::]:80;</code>
-              <code>&nbsp;</code>
-              <code>&nbsp; root /home/garrett/apps/html_site/index.html;</code>
-              <code>&nbsp; index index.html index.htm index.nginx-debian.html;</code>
-              <code>&nbsp;</code>
-              <code>&nbsp; server_name html.roell.dev;</code>
+              <code>&nbsp; server_name <mark>node.roell.dev</mark>;</code>
               <code>&nbsp;</code>
               <code>&nbsp; location / {</code>
-              <code>&nbsp;&nbsp; try_files $uri $uri/ =404; {</code>
-              <code>&nbsp; location / {</code>
+              <code>&nbsp; proxy_pass http://localhost:1234</code>
+              <code>&nbsp; proxy_http_version 1.1;</code>
+              <code>&nbsp; proxy_set_header Upgrade $http_upgrade;</code>
+              <code>&nbsp; proxy_set_header Host $host;</code>
+              <code>&nbsp; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</code>
+              <code>&nbsp; proxy_cache_bypass $http_upgrade;</code>
               <code>&nbsp; }</code>
               <code>}</code>
             </div>
             <div class="code-button-holder">
               <button class="code-button"
-                onclick="writeClipboard(`server {\n\tlisten 80;\n\tlisten [::]:80;\n\n\troot /home/garrett/apps/html_site/index.html;\n\tindex index.html index.htm index.nginx-debian.html;\n\n\tserver_name html.roell.dev;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404; {\n\tlocation / {\n}\n}`)">
+                onclick="writeClipboard(`server {\n\n\tserver_name node.roell.dev;\n\n\tlocation / {\n\tproxy_pass http://localhost:1234;\n\tproxy_http_version 1.1;\n\tproxy_set_header Upgrade $http_upgrade;\n\tproxy_set_header Connection 'upgrade';\n\tproxy_set_header Host $host;\n\tproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n\tproxy_cache_bypass $http_upgrade;\n\t}\n}`)">
                 copy
               </button>
             </div>
@@ -747,10 +914,15 @@
         </div>
 
         <p class="blog-text">
-          Enable the config file by making a symbolic link.
+          This file publically exposes what is running on http://localhost:1234 on node.roell.dev. This is an example of
+          a <a href="https://en.wikipedia.org/wiki/Reverse_proxy" target="_blank">reverse proxy</a>.
+        </p>
+
+        <p class="blog-text">
+          Enable the configuration file by making a symbolic link.
         </p>
         <div class="code-holder">
-          <code>$ sudo ln -s /etc/nginx/sites-available/node.roell.dev /etc/nginx/sites-enabled/</code>
+          <code>$ sudo ln -s /etc/nginx/sites-available/<mark>node.roell.dev</mark> /etc/nginx/sites-enabled/</code>
           <div class="code-button-holder">
             <button class="code-button"
               onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/node.roell.dev /etc/nginx/sites-enabled/')">
@@ -760,7 +932,7 @@
         </div>
 
         <p class="blog-text">
-          Check Nginx files for syntax errors
+          Check Nginx files for syntax errors.
         </p>
         <div class="code-holder">
           <code>$ sudo nginx -t</code>
@@ -770,8 +942,9 @@
             </button>
           </div>
         </div>
+
         <p class="blog-text">
-          Restart Nginx
+          Restart Nginx.
         </p>
         <div class="code-holder">
           <code>$ sudo systemctl restart nginx</code>
@@ -785,70 +958,138 @@
 
       <div class="python-configuration" x-show="show === 'python'">
         <p class="blog-text-title">
-          Step 8. Configure Nginx to host a Python Server
+          Step 8. Configure Nginx to host a python server
         </p>
         <p class="blog-text">
-          Create apps folder
+          Inspect the ~/apps/python folder.
         </p>
         <div class="code-holder">
           <div class="code-stack">
-            <code>$ cd ~</code>
-            <code>$ mkdir apps</code>
+            <code>$ cd ~/apps/python</code>
+            <code>$ ls</code>
           </div>
+
           <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd ~ \nmkdir apps')">
-              copy
-            </button>
-          </div>
-        </div>
-        <p class="blog-text">
-          Create an example project
-        </p>
-        <div class="code-holder">
-          <div class="code-stack">
-            <code>$ cd apps</code>
-            <code>$ mkdir html_site</code>
-          </div>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
-              copy
-            </button>
-          </div>
-        </div>
-        <p class="blog-text">
-          Create a basic html file
-        </p>
-        <div class="code-holder">
-          <div class="code-stack">
-            <code>$ cd html_site</code>
-            <code>$ nano index.html</code>
-          </div>
-          <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('cd apps \nmkdir html_site')">
+            <button class="code-button" onclick="writeClipboard('cd ~/apps/python\nls')">
               copy
             </button>
           </div>
         </div>
 
+        <p class="blog-text">
+          Install <a href="https://npmjs.com" target="_blank">npm</a>.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo apt install npm</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo apt install npm')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Install <a href="https://www.npmjs.com/package/n" target="_blank">n</a>, a node version manager.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo npm install --location=global n</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo npm install --location=global n')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Use the most recent long term support (lts) version of node.
+        </p>
+        <div class="code-holder">
+          <code>$ sudo n lts</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('sudo n lts')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Install packages for pip and python virtual environments.
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ sudo apt install python3-pip</code>
+            <code>$ sudo apt install python3.8-venv</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button"
+              onclick="writeClipboard('sudo apt install python3-pip\nsudo apt install python3.8-venv')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Create a virtual environment, and activate it.
+        </p>
+        <div class="code-holder">
+          <div class="code-stack">
+            <code>$ python3 -m venv venv</code>
+            <code>$ source venv/bin/activate</code>
+          </div>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('python3 -m venv venv\nsource venv/bin/activate')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Install dependencies. Make sure you are in ~/apps/python when you run this command.
+        </p>
+        <div class="code-holder">
+          <code>$ pip install -r requirements.txt</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('pip install -r requirements.txt')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Open main.py.
+        </p>
+        <div class="code-holder">
+          <code>$ nano main.py</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('nano main.py')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          This is the default main.py file. Replace my name with yours, and exit the editor by pressing "command + x"
+          and then "y" and then "enter."
+        </p>
+
         <!-- code snippet -->
         <div class="code-snippet">
           <div class="code-snippet-head">
-            home/garrett/apps/html_site/index.html
+            home/garrett/apps/python/main.py
           </div>
           <div class="code-snippet-body">
             <div class="code-stack">
-              <code>&lt;html&gt; &nbsp;</code>
-              <code>&lt;head&gt; &nbsp;</code>
-              <code>&nbsp; &lt;title&gt;Welcome to Garrett’s html site&lt;/title&gt; &nbsp;</code>
-              <code>&lt;/head&gt; &nbsp;</code>
-              <code>&lt;body&gt;</code>
-              <code>&nbsp; &lt;h1&gt;Welcome to Garrett’s html site!&lt;/h1&gt;</code>
-              <code>&lt;/body&gt;</code>
-              <code>&lt;/html&gt;</code>
+              <code>from fastapi import FastAPI</code>
+              <code>&nbsp;</code>
+              <code>app = FastAPI()</code>
+              <code>&nbsp;</code>
+              <code>@app.get("/")</code>
+              <code>def read_root():</code>
+              <code>&nbsp; return 'Hello from <mark>Garrett</mark>s python app'</code>
             </div>
             <div class="code-button-holder">
               <button class="code-button"
-                onclick="writeClipboard(`<html>\n<head>\n\t<title>Welcome to Garrett’s html site</title>\n</head>\n<body>\n\t<h1>Welcome to Garrett’s html site!</h1>\n</body>\n</html>`)">
+                onclick="writeClipboard(`from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get('/')\ndef read_root():\n\treturn 'Hello from Garretts python app'`)">
                 copy
               </button>
             </div>
@@ -856,42 +1097,86 @@
         </div>
 
         <p class="blog-text">
-          Add a configuration file for the html site (replace user and )
+          Install <a href="https://pm2.keymetrics.io/" target="_blank">pm2</a>, a process manager that runs
+          python apps as background processes.
         </p>
         <div class="code-holder">
-          <code>$ sudo nano /etc/nginx/sites-available/html_site</code>
+          <code>$ sudo npm install pm2 --location=global</code>
           <div class="code-button-holder">
-            <button class="code-button" onclick="writeClipboard('sudo nano /etc/nginx/sites-available/html_site')">
+            <button class="code-button" onclick="writeClipboard('sudo npm install pm2 --location=global')">
               copy
             </button>
           </div>
         </div>
 
+        <p class="blog-text">
+          Start the python server, and give it a custom name
+        </p>
+        <div class="code-holder">
+          <code>$ pm2 start 'gunicorn -k uvicorn.workers.UvicornWorker main:app' --name <mark>gr-python</mark></code>
+          <div class="code-button-holder">
+            <button class="code-button"
+              onclick="writeClipboard(`pm2 start 'gunicorn -k uvicorn.workers.UvicornWorker main:app' --name gr-python`)">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Confirm your python server is online
+        </p>
+        <div class="code-holder">
+          <code>$ pm2 ls</code>
+          <div class="code-button-holder">
+            <button class="code-button" onclick="writeClipboard('pm2 ls')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Create an nginx configuration file named <mark class="light">python.roell.dev</mark>. It is common practice to
+          have this file's name match the domain name it configures.
+        </p>
+
+        <div class="code-holder">
+          <code>$ sudo nano /etc/nginx/sites-available/<mark>python.roell.dev</mark></code>
+          <div class="code-button-holder">
+            <button class="code-button"
+              onclick="writeClipboard('sudo nano /etc/nginx/sites-available/python.roell.dev')">
+              copy
+            </button>
+          </div>
+        </div>
+
+        <p class="blog-text">
+          Copy and paste this code into the file. Exit the editor by pressing "command + x" and then "y" and then
+          "enter."
+        </p>
+
         <!-- code snippet -->
         <div class="code-snippet">
           <div class="code-snippet-head">
-            /etc/nginx/sites-available/html_site
+            /etc/nginx/sites-available/python.roell.dev
           </div>
           <div class="code-snippet-body">
             <div class="code-stack">
               <code>server {</code>
-              <code>&nbsp; listen 80;</code>
-              <code>&nbsp; listen [::]:80;</code>
-              <code>&nbsp;</code>
-              <code>&nbsp; root /home/garrett/apps/html_site/index.html;</code>
-              <code>&nbsp; index index.html index.htm index.nginx-debian.html;</code>
-              <code>&nbsp;</code>
-              <code>&nbsp; server_name html.roell.dev;</code>
+              <code>&nbsp; server_name <mark>python.roell.dev</mark>;</code>
               <code>&nbsp;</code>
               <code>&nbsp; location / {</code>
-              <code>&nbsp;&nbsp; try_files $uri $uri/ =404; {</code>
-              <code>&nbsp; location / {</code>
+              <code>&nbsp; proxy_pass http://localhost:8000</code>
+              <code>&nbsp; proxy_http_version 1.1;</code>
+              <code>&nbsp; proxy_set_header Upgrade $http_upgrade;</code>
+              <code>&nbsp; proxy_set_header Host $host;</code>
+              <code>&nbsp; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</code>
+              <code>&nbsp; proxy_cache_bypass $http_upgrade;</code>
               <code>&nbsp; }</code>
               <code>}</code>
             </div>
             <div class="code-button-holder">
               <button class="code-button"
-                onclick="writeClipboard(`server {\n\tlisten 80;\n\tlisten [::]:80;\n\n\troot /home/garrett/apps/html_site/index.html;\n\tindex index.html index.htm index.nginx-debian.html;\n\n\tserver_name html.roell.dev;\n\n\tlocation / {\n\t\ttry_files $uri $uri/ =404; {\n\tlocation / {\n}\n}`)">
+                onclick="writeClipboard(`server {\n\n\tserver_name python.roell.dev;\n\n\tlocation / {\n\tproxy_pass http://localhost:8000;\n\tproxy_http_version 1.1;\n\tproxy_set_header Upgrade $http_upgrade;\n\tproxy_set_header Connection 'upgrade';\n\tproxy_set_header Host $host;\n\tproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n\tproxy_cache_bypass $http_upgrade;\n\t}\n}`)">
                 copy
               </button>
             </div>
@@ -899,10 +1184,16 @@
         </div>
 
         <p class="blog-text">
-          Enable the config file by making a symbolic link.
+          This file publically exposes what is running on http://localhost:8000 on python.roell.dev. This is an example
+          of
+          a <a href="https://en.wikipedia.org/wiki/Reverse_proxy" target="_blank">reverse proxy</a>.
+        </p>
+
+        <p class="blog-text">
+          Enable the configuration file by making a symbolic link.
         </p>
         <div class="code-holder">
-          <code>$ sudo ln -s /etc/nginx/sites-available/python.roell.dev /etc/nginx/sites-enabled/</code>
+          <code>$ sudo ln -s /etc/nginx/sites-available/<mark>python.roell.dev</mark> /etc/nginx/sites-enabled/</code>
           <div class="code-button-holder">
             <button class="code-button"
               onclick="writeClipboard('sudo ln -s /etc/nginx/sites-available/python.roell.dev /etc/nginx/sites-enabled/')">
@@ -912,7 +1203,7 @@
         </div>
 
         <p class="blog-text">
-          Check Nginx files for syntax errors
+          Check Nginx files for syntax errors.
         </p>
         <div class="code-holder">
           <code>$ sudo nginx -t</code>
@@ -922,8 +1213,9 @@
             </button>
           </div>
         </div>
+
         <p class="blog-text">
-          Restart Nginx
+          Restart Nginx.
         </p>
         <div class="code-holder">
           <code>$ sudo systemctl restart nginx</code>
@@ -933,6 +1225,7 @@
             </button>
           </div>
         </div>
+
       </div>
 
     </div>
@@ -955,7 +1248,7 @@
         </div>
       </div>
       <p class="blog-text">
-        Add SSL for your domain
+        Add an automatically renewing SSL certicate to your domain.
       </p>
       <!-- html -->
       <div class="code-holder" x-show="show === 'html'">
@@ -994,7 +1287,7 @@
         </div>
       </div>
       <p class="blog-text">
-        Confirm that the site is working
+        Confirm that the site is working.
       </p>
       <!-- html -->
       <div class="code-holder" x-show="show === 'html'">
@@ -1041,24 +1334,26 @@
       <p class="blog-text">
         1. <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04"
           target="_blank">
-          Initial Server Setup
-          with Ubuntu
-          20.04</a>
+          Initial Server Setup with Ubuntu 20.04
+        </a>
       </p>
       <p class="blog-text">
         2. <a
           href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-16-04"
           target="_blank">
-          How To Set Up Nginx
-          Server Blocks
-          (Virtual Hosts) on
-          Ubuntu 16.04</a>
+          How To Set Up NginxServer Blocks (Virtual Hosts) on Ubuntu 16.04
+        </a>
       </p>
       <p class="blog-text">
         3. <a href="https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896" target="_blank">
-          Node.js
-          Deployment</a>
+          Node.js Deployment</a>
       </p>
+      <p class="blog-text">
+        4. <a href="https://www.travisluong.com/how-to-deploy-fastapi-with-nginx-and-pm2" target="_blank">
+          How to deploy FastAPI with Nginx and PM2</a>
+      </p>
+
+      <!-- https://www.travisluong.com/how-to-deploy-fastapi-with-nginx-and-pm2/ -->
 
       <!-- https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04 -->
     </div>

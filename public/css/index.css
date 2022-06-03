@@ -46,16 +46,14 @@
 }
 
 .garrett-roell {
-  font-family: Montserrat, sans-serif;
   font-size: 35px;
   margin-top: 20px;
   margin-bottom: 0px;
 }
 
 .job-title {
-  font-family: Montserrat, sans-serif;
   font-size: 20px;
-  color: rgba(0, 0, 0, 0.54);
+  color: var(--light-secondary-text-color);
   margin-top: 0px;
   margin-bottom: 25px;
 }
@@ -65,30 +63,14 @@
 }
 
 .about-me-link {
-  font-family: Montserrat, sans-serif;
   font-size: 20px;
   text-decoration: none;
   margin-top: 0px;
   margin-bottom: 10px;
 }
 
-.about-me-link:hover {
-  color: #33b38d;
-}
-
 .about-me-anchor {
   text-decoration: none;
-  color: #005555;
-}
-
-.about-me-anchor:visited {
-  color: #005555;
-  text-decoration: none;
-}
-
-.about-me-anchor:hover {
-  text-decoration: underline;
-  color: #33b38d;
 }
 
 .social-icons {
@@ -148,21 +130,18 @@
 }
 
 .about-me-header {
-  font-family: Montserrat, sans-serif;
   font-size: 35px;
-  color: #313131;
   margin-top: 0px;
   margin-bottom: 25px;
   
 }
 
 .about-me-text {
-  font-family: Roboto, sans-serif;
   font-size: 20px;
   line-height: 35px;
   text-align: justify;
-  color: #313131;
   margin-bottom: 30px;
+  letter-spacing: 0px;
 }
 
 .interests-and-education {
@@ -176,23 +155,18 @@
   margin-top: 0px;
   margin-bottom: 20px;
   font-size: 25px;
-  font-family: Montserrat, sans-serif;
-  color: #313131;
   font-weight: bold;
 }
 
 .interests-list {
-  line-height: 30px;
   margin: 0px;
 }
 
 .interest-item {
+  line-height: 30px;
   margin-left: -5px;
   padding-left: 12px;
   font-size: 18px;
-  font-family: Roboto, sans-serif;
-  color: #313131;
-  
 }
 
 .education {
@@ -203,8 +177,6 @@
   margin-top: 0px;
   margin-bottom: 20px;
   font-size: 25px;
-  font-family: Montserrat, sans-serif;
-  color: #313131;
   font-weight: bold;
 }
 
@@ -217,8 +189,6 @@
 
 .education-item {
   font-size: 18px;
-  font-family: Roboto, sans-serif;
-  color: #313131;
   margin-bottom: 10px;
   display: flex;
 }
@@ -247,7 +217,7 @@
 .university {
   margin: 0px 0px;
   font-size: 15px;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--light-secondary-text-color);
 }
 
 @media (max-width: 1250px) {
@@ -286,14 +256,13 @@
 /* skills styles */
 
 .skills {
-  background-color: #f7f7f7;
+  background-color: var(--light-secondary-background-color);
   padding-top: 75px;
   padding-bottom: 75px;
 }
 
 .skills-title {
   text-align: center;
-  font-family: Montserrat, sans-serif;
   font-size: 40px;
   margin-top: 0px;
   margin-bottom: 25px;
@@ -340,17 +309,14 @@
 }
 
 .skill-subtitle {
-  font-family: Montserrat, sans-serif;
   font-size: 25px;
-  color: #333333;
   margin-top: 15px;
   margin-bottom: 5px;
 }
 
 .skill-details {
-  font-family: Roboto, sans-serif;
   font-size: 16px;
-  color: #555555;
+  color: var(--light-secondary-text-color);
   margin: 0px 0px;
 }
 
@@ -371,9 +337,8 @@
 }
 
 /* projects styles */
-
 .projects {
-  background-color: #f7f7f7;
+  background-color: var(--light-secondary-background-color);
   padding-top: 75px;
   padding-bottom: 75px;
 }
@@ -388,7 +353,6 @@
   margin: 0px;
   width: 100%;
   text-align: center;
-  font-family: Montserrat, sans-serif;
   font-size: 40px;
 }
 
@@ -424,44 +388,31 @@
 }
 
 .project-tile-title-text {
-  font-family: Montserrat, sans-serif;
   font-size: 24px;
-  color: #151515;
   margin: 0px 0px;
 }
 
 .project-tile-title-link {
   text-decoration: none;
-  color: #151515;
+  color: var(--light-primary-text-color);
 }
 
 .project-tile-title-link:visited {
-  color: #151515;
+  color: var(--light-primary-text-color);
 }
 
 .project-tile-title-link:hover {
-  color: #005555;
-  text-decoration: underline;
+  color: var(--light-link-hover-color);
 }
 
 .project-tile-subtitle {
-  font-family: Roboto, sans-serif;
   font-size: 16px;
-  color: #555555;
+  color: var(--light-secondary-text-color);
   margin: 10px 0px;
-  text-align: justify;
 }
 
 .subtitle-link {
-  color: #005555;
-}
-
-.subtitle-link:visited {
-  color: #005555;
-}
-
-.subtitle-link:hover {
-  color: #008989;
+  text-decoration: none;
 }
 
 .project-image-holder {
@@ -558,13 +509,46 @@
 /* publications styles */
 
 .publications {
-  background-color: white;
+  background-color: var(--light-primary-background-color);
   padding-top: 75px;
   padding-bottom: 75px;
 }
 
 .publications-title {
   text-align: center;
-  font-family: Montserrat, sans-serif;
   font-size: 40px;
+}
+
+/* handle dark theme */
+@media (prefers-color-scheme: dark) {
+  .job-title {
+    color: var(--dark-secondary-text-color);
+  }
+  .university {
+    color: var(--dark-secondary-text-color);
+  }
+  .skills {
+    background-color: var(--dark-secondary-background-color);
+  }
+  .skill-details {
+    color: var(--dark-secondary-text-color);
+  }
+  .projects {
+    background-color: var(--dark-secondary-background-color);
+  }
+  .project-tile-title-link {
+    color: var(--dark-primary-text-color);
+  }
+  .project-tile-title-link:visited {
+    color: var(--dark-primary-text-color);
+  }
+  .project-tile-title-link:hover {
+    color: var(--dark-link-hover-color);
+  }
+  .project-tile-subtitle {
+    color: var(--dark-secondary-text-color);
+  }
+  .publications {
+    background-color: var(--dark-primary-background-color);
+  }
 }
