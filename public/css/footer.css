@@ -30,7 +30,7 @@
   gap: 20px;
 }
 
-.github-button {
+.footer-button {
   height: 40px;
   width: 40px;
   border: 1px solid rgba(0, 0, 0, 0.30);
@@ -41,8 +41,12 @@
   transition: 100ms;
 }
 
-.github-button:hover {
+.footer-button:hover {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.sun-icon {
+  display: none;
 }
 
 /* handle dark theme */
@@ -51,7 +55,15 @@
     background-color: var(--dark-primary-background-color);
   }
 
-  .github-button {
+  .footer-button {
     border: 1px solid rgba(256, 256, 256, 0.30);
+  }
+
+  .moon-icon {
+    display: none;
+  }
+  
+  .sun-icon {
+    display: inline-block;
   }
 }

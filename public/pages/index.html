@@ -18,6 +18,7 @@
 
   <!-- scripts -->
   <script src="/js/main.js"></script>
+  <script src="/js/colorMode.js"></script>
   <script src="/js/footer.js"></script>
 
   <!-- styles -->
@@ -621,17 +622,16 @@
       <p class="footer-name" id="footer-name"></p>
 
       <div class="footer-buttons">
+        <dark-mode-toggle id="dark-mode-toggle-1" legend="Theme Switcher" appearance="switch" dark="Dark" light="Light"
+          remember="Remember this"></dark-mode-toggle>
 
-        <button class="github-button">
-          <img src="../icons/moon.svg">
-        </button>
-
-        <button class="github-button">
-          <img src="../icons/sun.svg">
+        <button class="footer-button" id="color-mode-button">
+          <img src="../icons/moon.svg" alt="night mode" class="moon-icon">
+          <img src="../icons/sun.svg" alt="light mode" class="sun-icon">
         </button>
 
         <a href="https://github.com/garrettroell/personal_site" target="_blank">
-          <button class="github-button">
+          <button class="footer-button">
             <!-- github svg -->
             <svg stroke="rgba(0, 0, 0, 0.70)" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
               stroke-linejoin="round" height="1.25em" width="1.25em" xmlns="http://www.w3.org/2000/svg">
