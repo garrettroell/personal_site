@@ -81,52 +81,27 @@
   list-style-type: none;
   align-items: center;
   justify-content: center;
+  gap: 7px;
+}
+
+.large-github-line-icon {
+  height: 30px;
+  width: 30px;
+  filter: invert(20%) sepia(60%) saturate(4433%) hue-rotate(169deg) brightness(89%) contrast(101%);
+}
+
+.large-github-line-icon:hover {
+  filter: invert(56%) sepia(8%) saturate(2962%) hue-rotate(111deg) brightness(95%) contrast(86%);
 }
 
 .google-scholar-icon {
-  background: url("/icons/google-scholar.svg");
   height: 40px;
   width: 40px;
-  display: block;
-  margin-right: 5px;
-  font-size: 0px;
-  z-index: 1;
+  filter: invert(20%) sepia(60%) saturate(4433%) hue-rotate(169deg) brightness(89%) contrast(101%);
 }
 
-.google-scholar-hover {
-  background-color: transparent;
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  position: absolute;
-  top: 2px;
-  left: 4px;
-  z-index: 2;
-}
-
-.google-scholar-hover:hover {
-  background-color: rgba(72, 72, 72, 0.25);
-}
-
-.github-icon {
-  background: url("/icons/github.svg");
-  height: 40px;
-  width: 40px;
-  display: block;
-  margin-left: 10px;
-  font-size: 0px;
-  transform: translateY(2px);
-}
-
-.github-icon:hover {
-  background-color: lightgray;
-  border-radius: 50%;
-}
-
-.github-icon-small {
-  background: url("/icons/github-small.svg");
-  height: 30px;
-  width: 30px;
+.google-scholar-icon:hover {
+  filter: invert(56%) sepia(8%) saturate(2962%) hue-rotate(111deg) brightness(95%) contrast(86%);
 }
 
 .about-me-header {
@@ -199,10 +174,8 @@
 }
 
 .graduation-cap-icon {
-  background: url("/icons/graduation-cap.svg");
   height: 21px;
   width: 25px;
-  margin-top: 5px;
 }
 
 .education-text {
@@ -385,11 +358,23 @@
 .project-tile-title {
   display: flex;
   align-items: center;
+  gap: 16px;
 }
 
 .project-tile-title-text {
   font-size: 24px;
   margin: 0px 0px;
+}
+
+.git-small-github-thick-icon {
+  margin-top: 3px;
+  height: 25px;
+  width: 25px;
+  filter: invert(25%) sepia(4%) saturate(3939%) hue-rotate(170deg) brightness(97%) contrast(90%);
+}
+
+.git-small-github-thick-icon:hover {
+  filter: invert(56%) sepia(8%) saturate(2962%) hue-rotate(111deg) brightness(95%) contrast(86%);
 }
 
 .project-tile-title-link {
@@ -550,5 +535,29 @@
   }
   .publications {
     background-color: var(--dark-primary-background-color);
+  }
+  .large-github-line-icon {
+    filter: invert(51%) sepia(83%) saturate(347%) hue-rotate(111deg) brightness(90%) contrast(86%); /* dark link color  */
+  }
+  .large-github-line-icon:hover {
+    filter: invert(24%) sepia(59%) saturate(2502%) hue-rotate(159deg) brightness(95%) contrast(101%); /* dark link hover color  */
+  }
+  .google-scholar-icon {
+    filter: invert(51%) sepia(83%) saturate(347%) hue-rotate(111deg) brightness(90%) contrast(86%); /* dark link color  */
+  }
+  .google-scholar-icon:hover {
+    filter: invert(24%) sepia(59%) saturate(2502%) hue-rotate(159deg) brightness(95%) contrast(101%); /* dark link hover color  */
+  }
+  .git-small-github-thick-icon {
+    filter: invert(100%) sepia(0%) saturate(7461%) hue-rotate(31deg) brightness(101%) contrast(109%); /* white  */
+  }
+  .git-small-github-thick-icon:hover {
+    filter: invert(24%) sepia(59%) saturate(2502%) hue-rotate(159deg) brightness(95%) contrast(101%); /* dark link hover color  */
+  }
+  .graduation-cap-icon {
+    filter: invert(99%) sepia(1%) saturate(31%) hue-rotate(163deg) brightness(105%) contrast(103%);
+  }
+  .phenol {
+    filter: invert(99%) sepia(1%) saturate(31%) hue-rotate(163deg) brightness(105%) contrast(103%);
   }
 }
