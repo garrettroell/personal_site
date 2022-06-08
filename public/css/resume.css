@@ -98,16 +98,6 @@ body {
   align-items: center;
 }
 
-/* .link-holder-col a {
-  text-decoration: none;
-  color: #002222;
-}
-
-.link-holder-col a:hover {
-  text-decoration: underline;
-  color: #002222;
-} */
-
 @media (max-width: 700px) {
   .link-holder-row {
     flex-direction: column;
@@ -121,5 +111,17 @@ body {
   }
   .outer-container {
     background-color: var(--dark-primary-background-color);
+  }
+
+  .title , .subtitle {
+    color: var(--dark-primary-text-color);
+  }
+
+  p, li, a, a:visited {
+    color: var(--dark-secondary-text-color);
+  }
+
+  a:hover {
+    color: var(--dark-link-hover-color);
   }
 }

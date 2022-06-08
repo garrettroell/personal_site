@@ -66,6 +66,10 @@
   margin: 4px;
 }
 
+.important-text {
+  color: mediumpurple !important;
+}
+
 .blog-image {
   max-width: calc(100% - 40px);
   margin: 20px;
@@ -134,6 +138,7 @@ mark {
   align-items: center;
   justify-content: center;
   font-size: 14px;
+  font-family: "Roboto";
 }
 
 .code-snippet-body{
@@ -215,10 +220,13 @@ mark {
     color: var(--dark-secondary-text-color);
   }
   .blog-text {
-    color: var(--dark-primary-text-color);
+    color: var(--dark-secondary-text-color);
   }
   .bullet-points li {
-    color: var(--dark-primary-text-color);
+    color: var(--dark-secondary-text-color);
+  }
+  .important-text {
+    color: var(--dark-link-hover-color) !important;
   }
   .code-holder {
     background-color: var(--dark-code-background-color);

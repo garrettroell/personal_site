@@ -1,9 +1,23 @@
 let selectedProject = 0;
-const activeColor = "#2fa582";
-const inactiveColor = "#007070";
 
-const activeTextColor = "white";
-const inactiveTextColor = "white";
+// light mode
+let activeColor = "#2fa582";
+let inactiveColor = "#007070";
+
+let activeTextColor = "white";
+let inactiveTextColor = "white";
+
+// dark mode
+if (
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
+  activeColor = "#7199B9";
+  inactiveColor = "#2A3B69";
+
+  activeTextColor = "white";
+  inactiveTextColor = "white";
+}
 
 // this function runs when the DOM is ready, i.e. when the document has been parsed
 document.addEventListener("DOMContentLoaded", function () {

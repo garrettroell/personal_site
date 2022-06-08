@@ -203,6 +203,7 @@
     max-width: 800px;
     margin: auto;
     margin-bottom: 30px;
+    
   }
 
   .interests-and-education {
@@ -366,14 +367,14 @@
   margin: 0px 0px;
 }
 
-.git-small-github-thick-icon {
+.small-github-thick-icon {
   margin-top: 3px;
   height: 25px;
   width: 25px;
   filter: invert(25%) sepia(4%) saturate(3939%) hue-rotate(170deg) brightness(97%) contrast(90%);
 }
 
-.git-small-github-thick-icon:hover {
+.small-github-thick-icon:hover {
   filter: invert(56%) sepia(8%) saturate(2962%) hue-rotate(111deg) brightness(95%) contrast(86%);
 }
 
@@ -506,11 +507,31 @@
 
 /* handle dark theme */
 @media (prefers-color-scheme: dark) {
+  .about-me-text {
+    color: var(--dark-secondary-text-color);
+  }
+  .interest-item {
+    color: var(--dark-secondary-text-color);
+  }
   .job-title {
+    color: var(--dark-secondary-text-color);
+  }
+  .about-me-anchor, .about-me-anchor:visited {
+    color: var(--dark-secondary-text-color);
+  }
+  .about-me-anchor:hover {
+    color: var(--dark-link-hover-color);
+  }
+  .degree {
     color: var(--dark-secondary-text-color);
   }
   .university {
     color: var(--dark-secondary-text-color);
+  }
+
+  .project-filter-buttons button:hover {
+    background-color: #2296b0 !important;
+    /* background-color: var(--dark-link-hover-color) !important; */
   }
   .skills {
     background-color: var(--dark-secondary-background-color);
@@ -536,28 +557,24 @@
   .publications {
     background-color: var(--dark-primary-background-color);
   }
-  .large-github-line-icon {
-    filter: invert(51%) sepia(83%) saturate(347%) hue-rotate(111deg) brightness(90%) contrast(86%); /* dark link color  */
+
+  /* dark secondary text color */
+  .google-scholar-icon, .large-github-line-icon, .graduation-cap-icon {
+    filter: invert(72%) sepia(20%) saturate(368%) hue-rotate(198deg) brightness(93%) contrast(91%); 
   }
-  .large-github-line-icon:hover {
-    filter: invert(24%) sepia(59%) saturate(2502%) hue-rotate(159deg) brightness(95%) contrast(101%); /* dark link hover color  */
+
+  /* dark link hover color  */
+  .google-scholar-icon:hover, .large-github-line-icon:hover, .small-github-thick-icon:hover {
+    filter: invert(64%) sepia(31%) saturate(4816%) hue-rotate(151deg) brightness(106%) contrast(97%); 
   }
-  .google-scholar-icon {
-    filter: invert(51%) sepia(83%) saturate(347%) hue-rotate(111deg) brightness(90%) contrast(86%); /* dark link color  */
+
+  /* white */
+  .phenol, .small-github-thick-icon {
+    filter: invert(98%) sepia(3%) saturate(1424%) hue-rotate(248deg) brightness(118%) contrast(100%);
   }
-  .google-scholar-icon:hover {
-    filter: invert(24%) sepia(59%) saturate(2502%) hue-rotate(159deg) brightness(95%) contrast(101%); /* dark link hover color  */
-  }
-  .git-small-github-thick-icon {
-    filter: invert(100%) sepia(0%) saturate(7461%) hue-rotate(31deg) brightness(101%) contrast(109%); /* white  */
-  }
-  .git-small-github-thick-icon:hover {
-    filter: invert(24%) sepia(59%) saturate(2502%) hue-rotate(159deg) brightness(95%) contrast(101%); /* dark link hover color  */
-  }
-  .graduation-cap-icon {
-    filter: invert(99%) sepia(1%) saturate(31%) hue-rotate(163deg) brightness(105%) contrast(103%);
-  }
-  .phenol {
-    filter: invert(99%) sepia(1%) saturate(31%) hue-rotate(163deg) brightness(105%) contrast(103%);
+
+  /* red */
+  .blackjack-logo {
+    stroke: #646464;
   }
 }

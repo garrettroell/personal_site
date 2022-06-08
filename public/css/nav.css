@@ -51,8 +51,8 @@
     background-color: var(--dark-primary-background-color);
   }
 
-  .nav-item:visited {
-    color: var(--dark-primary-text-color);
+  .nav-item, .nav-item:visited {
+    color: var(--dark-secondary-text-color);
   }
   
   .nav-item:hover {
