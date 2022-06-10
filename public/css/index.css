@@ -38,8 +38,8 @@
 }
 
 .face-image {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 50%;
   object-position: center top;
@@ -255,27 +255,32 @@
   margin: 0px 0.5%;
 }
 
-.programming-icon {
-  background: url("/icons/programming-symbol.svg");
-  height: 80px;
-  width: 128px;
-  margin: 2px auto;
-}
-
-.metabolic-map-icon {
-  background: url("/icons/abstract-metabolic-map.svg");
-  height: 84px;
-  width: 128px;
-  margin-top: 5px;
-  margin: auto;
-}
-
 .community-icon {
-  background: url("/icons/community.svg");
   height: 84px;
   width: 84px;
   margin-top: 5px;
   margin: auto;
+  width: 100%;
+}
+
+.programming-icon {
+  height: 80px;
+  width: 128px;
+  margin: 2px auto;
+  width: 100%;
+}
+
+.metabolic-map-icon {
+  height: 84px;
+  width: 128px;
+  margin-top: 5px;
+  margin: auto;
+  width: 100%;
+}
+
+/* --light-link-hover-color */
+.community-icon, .programming-icon, .metabolic-map-icon {
+  filter: invert(50%) sepia(11%) saturate(2431%) hue-rotate(111deg) brightness(106%) contrast(84%);
 }
 
 .skill-text {
@@ -563,8 +568,14 @@
     filter: invert(72%) sepia(20%) saturate(368%) hue-rotate(198deg) brightness(93%) contrast(91%); 
   }
 
+  /* --light-link-hover-color */
+/* .community-icon, .programming-icon, .metabolic-map-icon {
+  filter: invert(50%) sepia(11%) saturate(2431%) hue-rotate(111deg) brightness(106%) contrast(84%); */
+/* } */
+
   /* dark link hover color  */
-  .google-scholar-icon:hover, .large-github-line-icon:hover, .small-github-thick-icon:hover {
+  .google-scholar-icon:hover, .large-github-line-icon:hover, .small-github-thick-icon:hover,
+  .community-icon, .programming-icon, .metabolic-map-icon {
     filter: invert(64%) sepia(31%) saturate(4816%) hue-rotate(151deg) brightness(106%) contrast(97%); 
   }
 
