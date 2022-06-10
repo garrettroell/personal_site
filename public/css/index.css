@@ -533,10 +533,8 @@
   .university {
     color: var(--dark-secondary-text-color);
   }
-
   .project-filter-buttons button:hover {
     background-color: #2296b0 !important;
-    /* background-color: var(--dark-link-hover-color) !important; */
   }
   .skills {
     background-color: var(--dark-secondary-background-color);
@@ -567,11 +565,6 @@
   .google-scholar-icon, .large-github-line-icon, .graduation-cap-icon {
     filter: invert(72%) sepia(20%) saturate(368%) hue-rotate(198deg) brightness(93%) contrast(91%); 
   }
-
-  /* --light-link-hover-color */
-/* .community-icon, .programming-icon, .metabolic-map-icon {
-  filter: invert(50%) sepia(11%) saturate(2431%) hue-rotate(111deg) brightness(106%) contrast(84%); */
-/* } */
 
   /* dark link hover color  */
   .google-scholar-icon:hover, .large-github-line-icon:hover, .small-github-thick-icon:hover,
