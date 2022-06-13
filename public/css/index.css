@@ -428,6 +428,10 @@
     gap: 0px;
     min-height: 0px;
   }
+
+  .project-tile-title {
+    justify-content: space-between;
+  }
 }
 
 /* project buttons */
