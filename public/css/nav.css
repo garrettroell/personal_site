@@ -36,7 +36,7 @@
   padding-right: 40px;
 }
 
-.nav-item:visited {
+.nav-item, .nav-item:visited {
   color: var(--light-primary-text-color);
 }
 
