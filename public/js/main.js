@@ -15,8 +15,9 @@ if (
   activeColor = "#7199B9";
   inactiveColor = "#2A3B69";
 
-  activeTextColor = "white";
-  inactiveTextColor = "white";
+  // text color is white in both light and dark conditions
+  // activeTextColor = "white";
+  // inactiveTextColor = "white";
 }
 
 // this function runs when the DOM is ready, i.e. when the document has been parsed
@@ -31,9 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
   projectButtons.forEach((button, index) => {
     if (selectedProject === index) {
       button.style.backgroundColor = activeColor;
-      // button.style.color = activeTextColor;
+      // button.style.fontWeight = "900";
     } else {
       button.style.backgroundColor = inactiveColor;
+      // button.style.fontWeight = "400";
       // button.style.color = inactiveTextColor;
     }
   });
@@ -59,10 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
     projectButtons.forEach((button, index) => {
       if (selectedProject === index) {
         button.style.backgroundColor = activeColor;
-        // button.style.color = activeTextColor;
       } else {
         button.style.backgroundColor = inactiveColor;
-        // button.style.color = inactiveTextColor;
       }
     });
 
@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
           projectValue = 2;
           break;
         default:
-          null;
       }
 
       // display a project if all projects should be displayed, or the

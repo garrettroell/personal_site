@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap"); */
 
 :root {
   --light-primary-background-color: #FFFFFF;
   --light-secondary-background-color: #F7F7F7;
   --light-primary-text-color: #34495E;
-  --light-secondary-text-color: #787878;
+  --light-secondary-text-color: #555555;
   --light-link-color: #007070;
   --light-link-visited-color:  #007070;
   --light-link-hover-color: #2fa582;

@@ -52,25 +52,24 @@
 }
 
 .job-title {
-  font-size: 20px;
   color: var(--light-secondary-text-color);
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
   margin-top: 0px;
   margin-bottom: 25px;
 }
 
 .about-me-links {
   margin-bottom: 25px;
-}
-
-.about-me-link {
-  font-size: 20px;
-  text-decoration: none;
-  margin-top: 0px;
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .about-me-anchor {
   text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
 }
 
 .social-icons {
@@ -446,7 +445,7 @@
 .project-filter-buttons button {
   background-color: #005555;
   color: white;
-  font-family: Roboto, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   margin: 0px;
   padding: 7px 20px;

@@ -17,15 +17,57 @@
       Washington University in St. Louis who loves writing code.">
 
   <!-- scripts -->
-  <script src="/js/main.js"></script>
-  <!-- <script src="/js/colorMode.js"></script> -->
-  <script src="/js/footer.js"></script>
+  <script src="/js/main.js" async></script>
+  <script src="/js/footer.js" async></script>
 
-  <!-- styles -->
+  <!-- styles-->
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/nav.css">
   <link rel="stylesheet" href="/css/footer.css">
   <link rel="stylesheet" href="/css/index.css">
+
+  <!-- inline font loading css -->
+  <style>
+    /* montserrat-regular - latin */
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      src: url('../fonts/montserrat-v24-latin-regular.eot');
+      /* IE9 Compat Modes */
+      src: local(''),
+        url('../fonts/montserrat-v24-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/montserrat-v24-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/montserrat-v24-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/montserrat-v24-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/montserrat-v24-latin-regular.svg#Montserrat') format('svg');
+      /* Legacy iOS */
+    }
+
+    /* roboto-regular - latin */
+    @font-face {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      src: url('../fonts/roboto-v30-latin-regular.eot');
+      /* IE9 Compat Modes */
+      src: local(''),
+        url('../fonts/roboto-v30-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/roboto-v30-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/roboto-v30-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/roboto-v30-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/roboto-v30-latin-regular.svg#Roboto') format('svg');
+      /* Legacy iOS */
+    }
+  </style>
 
   <!-- title -->
   <title>Garrett Roell</title>
@@ -55,27 +97,21 @@
       <div class="about-me-section">
         <div class="face-and-name">
           <div class="face-image-holder">
-            <!-- <img src="images/garrett_face.webp" class="face-image" alt="Garrett Roell" class="face-image"> -->
-            <img src="images/garrett_face_zoom.webp" class="face-image" alt="Garrett Roell" class="face-image">
+            <img src="images/garrett_face_zoom.webp" class="face-image" alt="Garrett Roell" class="face-image"
+              height="120px" width="120px">
           </div>
           <h1 class="garrett-roell">Garrett Roell</h1>
-          <h3 class="job-title">PhD Student</h3>
+          <p class="job-title">PhD Student</p>
           <div class="about-me-links">
-            <h3 class="about-me-link">
-              <a class="about-me-anchor" href="https://wustl.edu/" target="_blank">
-                Washington University in St. Louis
-              </a>
-            </h3>
-            <h3 class="about-me-link">
-              <a class="about-me-anchor" href="https://eece.wustl.edu/" target="_blank">
-                Energy, Environmental & Chemical Engineering
-              </a>
-            </h3>
-            <h3 class="about-me-link">
-              <a class="about-me-anchor" href="https://tang.eece.wustl.edu/" target="_blank">
-                Yinjie Tang Lab
-              </a>
-            </h3>
+            <a class="about-me-anchor" href="https://wustl.edu/" target="_blank">
+              Washington University in St. Louis
+            </a>
+            <a class="about-me-anchor" href="https://eece.wustl.edu/" target="_blank">
+              Energy, Environmental & Chemical Engineering
+            </a>
+            <a class="about-me-anchor" href="https://tang.eece.wustl.edu/" target="_blank">
+              Yinjie Tang Lab
+            </a>
           </div>
           <ul class="social-icons">
             <li>
@@ -151,7 +187,8 @@
               <div class="project-tile-text">
                 <div class="project-tile-title">
                   <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://fluxbalanceanalysis.com/" target="_blank">
+                    <a class="project-tile-title-link" href="https://fluxbalanceanalysis.com/" target="_blank"
+                      aria-label="Flux Balance Analysis">
                       Flux Balance Analysis Web Tool
                     </a>
                   </h3>
@@ -165,7 +202,7 @@
               </div>
               <a href="https://fluxbalanceanalysis.com/" target="_blank" class="project-image-holder">
                 <img class="project-image" src="images/flux_balance_analysis.webp"
-                  alt="fluxbalanceanalysis.com screenshot">
+                  alt="fluxbalanceanalysis.com screenshot" height="150px" width="150px">
               </a>
             </div>
 
@@ -186,7 +223,8 @@
                 </p>
               </div>
               <a href="https://allthingsanalysis.com" target="_blank" class="project-image-holder">
-                <img class="project-image" src="icons/ata-logo.svg" alt="All Things Analysis Logo">
+                <img class="project-image" src="icons/ata-logo.svg" alt="All Things Analysis Logo" height="150px"
+                  width="150px">
               </a>
             </div>
 
@@ -208,7 +246,8 @@
                 </p>
               </div>
               <a href="https://impact-db.web.app/" target="_blank" class="project-image-holder">
-                <img class="project-image" src="images/metabolic_network_green.webp" alt="abstract-flux-map">
+                <img class="project-image" src="images/metabolic_network_green.webp" alt="abstract-flux-map"
+                  height="150px" width="150px">
               </a>
             </div>
 
@@ -227,7 +266,8 @@
                 </p>
               </div>
               <div class="project-image-holder">
-                <img class="project-image" src="images/metabolic_network_yellow.webp" alt="example genome scale model">
+                <img class="project-image" src="images/metabolic_network_yellow.webp" alt="example genome scale model"
+                  height="150px" width="150px">
               </div>
             </div>
 
@@ -253,7 +293,8 @@
                 </p>
               </div>
               <a href="https://sw.garrettroell.com/" target="_blank" class="project-image-holder">
-                <img class="project-image" src="images/southwest.webp" alt="southwest airlines logo">
+                <img class="project-image" src="images/southwest.webp" alt="southwest airlines logo" height="150px"
+                  width="150px">
               </a>
             </div>
 
@@ -274,7 +315,8 @@
                 </p>
               </div>
               <div class="project-image-holder">
-                <img class="project-image phenol" src="icons/phenol.svg" alt="Phenol Structure">
+                <img class="project-image phenol" src="icons/phenol.svg" alt="Phenol Structure" height="150px"
+                  width="150px">
               </div>
             </div>
 
@@ -298,7 +340,8 @@
                 </p>
               </div>
               <a href="https://smokey-cats.web.app/" target="_blank" class="project-image-holder">
-                <img class="project-image" src="images/smokey_cat.webp" alt="example smokey cat image">
+                <img class="project-image" src="images/smokey_cat.webp" alt="example smokey cat image" height="150px"
+                  width="150px">
               </a>
             </div>
 
@@ -321,7 +364,8 @@
                 </p>
               </div>
               <div class="project-image-holder">
-                <img class="project-image" src="images/syngas_machine_learning.webp" alt="example-plot">
+                <img class="project-image" src="images/syngas_machine_learning.webp" alt="example-plot" height="150px"
+                  width="150px">
               </div>
             </div>
 
@@ -351,7 +395,7 @@
                 </p>
               </div>
               <a href="https://dice.garrettroell.com/" target="_blank" class="project-image-holder">
-                <img class="project-image" src="images/craps.webp" alt="one-red-die">
+                <img class="project-image" src="images/craps.webp" alt="one-red-die" height="150px" width="150px">
               </a>
             </div>
 
@@ -380,7 +424,8 @@
                 </p>
               </div>
               <a href="https://blackjack.garrettroell.com/" target="_blank" class="project-image-holder">
-                <img class="project-image blackjack-logo" src="images/blackjack.webp" alt="spades symbol">
+                <img class="project-image blackjack-logo" src="images/blackjack.webp" alt="spades symbol" height="150px"
+                  width="150px">
               </a>
             </div>
 
@@ -406,7 +451,8 @@
                 </p>
               </div>
               <a href="https://game-of-life.garrettroell.com/" target="_blank" class="project-image-holder">
-                <img class="project-image" src="images/game_of_life.webp" alt="stable game of life formation">
+                <img class="project-image" src="images/game_of_life.webp" alt="stable game of life formation"
+                  height="150px" width="150px">
               </a>
             </div>
 
@@ -432,7 +478,7 @@
               </div>
               <a href="https://rule-30.garrettroell.com/" target="_blank" class="project-image-holder">
                 <img class="project-image" src="images/rule_30.webp"
-                  alt="A Conus textile shell similar in appearance to Rule 30">
+                  alt="A Conus textile shell similar in appearance to Rule 30" height="150px" width="150px">
               </a>
             </div>
 
@@ -456,7 +502,8 @@
                 </p>
               </div>
               <a href="https://mandelbrot.garrettroell.com/" target="_blank" class="project-image-holder">
-                <img class="project-image" src="images/mandelbrot.webp" alt="A picture of the mandelbrot set">
+                <img class="project-image" src="images/mandelbrot.webp" alt="A picture of the mandelbrot set"
+                  height="150px" width="150px">
               </a>
             </div>
 
@@ -476,7 +523,7 @@
                 </p>
               </div>
               <a href="https://broker.garrettroell.com/" target="_blank" class="project-image-holder">
-                <img class="project-image" src="images/broker.webp" alt="The bitcoin logo">
+                <img class="project-image" src="images/broker.webp" alt="The bitcoin logo" height="150px" width="150px">
               </a>
             </div>
 
@@ -500,7 +547,8 @@
               </div>
               <a class="project-tile-title-link" href="https://sliding-puzzle.garrettroell.com/" target="_blank"
                 class="project-image-holder">
-                <img class="project-image" src="images/sliding_puzzle.webp" alt="puzzle piece">
+                <img class="project-image" src="images/sliding_puzzle.webp" alt="puzzle piece" height="150px"
+                  width="150px">
               </a>
             </div>
 
@@ -522,7 +570,7 @@
                 </p>
               </div>
               <a href="https://snake.garrettroell.com/" target="_blank" class="project-image-holder">
-                <img class="project-image" src="images/snake.webp" alt="Snake game image">
+                <img class="project-image" src="images/snake.webp" alt="Snake game image" height="150px" width="150px">
               </a>
             </div>
 
@@ -542,7 +590,8 @@
                 </p>
               </div>
               <a href="https://demetsenturk.com/" target="_blank" class="project-image-holder">
-                <img class="project-image" src="images/demi.svg" alt="Demet Senturk line drawing">
+                <img class="project-image" src="images/demi.svg" alt="Demet Senturk line drawing" height="150px"
+                  width="150px">
               </a>
             </div>
           </div>
@@ -579,7 +628,7 @@
               <a href="https://www.sciencedirect.com/science/article/pii/S1096717619300333" target="_blank"
                 class="project-image-holder">
                 <img class="project-image" src="images/metabolic_engineering.webp"
-                  alt="Metabolic Engineering Journal Cover">
+                  alt="Metabolic Engineering Journal Cover" height="150px" width="150px">
               </a>
             </div>
 
@@ -601,7 +650,7 @@
               <a href="https://microbialcellfactories.biomedcentral.com/articles/10.1186/s12934-019-1083-3"
                 target="_blank" class="project-image-holder">
                 <img class="project-image" src="images/microbial_cell_factory.webp"
-                  alt="Microbial Cell Factory Journal Cover">
+                  alt="Microbial Cell Factory Journal Cover" height="150px" width="150px">
               </a>
             </div>
           </div>
