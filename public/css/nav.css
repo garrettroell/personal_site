@@ -5,8 +5,10 @@
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 11%);
   position: fixed;
   top: 0;
-  background-color: var(--light-primary-background-color);
-  z-index: 2;
+  z-index: 3;
+  /* light primary background color */
+  background:rgba(255,255,255,.75);
+  backdrop-filter: blur(5px);
 }
 
 @media (max-width: 500px) {
@@ -48,7 +50,8 @@
 @media (prefers-color-scheme: dark) {
   .nav-outer {
     box-shadow: 0 2px 4px 0 rgb(256 256 256 / 11%);
-    background-color: var(--dark-primary-background-color);
+    background: rgba(31, 32, 40, .75);
+    backdrop-filter: blur(5px);
   }
 
   .nav-item, .nav-item:visited {
