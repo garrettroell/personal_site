@@ -22,8 +22,6 @@ if (
 
 // this function runs when the DOM is ready, i.e. when the document has been parsed
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("running main.js");
-
   const projectButtons = document.querySelectorAll(
     ".project-filter-buttons button"
   );
