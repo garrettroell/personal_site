@@ -19,6 +19,18 @@ app.get("/blog", (_, res) => {
   res.sendFile("public/blog/blog_home.html", { root: "." });
 });
 
+app.get("/papers/syngas-machine-learning", (_, res) => {
+  res.sendFile("public/papers/syngas-machine-learning.pdf", { root: "." });
+});
+
+app.get("/papers/system-biology-r-opacus", (_, res) => {
+  res.sendFile("public/papers/system-biology-r-opacus.pdf", { root: "." });
+});
+
+app.get("/papers/division-of-labor-review", (_, res) => {
+  res.sendFile("public/papers/division-of-labor-review.pdf", { root: "." });
+});
+
 app.get("/blog/how-to-set-up-a-digitalocean-droplet", (_, res) => {
   res.sendFile("public/blog/1_setup_droplet.html", { root: "." });
 });
