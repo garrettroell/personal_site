@@ -54,12 +54,12 @@ app.get("/blog/deploy-python-server", (_, res) => {
   res.sendFile("public/blog/4_deploy_python_server.html", { root: "." });
 });
 
-app.get("/solver-fba", (_, res) => {
-  res.sendFile("public/files/solver_fba.xlsx", { root: "." });
+app.get("/fba-problem", (_, res) => {
+  res.sendFile("public/files/fba_problem.xlsx", { root: "." });
 });
 
-app.get("/solver-optimization", (_, res) => {
-  res.sendFile("public/files/solver_optimization.xlsx", { root: "." });
+app.get("/fba-solution", (_, res) => {
+  res.sendFile("public/files/fba_solution.xlsx", { root: "." });
 });
 
 app.get("*", (_, res) => {
