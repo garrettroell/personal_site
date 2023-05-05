@@ -15,6 +15,10 @@ app.get("/resume", (_, res) => {
   res.sendFile("public/pages/resume.html", { root: "." });
 });
 
+app.get("/cv", (_, res) => {
+  res.sendFile("public/files/Roell_CV.pdf", { root: "." });
+});
+
 app.get("/blog", (_, res) => {
   res.sendFile("public/blog/blog_home.html", { root: "." });
 });
@@ -48,6 +52,14 @@ app.get("/blog/deploy-node-server", (_, res) => {
 app.get("/blog/deploy-python-server", (_, res) => {
   console.log("inside create droplet route");
   res.sendFile("public/blog/4_deploy_python_server.html", { root: "." });
+});
+
+app.get("/solver-fba", (_, res) => {
+  res.sendFile("public/files/solver_fba.xlsx", { root: "." });
+});
+
+app.get("/solver-optimization", (_, res) => {
+  res.sendFile("public/files/solver_optimization.xlsx", { root: "." });
 });
 
 app.get("*", (_, res) => {
