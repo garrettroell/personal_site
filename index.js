@@ -58,12 +58,9 @@ app.get("/blog/deploy-python-server", (_, res) => {
   res.sendFile("public/blog/4_deploy_python_server.html", { root: "." });
 });
 
-app.get("/fba-problem", (_, res) => {
-  res.sendFile("public/files/fba_problem.xlsx", { root: "." });
-});
-
-app.get("/fba-solution", (_, res) => {
-  res.sendFile("public/files/fba_solution.xlsx", { root: "." });
+// this is to help ImpactDB
+app.get("/molecular-inventory", (_, res) => {
+  res.sendFile("public/files/molecular_inventory.xlsx", { root: "." });
 });
 
 app.get("*", (_, res) => {
