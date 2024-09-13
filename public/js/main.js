@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Convert the project type to a number than can be compared with selected project
       let projectValue = 0;
       switch (project.getAttribute("data-type")) {
-        case "PhD Research":
+        case "Research":
           projectValue = 1;
           break;
         case "Web Development":
