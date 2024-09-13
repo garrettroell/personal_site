@@ -1,837 +1,1366 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/meta/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/meta/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/meta/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="/meta/site.webmanifest"
+      crossorigin="anonymous"
+    />
+    <link rel="mask-icon" href="/meta/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="Garrett Roell is an assistant professor at the University of Hawaiʻi at Mānoa who loves writing code."
+    />
 
-  <!-- favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/meta/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/meta/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/meta/favicon-16x16.png">
-  <link rel="manifest" href="/meta/site.webmanifest" crossorigin="anonymous">
-  <link rel="mask-icon" href="/meta/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description"
-    content="Garrett Roell is an assistant professor at the University of Hawaiʻi at Mānoa who loves writing code.">
+    <!-- scripts -->
+    <script src="/js/main.js" defer></script>
+    <script src="/js/footer.js" defer></script>
 
-  <!-- scripts -->
-  <script src="/js/main.js" defer></script>
-  <script src="/js/footer.js" defer></script>
+    <!-- styles-->
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/index.css" />
 
-  <!-- styles-->
-  <link rel="stylesheet" href="/css/global.css">
-  <link rel="stylesheet" href="/css/nav.css">
-  <link rel="stylesheet" href="/css/footer.css">
-  <link rel="stylesheet" href="/css/index.css">
+    <!-- inline font loading css -->
+    <style>
+      @font-face {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+        src: url("../fonts/montserrat-v24-latin-regular.eot");
+        /* IE9 Compat Modes */
+        src: local(""),
+          url("../fonts/montserrat-v24-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+          /* IE6-IE8 */ url("../fonts/montserrat-v24-latin-regular.woff2")
+            format("woff2"),
+          /* Super Modern Browsers */
+            url("../fonts/montserrat-v24-latin-regular.woff") format("woff"),
+          /* Modern Browsers */ url("../fonts/montserrat-v24-latin-regular.ttf")
+            format("truetype"),
+          /* Safari, Android, iOS */
+            url("../fonts/montserrat-v24-latin-regular.svg#Montserrat")
+            format("svg");
+        /* Legacy iOS */
+      }
 
-  <!-- inline font loading css -->
-  <style>
-    @font-face {
-      font-family: 'Montserrat';
-      font-style: normal;
-      font-weight: 400;
-      src: url('../fonts/montserrat-v24-latin-regular.eot');
-      /* IE9 Compat Modes */
-      src: local(''),
-        url('../fonts/montserrat-v24-latin-regular.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('../fonts/montserrat-v24-latin-regular.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('../fonts/montserrat-v24-latin-regular.woff') format('woff'),
-        /* Modern Browsers */
-        url('../fonts/montserrat-v24-latin-regular.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('../fonts/montserrat-v24-latin-regular.svg#Montserrat') format('svg');
-      /* Legacy iOS */
-    }
+      /* roboto-regular - latin */
+      @font-face {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        src: url("../fonts/roboto-v30-latin-regular.eot");
+        /* IE9 Compat Modes */
+        src: local(""),
+          url("../fonts/roboto-v30-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+          /* IE6-IE8 */ url("../fonts/roboto-v30-latin-regular.woff2")
+            format("woff2"),
+          /* Super Modern Browsers */
+            url("../fonts/roboto-v30-latin-regular.woff") format("woff"),
+          /* Modern Browsers */ url("../fonts/roboto-v30-latin-regular.ttf")
+            format("truetype"),
+          /* Safari, Android, iOS */
+            url("../fonts/roboto-v30-latin-regular.svg#Roboto") format("svg");
+        /* Legacy iOS */
+      }
+    </style>
 
-    /* roboto-regular - latin */
-    @font-face {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 400;
-      src: url('../fonts/roboto-v30-latin-regular.eot');
-      /* IE9 Compat Modes */
-      src: local(''),
-        url('../fonts/roboto-v30-latin-regular.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('../fonts/roboto-v30-latin-regular.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('../fonts/roboto-v30-latin-regular.woff') format('woff'),
-        /* Modern Browsers */
-        url('../fonts/roboto-v30-latin-regular.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('../fonts/roboto-v30-latin-regular.svg#Roboto') format('svg');
-      /* Legacy iOS */
-    }
-  </style>
+    <!-- title -->
+    <title>Garrett Roell</title>
+  </head>
 
-  <!-- title -->
-  <title>Garrett Roell</title>
-</head>
+  <body>
+    <!-- nav bar -->
+    <nav>
+      <div class="nav-outer">
+        <ul class="nav-items">
+          <li><a data-toggle="tab" href="/" class="nav-item">Home</a></li>
+          <li>
+            <a data-toggle="tab" href="#projects" class="nav-item">Projects</a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#publications" class="nav-item"
+              >Publications</a
+            >
+          </li>
+          <li>
+            <a data-toggle="tab" href="#skills" class="nav-item">Skills</a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="/resume" class="nav-item">Resume</a>
+          </li>
+          <li><a data-toggle="tab" href="/cv" class="nav-item">CV</a></li>
+        </ul>
+      </div>
+    </nav>
 
-<body>
+    <!-- spacer -->
+    <div class="top-spacer"></div>
 
-  <!-- nav bar -->
-  <nav>
-    <div class="nav-outer">
-      <ul class="nav-items">
-        <li><a data-toggle=tab href="/" class="nav-item">Home</a></li>
-        <li><a data-toggle=tab href="#projects" class="nav-item">Projects</a></li>
-        <li><a data-toggle=tab href="#publications" class="nav-item">Publications</a></li>
-        <li><a data-toggle=tab href="#skills" class="nav-item">Skills</a></li>
-        <li><a data-toggle=tab href="/resume" class="nav-item">Resume</a></li>
-        <li><a data-toggle=tab href="/cv" class="nav-item">CV</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- spacer -->
-  <div class="top-spacer"></div>
-
-  <!-- about me (top section) -->
-  <div class="about-me">
-    <div class="container">
-      <div class="about-me-section">
-        <div class="face-and-name">
-          <div class="face-image-holder">
-            <img src="images/garrett_face_zoom.webp" class="face-image" alt="Garrett Roell" class="face-image"
-              height="120px" width="120px">
-          </div>
-          <h1 class="garrett-roell">Garrett Roell</h1>
-          <p class="job-title">Computational Synthetic Biologist</p>
-
-          <div class="about-me-links">
-            <a class="about-me-anchor" href="https://lab.garrettroell.com" target="_blank">
-              Garrett Roell Lab
-            </a>
-          </div>
-          <ul class="social-icons">
-            <li>
-              <a href="https://github.com/garrettroell" target="_blank">
-                <img src="../icons/github-line.svg" alt="github icon" class="large-github-line-icon" loading="lazy">
-              </a>
-            </li>
-            <li style="position: relative">
-              <a href="https://scholar.google.com/citations?user=0Vx53CgAAAAJ&hl=en" target="_blank">
-                <img src="../icons/google-scholar.svg" alt="google scholar icon" class="google-scholar-icon"
-                  loading="lazy">
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="description">
-          <h1 class="about-me-header">About me</h1>
-          <p class="about-me-text">I'm an assistant professor at the University of Hawaiʻi at Mānoa. My work is focused
-            on metabolic
-            regulation for efficient biofuel
-            production from non-food crops. The goal is to connect genes and gene expression
-            with fermentation outcomes. When relaxing, I enjoy playing and watching sports
-            including football and pickleball.
-          </p>
-          <div class="interests-and-education">
-            <div class="interests">
-              <h2 class="interests-title">Interests</h2>
-              <ul class="interests-list">
-                <li class="interest-item">Machine learning</li>
-                <li class="interest-item">Metabolic engineering</li>
-                <li class="interest-item">Front end web development</li>
-              </ul>
+    <!-- about me (top section) -->
+    <div class="about-me">
+      <div class="container">
+        <div class="about-me-section">
+          <div class="face-and-name">
+            <div class="face-image-holder">
+              <img
+                src="images/garrett_face_zoom.webp"
+                class="face-image"
+                alt="Garrett Roell"
+                class="face-image"
+                height="120px"
+                width="120px"
+              />
             </div>
-            <div class="education">
-              <h2 class="education-title">Education</h2>
-              <ul class="education-list">
-                <li class="education-item">
-                  <img src="../icons/graduation-cap.svg" alt="graduation-cap" class="graduation-cap-icon"
-                    loading="lazy">
-                  <div class="education-text">
-                    <p class="degree">PhD in Chemical Engineering, 2017-2022</p>
-                    <p class="university">Washington University in St. Louis</p>
+            <h1 class="garrett-roell">Garrett Roell</h1>
+            <p class="job-title">Computational Synthetic Biologist</p>
+
+            <div class="about-me-links">
+              <a
+                class="about-me-anchor"
+                href="https://lab.garrettroell.com"
+                target="_blank"
+              >
+                Garrett Roell Lab
+              </a>
+            </div>
+            <ul class="social-icons">
+              <li>
+                <a href="https://github.com/garrettroell" target="_blank">
+                  <img
+                    src="../icons/github-line.svg"
+                    alt="github icon"
+                    class="large-github-line-icon"
+                    loading="lazy"
+                  />
+                </a>
+              </li>
+              <li style="position: relative">
+                <a
+                  href="https://scholar.google.com/citations?user=0Vx53CgAAAAJ&hl=en"
+                  target="_blank"
+                >
+                  <img
+                    src="../icons/google-scholar.svg"
+                    alt="google scholar icon"
+                    class="google-scholar-icon"
+                    loading="lazy"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1 class="about-me-header">About me</h1>
+            <p class="about-me-text">
+              I'm an assistant professor at the University of Hawaiʻi at Mānoa.
+              My work is focused on metabolic regulation for efficient biofuel
+              production from non-food crops. The goal is to connect genes and
+              gene expression with fermentation outcomes. When relaxing, I enjoy
+              playing and watching sports including football and pickleball.
+            </p>
+            <div class="interests-and-education">
+              <div class="interests">
+                <h2 class="interests-title">Interests</h2>
+                <ul class="interests-list">
+                  <li class="interest-item">Machine learning</li>
+                  <li class="interest-item">Metabolic engineering</li>
+                  <li class="interest-item">Front end web development</li>
+                </ul>
+              </div>
+              <div class="education">
+                <h2 class="education-title">Education</h2>
+                <ul class="education-list">
+                  <li class="education-item">
+                    <img
+                      src="../icons/graduation-cap.svg"
+                      alt="graduation-cap"
+                      class="graduation-cap-icon"
+                      loading="lazy"
+                    />
+                    <div class="education-text">
+                      <p class="degree">
+                        PhD in Chemical Engineering, 2017-2022
+                      </p>
+                      <p class="university">
+                        Washington University in St. Louis
+                      </p>
+                    </div>
+                  </li>
+                  <li class="education-item">
+                    <img
+                      src="../icons/graduation-cap.svg"
+                      alt="graduation-cap"
+                      class="graduation-cap-icon"
+                      loading="lazy"
+                    />
+                    <div class="education-text">
+                      <p class="degree">
+                        BS in Biomedical Engineering, 2012-2016
+                      </p>
+                      <p class="university">Tufts University</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- projects -->
+    <div class="projects" id="projects">
+      <div class="container">
+        <div class="projects-title-and-list">
+          <h2 class="projects-title">Projects</h2>
+          <div class="projects-list">
+            <div class="project-filter-buttons">
+              <button>All</button>
+              <button>Research</button>
+              <button>Web Development</button>
+            </div>
+            <div class="projects-tile-list">
+              <!-- impactDB -->
+              <div class="project-tile" data-type="Research">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://impact-database.com"
+                        target="_blank"
+                      >
+                        ImpactDB: Database and Toolbox
+                      </a>
+                    </h3>
                   </div>
-                </li>
-                <li class="education-item">
-                  <img src="../icons/graduation-cap.svg" alt="graduation-cap" class="graduation-cap-icon"
-                    loading="lazy">
-                  <div class="education-text">
-                    <p class="degree">BS in Biomedical Engineering, 2012-2016</p>
-                    <p class="university">Tufts University</p>
+                  <p class="project-tile-subtitle">
+                    IMPACTDB is a crowd-sourced database that makes bioprocess
+                    results from academic papers more accessible. Additionally,
+                    the database is used to train machine learning tools that
+                    are available via user friendly inferences on the site.
+                  </p>
+                </div>
+                <a
+                  href="https://impact-database.com"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to flux impact database site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/impactdb_icon.png"
+                    alt="ImpactDB's DNA logo"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- fba.garrettroell.com -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://fba.garrettroell.com/"
+                        target="_blank"
+                        aria-label="Flux Balance Analysis"
+                      >
+                        Flux Balance Analysis Web Tool
+                      </a>
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/flux_balance_analysis"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                        loading="lazy"
+                      />
+                    </a>
                   </div>
-                </li>
-              </ul>
+                  <p class="project-tile-subtitle">
+                    Flux Balance Analysis (FBA) can be used to determine the
+                    metabolic states of a cell. Typically this procedure is done
+                    using python or matlab locally. This website allows users to
+                    perform FBA in their browser by comunicating with a server
+                    running CobraPy.
+                  </p>
+                </div>
+                <a
+                  href="https://fba.garrettroell.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to flux balance analysis site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/flux_balance_analysis.webp"
+                    alt="fba.garrettroell.com screenshot"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- all things analysis -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://allthingsanalysis.com"
+                        target="_blank"
+                      >
+                        All Things Analysis, LLC.
+                      </a>
+                    </h3>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    All Things Analysis is an analytics website that offers
+                    articles, rankings and actionable insights. I am a
+                    Co-Founder, and the Chief Technology Officer for the
+                    company. I worked on this project in collaboration with a UX
+                    Designer.
+                  </p>
+                </div>
+                <a
+                  href="https://allthingsanalysis.com"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to All Things Analysis"
+                >
+                  <img
+                    class="project-image"
+                    src="icons/ata-logo.svg"
+                    alt="All Things Analysis Logo"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- southwest check in -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://sw.garrettroell.com/"
+                        target="_blank"
+                      >
+                        Southwest Automatic Check In
+                      </a>
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/sw_check_in"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                      />
+                    </a>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    Given your first name, last name, and Southwest confirmation
+                    number, this react site with a node backend uses Puppeteer,
+                    a headless browser, to determine the check time for your
+                    flights, and a cron job to automatically check you to your
+                    flights when the check in window opens.
+                  </p>
+                </div>
+                <a
+                  href="https://sw.garrettroell.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to southwest check in site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/southwest.webp"
+                    alt="southwest airlines logo"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- R. opacus genome scale model -->
+              <div class="project-tile" data-type="Research">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <em>R. opacus</em>&nbsp Genome Scale Model
+                    </h3>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    I led a project to create a digital reconstruction of the
+                    <em>R. opacus</em> PD630 metabolic network. This bacteria
+                    has the potential to produce biofuels from the non-edible
+                    parts of plants. This model was used predict how genetic and
+                    environmetal changes would affect fermentation outcomes.
+                  </p>
+                </div>
+                <div class="project-image-holder">
+                  <img
+                    class="project-image"
+                    src="images/metabolic_network_yellow.webp"
+                    alt="example genome scale model"
+                    height="150px"
+                    width="150px"
+                  />
+                </div>
+              </div>
+
+              <!-- NFL Fantasy Trends -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://nfl-trends.garrettroell.com/"
+                        target="_blank"
+                      >
+                        NFL Fantasy Trends
+                      </a>
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/nfl-trends"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                      />
+                    </a>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    This Next.js site allows users to see trends of players
+                    fantasy point scoring from 2018-2021. It uses
+                    <a
+                      href="https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter"
+                      >Savitsky-Golay</a
+                    >
+                    filtering to generate the trend lines.
+                  </p>
+                </div>
+                <a
+                  href="https://nfl-trends.garrettroell.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to nfl trends site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/nfl-logo.webp"
+                    alt="nfl logo"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- R. opacus 13-C mfa -->
+              <div class="project-tile" data-type="Research">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <em>R. opacus</em>&nbsp 13C-Metabolic Flux Analysis
+                    </h3>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    13C-Metabolic Flux Analysis (13C-MFA) is a rigourous
+                    analysis of a cell's metabolism.
+                    <br />
+
+                    It uses experimental and computational methods to determine
+                    intracellular reaction rates that uses a heavy isotope of
+                    carbon as a tracer.
+                  </p>
+                </div>
+                <div class="project-image-holder">
+                  <img
+                    class="project-image phenol"
+                    src="icons/phenol.svg"
+                    alt="Phenol Structure"
+                    height="150px"
+                    width="150px"
+                  />
+                </div>
+              </div>
+
+              <!-- Smokey cats -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://smokey-cats.web.app/"
+                        target="_blank"
+                      >
+                        Smokey Cats NFTs
+                      </a>
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/smokey_cats"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                      />
+                    </a>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    Smokey Cats are a collection of NFTs that I am giving out
+                    for free.
+                    <br />
+                    If you would like one, send me an email with your ethereum
+                    wallet address.
+                  </p>
+                </div>
+                <a
+                  href="https://smokey-cats.web.app/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to NFT site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/smokey_cat.webp"
+                    alt="example smokey cat image"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- clostridium machine learning -->
+              <div class="project-tile" data-type="Research">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      Syngas Machine Learning
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/SyngasMachineLearning"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                      />
+                    </a>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    <em>Clostridium carboxidivorans</em> is a bacteria that can
+                    carbon monoxide, carbon dioxide, and hydrogen gas into the
+                    biofuels ethanol and butanol. The goal of this project was
+                    to compare the preformance of six machine learning
+                    algorithmsability to predict product production rate using
+                    the current product concentrations as inputs.
+                  </p>
+                </div>
+                <div class="project-image-holder">
+                  <img
+                    class="project-image"
+                    src="images/syngas_machine_learning.webp"
+                    alt="example-plot"
+                    height="150px"
+                    width="150px"
+                  />
+                </div>
+              </div>
+
+              <!-- craps simulator -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://dice.garrettroell.com"
+                        target="_blank"
+                      >
+                        Craps Probability Simulator
+                      </a>
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/craps"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                      />
+                    </a>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    This website allows the user to simulate the casino game
+                    craps, and displays statistics about the user's current
+                    simulation. Most notably, it has a chart that shows what
+                    percentile the user's simulation is in. The chart uses the
+                    <a
+                      href="https://en.wikipedia.org/wiki/Binomial_distribution"
+                      target="_blank"
+                      >binomial distribution</a
+                    >
+                    to display the likelihood of each number of wins for a given
+                    number of total turns. It demonstrates how the
+                    <a
+                      href="https://en.wikipedia.org/wiki/Law_of_large_numbers"
+                      target="_blank"
+                      >law of large numbers</a
+                    >
+                    favors the casino.
+                  </p>
+                </div>
+                <a
+                  href="https://dice.garrettroell.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to dice site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/craps.webp"
+                    alt="one-red-die"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- blackjack simulator -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://blackjack.garrettroell.com"
+                        target="_blank"
+                      >
+                        Blackjack Probability Simulator
+                      </a>
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/blackjack"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                      />
+                    </a>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    This website runs a simulation of the casino game blackjack.
+                    It plays blackjack with perfect stategy, and counts cards
+                    using the
+                    <a
+                      href="https://en.wikipedia.org/wiki/Card_counting#Systems"
+                      target="_blank"
+                      >Hi-Lo</a
+                    >
+                    strategy. By default the site will place a 20 unit bet if
+                    the
+                    <a
+                      href="https://en.wikipedia.org/wiki/Card_counting#Running_counts_versus_true_counts_in_balanced_counting_systems"
+                      target="_blank"
+                      >true count</a
+                    >
+                    is greater than 1. I find that card counting usually is not
+                    too effective because count seems to only slightly tilt the
+                    odds in the player's favor.
+                  </p>
+                </div>
+                <a
+                  href="https://blackjack.garrettroell.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to blackjack site"
+                >
+                  <img
+                    class="project-image blackjack-logo"
+                    src="images/blackjack.webp"
+                    alt="spades symbol"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- game of life -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://game-of-life.garrettroell.com"
+                        target="_blank"
+                      >
+                        Game of Life
+                      </a>
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/game_of_life"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                      />
+                    </a>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    A custom implementation of
+                    <a
+                      class="subtitle-link"
+                      href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life"
+                      target="_blank"
+                    >
+                      Conway's game of life</a
+                    >. This 'game' is an example of cellular automata, and
+                    demostrates how complex systems can emerge from simple
+                    rules. I think it is an metaphor for how the universe works.
+                  </p>
+                </div>
+                <a
+                  href="https://game-of-life.garrettroell.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to game of life site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/game_of_life.webp"
+                    alt="stable game of life formation"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- cellular automata -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://rule-30.garrettroell.com"
+                        target="_blank"
+                      >
+                        Cellular Automata
+                      </a>
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/rule_30"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                      />
+                    </a>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    A custom implementation of Steven Wolfram's
+                    <a
+                      class="subtitle-link"
+                      href="https://en.wikipedia.org/wiki/Rule_30"
+                      target="_blank"
+                    >
+                      cellular automata</a
+                    >. Rule 30, and cellular automata in general, potentially
+                    are the key to understanding how simple rules produce
+                    complex structures and behaviour in nature.
+                  </p>
+                </div>
+                <a
+                  href="https://rule-30.garrettroell.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to rule 30 site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/rule_30.webp"
+                    alt="A Conus textile shell similar in appearance to Rule 30"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- mandelbrot -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://mandelbrot.garrettroell.com"
+                        target="_blank"
+                      >
+                        Mandelbrot Set Visualizer
+                      </a>
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/mandelbrot"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                      />
+                    </a>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    A visualizer for the Mandelbrot set that allows up to 10^10
+                    times zoom, and user selected colors. It uses vanillaJS to
+                    paint the HTML canvas based on math with imaginary numbers.
+                    I like the idea that never-ending factals are form of
+                    infinity.
+                  </p>
+                </div>
+                <a
+                  href="https://mandelbrot.garrettroell.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to mandelbrot site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/mandelbrot.webp"
+                    alt="A picture of the mandelbrot set"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- broker app -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://broker.garrettroell.com"
+                        target="_blank"
+                      >
+                        Crypto Trading App
+                      </a>
+                    </h3>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    A crypto trading app that allows users to paper trade
+                    bitcoin. It uses websockets to display the recent trade
+                    prices of 4 cryptocurrencies.
+                  </p>
+                </div>
+                <a
+                  href="https://broker.garrettroell.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to crypto site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/broker.webp"
+                    alt="The bitcoin logo"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- sliding puzzle -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://sliding-puzzle.garrettroell.com"
+                        target="_blank"
+                      >
+                        Sliding Puzzle
+                      </a>
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/sliding_puzzle"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                      />
+                    </a>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    A implementation of a classic game that allows users can
+                    play with their own uploaded images, and has many levels of
+                    difficulty.
+                  </p>
+                </div>
+                <a
+                  class="project-tile-title-link"
+                  href="https://sliding-puzzle.garrettroell.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to sliding puzzle site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/sliding_puzzle.webp"
+                    alt="puzzle piece"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- snake game -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://snake.garrettroell.com"
+                        target="_blank"
+                      >
+                        Snake Game
+                      </a>
+                    </h3>
+                    <a
+                      href="https://github.com/garrettroell/snake"
+                      target="_blank"
+                    >
+                      <img
+                        src="../icons/github-thick.svg"
+                        alt="github icon"
+                        class="small-github-thick-icon"
+                      />
+                    </a>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    An implementation of a classic arcade game. Try to beat my
+                    best score, 34.
+                  </p>
+                </div>
+                <a
+                  href="https://snake.garrettroell.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to snake site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/snake.webp"
+                    alt="Snake game image"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
+
+              <!-- Demi's site -->
+              <div class="project-tile" data-type="Web Development">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        href="https://demetsenturk.com"
+                        target="_blank"
+                      >
+                        Demet Senturk's Personal Site
+                      </a>
+                    </h3>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    This is a custom personal website for a friend who is a UX
+                    designer. It helped land her first job after graduating from
+                    a UI/UX bootcamp!
+                  </p>
+                </div>
+                <a
+                  href="https://demetsenturk.com/"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to demet's site"
+                >
+                  <img
+                    class="project-image"
+                    src="images/demi.svg"
+                    alt="Demet Senturk line drawing"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- projects -->
-  <div class="projects" id="projects">
-    <div class="container">
-      <div class="projects-title-and-list">
-        <h2 class="projects-title">Projects</h2>
-        <div class="projects-list">
-          <div class="project-filter-buttons">
-            <button>All</button>
-            <button>Research</button>
-            <button>Web Development</button>
-          </div>
-          <div class="projects-tile-list">
-
-            <!-- impactDB -->
-            <div class="project-tile" data-type="Research">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://impact-database.com" target="_blank">
-                      ImpactDB: Database and Toolbox
-                    </a>
-                  </h3>
+    <!-- publications -->
+    <div class="publications" id="publications">
+      <div class="container">
+        <div class="projects-title-and-list">
+          <h2 class="projects-title">Publications</h2>
+          <div class="projects-list">
+            <div class="projects-tile-list">
+              <!-- Yarrowia TAG paper -->
+              <div class="project-tile">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        target="_blank"
+                        href="/papers/yarrowia-tag-mfa-gsm"
+                      >
+                        Elucidation of triacylglycerol catabolism in Yarrowia
+                        lipolytica: How cells balance acetyl-CoA and excess
+                        reducing equivalents
+                      </a>
+                    </h3>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    Alyssa M. Worland, Zhenlin Han, Jessica Maruwan, Yu Wang,
+                    Zhi-Yan Du, Yinjie J. Tang, Wei Wen Su*,
+                    <strong>Garrett W. Roell*</strong>
+                  </p>
                 </div>
-                <p class="project-tile-subtitle">
-                  IMPACTDB is a crowd-sourced database that makes bioprocess results from academic papers more
-                  accessible. Additionally, the database is used to train machine learning tools that are available via
-                  user friendly inferences on the site.
-                </p>
+                <a
+                  href="/papers/yarrowia-tag-mfa-gsm"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to paper"
+                >
+                  <img
+                    class="project-image"
+                    src="images/metabolic_engineering.webp"
+                    alt="Metabolic Engineering Journal Cover"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
               </div>
-              <a href="https://impact-database.com" target="_blank" class="project-image-holder"
-                aria-label="link to flux impact database site">
-                <img class="project-image" src="images/impactdb_icon.png" alt="ImpactDB's DNA logo" height="150px"
-                  width="150px">
-              </a>
-            </div>
 
-            <!-- fba.garrettroell.com -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://fba.garrettroell.com/" target="_blank"
-                      aria-label="Flux Balance Analysis">
-                      Flux Balance Analysis Web Tool
-                    </a>
-                  </h3>
-                  <a href="https://github.com/garrettroell/flux_balance_analysis" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon"
-                      loading="lazy">
-                  </a>
+              <!-- GPT-4 Knowledge Mining Paper -->
+              <div class="project-tile">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        target="_blank"
+                        href="/papers/gpt4-knowledge-mining"
+                      >
+                        Generative Artificial Intelligence GPT‑4 Accelerates
+                        Knowledge Mining and Machine Learning for Synthetic
+                        Biology
+                      </a>
+                    </h3>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    Zhengyang Xiao, Wenyu Li, Hannah Moon,
+                    <strong>Garrett W. Roell*</strong>, Yixin Chen*, and Yinjie
+                    J. Tang*
+                  </p>
                 </div>
-                <p class="project-tile-subtitle">Flux Balance Analysis (FBA) can be used to determine the metabolic
-                  states of a cell. Typically this procedure is done using python or matlab locally. This website allows
-                  users to perform FBA in their browser by comunicating with a server running CobraPy.</p>
+                <a
+                  href="/papers/gpt4-knowledge-mining"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to paper"
+                >
+                  <img
+                    class="project-image"
+                    src="/images/gpt4-knowledge-mining.webp"
+                    alt="ACS Synthetic Biology Cover"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
               </div>
-              <a href="https://fba.garrettroell.com/" target="_blank" class="project-image-holder"
-                aria-label="link to flux balance analysis site">
-                <img class="project-image" src="images/flux_balance_analysis.webp" alt="fba.garrettroell.com screenshot"
-                  height="150px" width="150px">
-              </a>
-            </div>
 
-            <!-- all things analysis -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://allthingsanalysis.com" target="_blank">
-                      All Things Analysis, LLC.
-                    </a>
-                  </h3>
+              <!-- Rhodococcus GSM Paper -->
+              <div class="project-tile">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        target="_blank"
+                        href="/papers/r-opacus-genome-scale-model"
+                      >
+                        A High-Quality Genome-Scale Model for Rhodococcus opacus
+                        Metabolism
+                      </a>
+                    </h3>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    <strong>Garrett W. Roell</strong>, Christina Schenk, Winston
+                    E. Anthony, Rhiannon R. Carr, Aditya Ponukumati, Joonhoon
+                    Kim, Elena Akhmatskaya, Marcus Foston, Gautam Dantas, Tae
+                    Seok Moon, Yinjie J. Tang, Hector García Martín
+                  </p>
                 </div>
-                <p class="project-tile-subtitle">
-                  All Things Analysis is an analytics website that offers articles, rankings and actionable insights. I
-                  am a Co-Founder, and the Chief Technology Officer for the company. I worked on this project in
-                  collaboration with a UX Designer.
-                </p>
+                <a
+                  href="/papers/r-opacus-genome-scale-model"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to paper"
+                >
+                  <img
+                    class="project-image"
+                    src="/images/acs_gsm_cover.webp"
+                    alt="ACS Synthetic Biology Cover"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
               </div>
-              <a href="https://allthingsanalysis.com" target="_blank" class="project-image-holder"
-                aria-label="link to All Things Analysis">
-                <img class="project-image" src="icons/ata-logo.svg" alt="All Things Analysis Logo" height="150px"
-                  width="150px">
-              </a>
-            </div>
 
-            <!-- southwest check in -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://sw.garrettroell.com/" target="_blank">
-                      Southwest Automatic Check In
-                    </a>
-                  </h3>
-                  <a href="https://github.com/garrettroell/sw_check_in" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon">
-                  </a>
+              <!-- Syngas Machine Learning Paper -->
+              <div class="project-tile">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        target="_blank"
+                        href="/papers/syngas-machine-learning"
+                      >
+                        A comparative evaluation of machine learning algorithms
+                        for predicting syngas fermentation outcomes
+                      </a>
+                    </h3>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    <strong>Garrett W. Roell</strong>, Ashik Sathish, Ni Wan,
+                    Qianshun Cheng, Zhiyou Wen, Yinjie J. Tang, Forrest Sheng
+                    Bao
+                  </p>
                 </div>
-                <p class="project-tile-subtitle">
-                  Given your first name, last name, and Southwest confirmation number, this react site with a node
-                  backend uses Puppeteer, a headless browser, to determine the check time for your flights, and a cron
-                  job to automatically check you to your flights when the check in window opens.
-                </p>
+                <a
+                  href="/papers/syngas-machine-learning"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to paper"
+                >
+                  <img
+                    class="project-image"
+                    src="/images/biochemical_engineering_journal.webp"
+                    alt="Biochemical Engineering Journal Cover"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
               </div>
-              <a href="https://sw.garrettroell.com/" target="_blank" class="project-image-holder"
-                aria-label="link to southwest check in site">
-                <img class="project-image" src="images/southwest.webp" alt="southwest airlines logo" height="150px"
-                  width="150px">
-              </a>
-            </div>
 
-            <!-- R. opacus genome scale model -->
-            <div class="project-tile" data-type="Research">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <em>R. opacus</em>&nbsp Genome Scale Model
-                  </h3>
+              <!-- Concerted Systems Biology R. opacus Paper -->
+              <div class="project-tile">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        target="_blank"
+                        href="/papers/system-biology-r-opacus"
+                      >
+                        A concerted systems biology analysis of phenol
+                        metabolism in
+                        <em>Rhodococcus opacus</em> PD630
+                      </a>
+                    </h3>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    <strong>Garrett W. Roell</strong>, Rhiannon R. Carr, Tayte
+                    Campbell, Zeyu Shang, William R. Henson, Jeffrey J.Czajka,
+                    Hector García Martín, Fuzhong Zhang, Marcus Foston, Gautam
+                    Dantas, Tae Seok Moon, Yinjie J.Tang
+                  </p>
                 </div>
-                <p class="project-tile-subtitle">
-                  I led a project to create a digital reconstruction of the <em>R. opacus</em> PD630 metabolic network.
-                  This bacteria has the potential to produce biofuels from the non-edible parts of plants.
-                  This model was used predict how genetic and environmetal changes would affect fermentation outcomes.
-                </p>
+                <a
+                  href="/papers/system-biology-r-opacus"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to paper"
+                >
+                  <img
+                    class="project-image"
+                    src="images/metabolic_engineering.webp"
+                    alt="Metabolic Engineering Journal Cover"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
               </div>
-              <div class="project-image-holder">
-                <img class="project-image" src="images/metabolic_network_yellow.webp" alt="example genome scale model"
-                  height="150px" width="150px">
-              </div>
-            </div>
 
-            <!-- NFL Fantasy Trends -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://nfl-trends.garrettroell.com/" target="_blank">
-                      NFL Fantasy Trends
-                    </a>
-                  </h3>
-                  <a href="https://github.com/garrettroell/nfl-trends" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon">
-                  </a>
+              <!-- Division of Labor Review Paper -->
+              <div class="project-tile">
+                <div class="project-tile-text">
+                  <div class="project-tile-title">
+                    <h3 class="project-tile-title-text">
+                      <a
+                        class="project-tile-title-link"
+                        target="_blank"
+                        href="/papers/division-of-labor-review"
+                      >
+                        Engineering microbial consortia by division of labor
+                      </a>
+                    </h3>
+                  </div>
+                  <p class="project-tile-subtitle">
+                    <strong>Garrett W. Roell</strong>, Jian Zha, Rhiannon R.
+                    Carr, Mattheos A. Koffas, Stephen S. Fong, and Yinjie J.
+                    Tang
+                  </p>
                 </div>
-                <p class="project-tile-subtitle">
-                  This Next.js site allows users to see trends of players fantasy point scoring from 2018-2021. It uses
-                  <a href="https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter">Savitsky-Golay</a> filtering to
-                  generate the trend lines.
-                </p>
+                <a
+                  href="/papers/division-of-labor-review"
+                  target="_blank"
+                  class="project-image-holder"
+                  aria-label="link to paper"
+                >
+                  <img
+                    class="project-image"
+                    src="images/microbial_cell_factory.webp"
+                    alt="Microbial Cell Factory Journal Cover"
+                    height="150px"
+                    width="150px"
+                  />
+                </a>
               </div>
-              <a href="https://nfl-trends.garrettroell.com/" target="_blank" class="project-image-holder"
-                aria-label="link to nfl trends site">
-                <img class="project-image" src="images/nfl-logo.webp" alt="nfl logo" height="150px" width="150px">
-              </a>
-            </div>
-
-            <!-- R. opacus 13-C mfa -->
-            <div class="project-tile" data-type="Research">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <em>R. opacus</em>&nbsp 13C-Metabolic Flux Analysis
-                  </h3>
-                </div>
-                <p class="project-tile-subtitle">
-                  13C-Metabolic Flux Analysis (13C-MFA) is a rigourous analysis of a cell's metabolism.
-                  <br>
-
-                  It uses experimental and computational methods to determine intracellular reaction rates that uses
-                  a heavy isotope of carbon as a tracer.
-                </p>
-              </div>
-              <div class="project-image-holder">
-                <img class="project-image phenol" src="icons/phenol.svg" alt="Phenol Structure" height="150px"
-                  width="150px">
-              </div>
-            </div>
-
-            <!-- Smokey cats -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://smokey-cats.web.app/" target="_blank">
-                      Smokey Cats NFTs
-                    </a>
-                  </h3>
-                  <a href="https://github.com/garrettroell/smokey_cats" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon">
-                  </a>
-                </div>
-                <p class="project-tile-subtitle">
-                  Smokey Cats are a collection of NFTs that I am giving out for free.
-                  <br>
-                  If you would like one, send me an email with your ethereum wallet address.
-                </p>
-              </div>
-              <a href="https://smokey-cats.web.app/" target="_blank" class="project-image-holder"
-                aria-label="link to NFT site">
-                <img class="project-image" src="images/smokey_cat.webp" alt="example smokey cat image" height="150px"
-                  width="150px">
-              </a>
-            </div>
-
-            <!-- clostridium machine learning -->
-            <div class="project-tile" data-type="Research">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    Syngas Machine Learning
-                  </h3>
-                  <a href="https://github.com/garrettroell/SyngasMachineLearning" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon">
-                  </a>
-                </div>
-                <p class="project-tile-subtitle">
-                  <em>Clostridium carboxidivorans</em> is a bacteria that can carbon
-                  monoxide, carbon dioxide, and hydrogen gas into the biofuels ethanol and butanol. The goal of
-                  this project was to compare the preformance of six machine learning algorithmsability to predict
-                  product production rate using the current product concentrations as inputs.
-                </p>
-              </div>
-              <div class="project-image-holder">
-                <img class="project-image" src="images/syngas_machine_learning.webp" alt="example-plot" height="150px"
-                  width="150px">
-              </div>
-            </div>
-
-            <!-- craps simulator -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://dice.garrettroell.com" target="_blank">
-                      Craps Probability Simulator
-                    </a>
-                  </h3>
-                  <a href="https://github.com/garrettroell/craps" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon">
-                  </a>
-                </div>
-                <p class="project-tile-subtitle">
-                  This website allows the user to simulate the casino game craps, and displays statistics about the
-                  user's current simulation.
-
-                  Most notably, it has a chart that shows what percentile the user's simulation is in. The chart uses
-                  the <a href="https://en.wikipedia.org/wiki/Binomial_distribution" target="_blank">binomial
-                    distribution</a>
-                  to display the likelihood of each number of wins for a given number of total turns. It demonstrates
-                  how the <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers" target="_blank">law of large
-                    numbers</a> favors the casino.
-                </p>
-              </div>
-              <a href="https://dice.garrettroell.com/" target="_blank" class="project-image-holder"
-                aria-label="link to dice site">
-                <img class="project-image" src="images/craps.webp" alt="one-red-die" height="150px" width="150px">
-              </a>
-            </div>
-
-            <!-- blackjack simulator -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://blackjack.garrettroell.com" target="_blank">
-                      Blackjack Probability Simulator
-                    </a>
-                  </h3>
-                  <a href="https://github.com/garrettroell/blackjack" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon">
-                  </a>
-                </div>
-                <p class="project-tile-subtitle">
-                  This website runs a simulation of the casino game blackjack. It plays blackjack
-                  with perfect stategy, and counts cards using the <a
-                    href="https://en.wikipedia.org/wiki/Card_counting#Systems" target="_blank">Hi-Lo</a> strategy. By
-                  default the site
-                  will place a 20 unit bet if the <a
-                    href="https://en.wikipedia.org/wiki/Card_counting#Running_counts_versus_true_counts_in_balanced_counting_systems"
-                    target="_blank">true count</a> is greater than 1. I find that card counting usually is not too
-                  effective because count seems to only slightly tilt the odds in the player's favor.
-                </p>
-              </div>
-              <a href="https://blackjack.garrettroell.com/" target="_blank" class="project-image-holder"
-                aria-label="link to blackjack site">
-                <img class="project-image blackjack-logo" src="images/blackjack.webp" alt="spades symbol" height="150px"
-                  width="150px">
-              </a>
-            </div>
-
-            <!-- game of life -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://game-of-life.garrettroell.com" target="_blank">
-                      Game of Life
-                    </a>
-                  </h3>
-                  <a href="https://github.com/garrettroell/game_of_life" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon">
-                  </a>
-                </div>
-                <p class="project-tile-subtitle">
-                  A custom implementation of
-                  <a class="subtitle-link" href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life" target="_blank">
-                    Conway's game of life</a>. This 'game' is an example of cellular automata, and
-                  demostrates how complex systems
-                  can emerge from simple rules. I think it is an metaphor for how the universe works.
-                </p>
-              </div>
-              <a href="https://game-of-life.garrettroell.com/" target="_blank" class="project-image-holder"
-                aria-label="link to game of life site">
-                <img class="project-image" src="images/game_of_life.webp" alt="stable game of life formation"
-                  height="150px" width="150px">
-              </a>
-            </div>
-
-            <!-- cellular automata -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://rule-30.garrettroell.com" target="_blank">
-                      Cellular Automata
-                    </a>
-                  </h3>
-                  <a href="https://github.com/garrettroell/rule_30" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon">
-                  </a>
-                </div>
-                <p class="project-tile-subtitle">
-                  A custom implementation of Steven Wolfram's
-                  <a class="subtitle-link" href="https://en.wikipedia.org/wiki/Rule_30" target="_blank">
-                    cellular automata</a>. Rule 30, and cellular automata in general, potentially are the key
-                  to understanding how simple rules produce complex structures and behaviour in nature.
-                </p>
-              </div>
-              <a href="https://rule-30.garrettroell.com/" target="_blank" class="project-image-holder"
-                aria-label="link to rule 30 site">
-                <img class="project-image" src="images/rule_30.webp"
-                  alt="A Conus textile shell similar in appearance to Rule 30" height="150px" width="150px">
-              </a>
-            </div>
-
-            <!-- mandelbrot -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://mandelbrot.garrettroell.com" target="_blank">
-                      Mandelbrot Set Visualizer
-                    </a>
-                  </h3>
-                  <a href="https://github.com/garrettroell/mandelbrot" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon">
-                  </a>
-                </div>
-                <p class="project-tile-subtitle">
-                  A visualizer for the Mandelbrot set that allows up to 10^10 times zoom, and user selected colors. It
-                  uses vanillaJS to paint the HTML canvas based on math with imaginary numbers. I like the idea that
-                  never-ending factals are form of infinity.
-                </p>
-              </div>
-              <a href="https://mandelbrot.garrettroell.com/" target="_blank" class="project-image-holder"
-                aria-label="link to mandelbrot site">
-                <img class="project-image" src="images/mandelbrot.webp" alt="A picture of the mandelbrot set"
-                  height="150px" width="150px">
-              </a>
-            </div>
-
-            <!-- broker app -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://broker.garrettroell.com" target="_blank">
-                      Crypto Trading App
-                    </a>
-                  </h3>
-                </div>
-                <p class="project-tile-subtitle">
-                  A crypto trading app that allows users to paper trade bitcoin. It uses websockets to display the
-                  recent trade prices of 4 cryptocurrencies.
-                </p>
-              </div>
-              <a href="https://broker.garrettroell.com/" target="_blank" class="project-image-holder"
-                aria-label="link to crypto site">
-                <img class="project-image" src="images/broker.webp" alt="The bitcoin logo" height="150px" width="150px">
-              </a>
-            </div>
-
-            <!-- sliding puzzle -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://sliding-puzzle.garrettroell.com" target="_blank">
-                      Sliding Puzzle
-                    </a>
-                  </h3>
-                  <a href="https://github.com/garrettroell/sliding_puzzle" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon">
-                  </a>
-                </div>
-                <p class="project-tile-subtitle">
-                  A implementation of a classic game that allows users can play with their own uploaded
-                  images, and has many levels of difficulty.
-                </p>
-              </div>
-              <a class="project-tile-title-link" href="https://sliding-puzzle.garrettroell.com/" target="_blank"
-                class="project-image-holder" aria-label="link to sliding puzzle site">
-                <img class="project-image" src="images/sliding_puzzle.webp" alt="puzzle piece" height="150px"
-                  width="150px">
-              </a>
-            </div>
-
-            <!-- snake game -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://snake.garrettroell.com" target="_blank">
-                      Snake Game
-                    </a>
-                  </h3>
-                  <a href="https://github.com/garrettroell/snake" target="_blank">
-                    <img src="../icons/github-thick.svg" alt="github icon" class="small-github-thick-icon">
-                  </a>
-                </div>
-                <p class="project-tile-subtitle">
-                  An implementation of a classic arcade game. Try to beat my best score, 34.
-                </p>
-              </div>
-              <a href="https://snake.garrettroell.com/" target="_blank" class="project-image-holder"
-                aria-label="link to snake site">
-                <img class="project-image" src="images/snake.webp" alt="Snake game image" height="150px" width="150px">
-              </a>
-            </div>
-
-            <!-- Demi's site -->
-            <div class="project-tile" data-type="Web Development">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" href="https://demetsenturk.com" target="_blank">
-                      Demet Senturk's Personal Site
-                    </a>
-                  </h3>
-                </div>
-                <p class="project-tile-subtitle">
-                  This is a custom personal website for a friend who is a UX designer. It helped land her first job
-                  after graduating from a UI/UX bootcamp!
-                </p>
-              </div>
-              <a href="https://demetsenturk.com/" target="_blank" class="project-image-holder"
-                aria-label="link to demet's site">
-                <img class="project-image" src="images/demi.svg" alt="Demet Senturk line drawing" height="150px"
-                  width="150px">
-              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- publications -->
-  <div class="publications" id="publications">
-    <div class="container">
-      <div class="projects-title-and-list">
-        <h2 class="projects-title">Publications</h2>
-        <div class="projects-list">
-          <div class="projects-tile-list">
-
-            <!-- Yarrowia TAG paper -->
-            <div class="project-tile">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" target="_blank" href="/papers/yarrowia-tag-mfa-gsm">
-                      Elucidation of triacylglycerol catabolism in Yarrowia lipolytica: How cells 
-                      balance acetyl-CoA and excess reducing equivalents
-                    </a>
-                  </h3>
-                </div>
-                <p class="project-tile-subtitle">
-                  Alyssa M. Worland, Zhenlin Han, Jessica Maruwan, Yu Wang, Zhi-Yan Du, 
-                  Yinjie J. Tang, Wei Wen Su*, <strong>Garrett W. Roell*</strong>
-                </p>
-              </div>
-              <a href="/papers/yarrowia-tag-mfa-gsm" target="_blank" class="project-image-holder"
-                aria-label="link to paper">
-                <img class="project-image" src="images/metabolic_engineering.webp"
-                  alt="Metabolic Engineering Journal Cover" height="150px" width="150px">
-              </a>
+    <!-- skills -->
+    <div class="skills" id="skills">
+      <div class="container">
+        <ul class="skills-list">
+          <li class="skill-item">
+            <img
+              src="../icons/community.svg"
+              alt="community icon"
+              class="community-icon"
+              loading="lazy"
+            />
+            <div class="skill-text">
+              <h3 class="skill-subtitle">Community</h3>
+              <p class="skill-details">
+                President of WashU Association of Graduate Engineering Students,
+                Eagle Scout
+              </p>
             </div>
-
-            <!-- GPT-4 Knowledge Mining Paper -->
-            <div class="project-tile">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" target="_blank" href="/papers/gpt4-knowledge-mining">
-                      Generative Artificial Intelligence GPT‑4 Accelerates Knowledge Mining and Machine Learning for
-                      Synthetic Biology
-                    </a>
-                  </h3>
-                </div>
-                <p class="project-tile-subtitle">
-                  Zhengyang Xiao, Wenyu Li, Hannah Moon, <strong>Garrett W. Roell*</strong>, Yixin Chen*, and Yinjie J.
-                  Tang*
-                </p>
-              </div>
-              <a href="/papers/gpt4-knowledge-mining" target="_blank" class="project-image-holder"
-                aria-label="link to paper">
-                <img class="project-image" src="/images/gpt4-knowledge-mining.webp" alt="ACS Synthetic Biology Cover"
-                  height="150px" width="150px">
-              </a>
+          </li>
+          <li class="skill-item">
+            <img
+              src="../icons/programming-symbol.svg"
+              alt="open and close brackets"
+              class="programming-icon"
+              loading="lazy"
+            />
+            <div class="skill-text">
+              <h3 class="skill-subtitle">Programming</h3>
+              <p class="skill-details">JavaScript, HTML/CSS, Python</p>
             </div>
-
-            <!-- Rhodococcus GSM Paper -->
-            <div class="project-tile">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" target="_blank" href="/papers/r-opacus-genome-scale-model">
-                      A High-Quality Genome-Scale Model for Rhodococcus opacus Metabolism
-                    </a>
-                  </h3>
-                </div>
-                <p class="project-tile-subtitle">
-                  <strong>Garrett W. Roell</strong>, Christina Schenk, Winston E. Anthony, Rhiannon R. Carr, Aditya
-                  Ponukumati, Joonhoon Kim, Elena Akhmatskaya, Marcus Foston, Gautam Dantas, Tae Seok
-                  Moon, Yinjie J. Tang, Hector García Martín
-                </p>
-              </div>
-              <a href="/papers/r-opacus-genome-scale-model" target="_blank" class="project-image-holder"
-                aria-label="link to paper">
-                <img class="project-image" src="/images/acs_gsm_cover.webp" alt="ACS Synthetic Biology Cover"
-                  height="150px" width="150px">
-              </a>
+          </li>
+          <li class="skill-item">
+            <img
+              src="../icons/abstract-metabolic-map.svg"
+              alt="abstract metabolic map"
+              class="metabolic-map-icon"
+              loading="lazy"
+            />
+            <div class="skill-text">
+              <h3 class="skill-subtitle">Metabolic Modeling</h3>
+              <p class="skill-details">13C-MFA, Cobra, INCA</p>
             </div>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-            <!-- Syngas Machine Learning Paper -->
-            <div class="project-tile">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" target="_blank" href="/papers/syngas-machine-learning">
-                      A comparative evaluation of machine learning algorithms for predicting
-                      syngas fermentation outcomes
-                    </a>
-                  </h3>
-                </div>
-                <p class="project-tile-subtitle">
-                  <strong>Garrett W. Roell</strong>, Ashik Sathish, Ni Wan, Qianshun Cheng, Zhiyou Wen, Yinjie J. Tang,
-                  Forrest Sheng Bao
-                </p>
-              </div>
-              <a href="/papers/syngas-machine-learning" target="_blank" class="project-image-holder"
-                aria-label="link to paper">
-                <img class="project-image" src="/images/biochemical_engineering_journal.webp"
-                  alt="Biochemical Engineering Journal Cover" height="150px" width="150px">
-              </a>
-            </div>
-
-            <!-- Concerted Systems Biology R. opacus Paper -->
-            <div class="project-tile">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" target="_blank" href="/papers/system-biology-r-opacus">
-                      A concerted systems biology analysis of phenol metabolism in
-                      <em>Rhodococcus opacus</em> PD630
-                    </a>
-                  </h3>
-                </div>
-                <p class="project-tile-subtitle">
-                  <strong>Garrett W. Roell</strong>, Rhiannon R. Carr, Tayte Campbell, Zeyu Shang, William R. Henson,
-                  Jeffrey J.Czajka, Hector García Martín, Fuzhong Zhang, Marcus Foston, Gautam Dantas, Tae Seok Moon,
-                  Yinjie J.Tang
-                </p>
-              </div>
-              <a href="/papers/system-biology-r-opacus" target="_blank" class="project-image-holder"
-                aria-label="link to paper">
-                <img class="project-image" src="images/metabolic_engineering.webp"
-                  alt="Metabolic Engineering Journal Cover" height="150px" width="150px">
-              </a>
-            </div>
-
-            <!-- Division of Labor Review Paper -->
-            <div class="project-tile">
-              <div class="project-tile-text">
-                <div class="project-tile-title">
-                  <h3 class="project-tile-title-text">
-                    <a class="project-tile-title-link" target="_blank" href="/papers/division-of-labor-review">
-                      Engineering microbial consortia by division of labor
-                    </a>
-                  </h3>
-                </div>
-                <p class="project-tile-subtitle">
-                  <strong>Garrett W. Roell</strong>, Jian Zha, Rhiannon R. Carr, Mattheos A. Koffas, Stephen S. Fong,
-                  and Yinjie J. Tang
-                </p>
-              </div>
-              <a href="/papers/division-of-labor-review" target="_blank" class="project-image-holder"
-                aria-label="link to paper">
-                <img class="project-image" src="images/microbial_cell_factory.webp"
-                  alt="Microbial Cell Factory Journal Cover" height="150px" width="150px">
-              </a>
-            </div>
-          </div>
+    <!-- footer -->
+    <div class="footer">
+      <div class="footer-container">
+        <p class="footer-name" id="footer-name"></p>
+        <div class="footer-buttons">
+          <!-- github button -->
+          <a
+            href="https://github.com/garrettroell/personal_site"
+            target="_blank"
+          >
+            <button class="footer-button">
+              <img
+                src="../icons/github-line.svg"
+                alt="github icon"
+                class="github-line-icon"
+                loading="lazy"
+              />
+            </button>
+          </a>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- skills -->
-  <div class="skills" id="skills">
-    <div class="container">
-      <ul class="skills-list">
-        <li class="skill-item">
-          <img src="../icons/community.svg" alt="community icon" class="community-icon" loading="lazy">
-          <div class="skill-text">
-            <h3 class="skill-subtitle">Community</h3>
-            <p class="skill-details">President of WashU Association of Graduate Engineering Students, Eagle Scout</p>
-          </div>
-        </li>
-        <li class="skill-item">
-          <img src="../icons/programming-symbol.svg" alt="open and close brackets" class="programming-icon"
-            loading="lazy">
-          <div class="skill-text">
-            <h3 class="skill-subtitle">Programming</h3>
-            <p class="skill-details">JavaScript, HTML/CSS, Python</p>
-          </div>
-        </li>
-        <li class="skill-item">
-          <img src="../icons/abstract-metabolic-map.svg" alt="abstract metabolic map" class="metabolic-map-icon"
-            loading="lazy">
-          <div class="skill-text">
-            <h3 class="skill-subtitle">Metabolic Modeling</h3>
-            <p class="skill-details">13C-MFA, Cobra, INCA</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-
-
-  <!-- footer -->
-  <div class="footer">
-    <div class="footer-container">
-      <p class="footer-name" id="footer-name"></p>
-      <div class="footer-buttons">
-        <!-- github button -->
-        <a href="https://github.com/garrettroell/personal_site" target="_blank">
-          <button class="footer-button">
-            <img src="../icons/github-line.svg" alt="github icon" class="github-line-icon" loading="lazy">
-          </button>
-        </a>
-      </div>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>
